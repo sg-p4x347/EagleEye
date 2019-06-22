@@ -16,6 +16,8 @@ namespace EagleEye
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+			EagleEyeConfig.ImportDatabase();
+			Tests.Tests.RunTests();
 		}
 	}
 }
