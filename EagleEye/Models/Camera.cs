@@ -17,7 +17,7 @@ namespace EagleEye.Models
 		Bitmap:
 			Used to define the current image
 	--------------------------------------------------*/
-	public class Camera
+	public class Camera : IID
 	{
 
 		public Camera(int id,string name)

@@ -5,7 +5,7 @@ using System.Web;
 using System.Drawing;
 namespace EagleEye.Models
 {
-	public class ParkingLot
+	public class ParkingLot : IID
 	{
 		/*--------------------------------------------------
 		Developer:
