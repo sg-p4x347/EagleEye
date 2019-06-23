@@ -24,9 +24,10 @@ namespace EagleEye.Models
 			Parking,
 			Isle
 		}
-		public Annotation(int id)
+		public Annotation(int id, AnnotationType type)
 		{
 			ID = id;
+			Type = type;
 		}
 		/*--------------------------------------------------
 		Purpose:

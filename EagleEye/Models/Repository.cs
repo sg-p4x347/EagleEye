@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,7 +21,8 @@ namespace EagleEye.Models
 		{
 			Models.Remove(id);
 		}
-		private static Dictionary<int, T> Models = new Dictionary<int, T>();
+
+		public static Dictionary<int, T> Models { get; private set; }  = new Dictionary<int, T>();
 
 	}
 }

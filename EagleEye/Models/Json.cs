@@ -93,6 +93,26 @@ namespace EagleEye.Models
 				return json;
 			}
 		}
+		public static Json Array
+		{
+			get
+			{
+				Json json = new Json();
+				json.Type = JsonType.Array;
+				json.Children = new List<Json>();
+				return json;
+			}
+		}
+		public static Json Object
+		{
+			get
+			{
+				Json json = new Json();
+				json.Type = JsonType.Object;
+				json.Children = new List<Json>();
+				return json;
+			}
+		}
 		private string Data { get; set; }
 		public JsonType Type { get; private set; }
 		private List<Json> Children { get; set; }

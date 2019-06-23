@@ -24,9 +24,10 @@ namespace EagleEye.Models
 				Defines regions in the baseline that should be
 				included in calculations
 		--------------------------------------------------*/
-		public ParkingLot(int id, Camera camera, Bitmap baseline)
+		public ParkingLot(int id,string name, Camera camera, Bitmap baseline)
 		{
 			ID = id;
+			Name = name;
 			Camera = camera;
 			Baseline = baseline;
 		}
