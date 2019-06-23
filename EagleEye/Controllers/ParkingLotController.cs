@@ -18,5 +18,10 @@ namespace EagleEye.Controllers
 		{
 			return View("Edit", new Views.ParkingLot.ParkingLot(Repository<ParkingLot>.Get(id)));
 		}
+		[HttpGet]
+		public ActionResult Baseline(int id)
+		{
+			using (System.IO.Stream stream = Repository<ParkingLot>.Get(id).Baseline.)
+		}
     }
 }
