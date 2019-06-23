@@ -1,0 +1,18 @@
+﻿@model EagleEye.Views.ParkingLot.ParkingLot
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 class="page-header">@Model.Name</h1>
+<div class="panel">
+	<div class="panel-heading">Live</div>
+	<div class="panel-body dl-horizontal">
+		<div class="btn-group-vertical">
+			@Html.ActionLink("Back", "Index",null,new { @class="btn btn-default"})
+			@RenderSection("Buttons",false)
+		</div>
+		<div class="panel">
+			@RenderBody()
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,17 @@
+﻿@model List<EagleEye.Views.ParkingLot.ParkingLot>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Parking Lots</h2>
+<div class="panel-group">
+	@foreach (var lot in Model)
+	{
+		<div class="panel">
+			<div class="panel-heading">@lot.Name</div>
+			<div class="panel-body">
+				@Html.ActionLink("Edit","Edit",new { id=lot.ID },new { @class = "btn btn-default" })
+			</div>
+		</div>
+	}
+</div>

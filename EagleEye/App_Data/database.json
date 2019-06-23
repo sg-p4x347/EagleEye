@@ -1,0 +1,26 @@
+﻿{
+	"Cameras": [
+		{
+			"ID": 0,
+			"Name": "Missouri"
+		},
+		{
+			"ID": 1,
+			"Name": "Georgia"
+		}
+	],
+	"ParkingLots": [
+		{
+			"ID": 0,
+			"Name": "Springfield",
+			"Camera": 0,
+			"Annotations": []
+		},
+		{
+			"ID": 1,
+			"Name": "Carthage",
+			"Camera": 1,
+			"Annotations": []
+		}
+	]
+}

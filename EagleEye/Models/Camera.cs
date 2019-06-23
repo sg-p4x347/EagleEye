@@ -30,6 +30,19 @@ namespace EagleEye.Models
 		// A human readable identifier (not unique)
 		public string Name { get; set; }
 		// The most recent image from this camera
-		public Bitmap CurrentImage { get; set; }
+		private Bitmap m_currentImage;
+		public Bitmap CurrentImage {
+			get
+			{
+				return m_currentImage;
+			}
+			set
+			{
+				m_currentImage = value;
+				LastUpdate = DateTime.Now;
+			}
+		}
+		// The time CurrentImage was last updated
+		public DateTime LastUpdate { get; set; }
 	}
 }

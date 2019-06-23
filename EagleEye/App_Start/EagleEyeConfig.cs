@@ -26,7 +26,7 @@ namespace EagleEye
 				for (int i = 0; i < parkingLots.Count; i++)
 				{
 					Json lotJson = parkingLots[i];
-					ParkingLot lot = new ParkingLot(lotJson["ID"], lotJson["Name"], Repository<Camera>.Get(lotJson["Camera"]), Bitmap.FromFile($"{HttpRuntime.AppDomainAppPath}/App_Data/{lotJson["ID"]}.bmp") as Bitmap);
+					ParkingLot lot = new ParkingLot(lotJson["ID"], lotJson["Name"], Repository<Camera>.Get(lotJson["Camera"]), Bitmap.FromFile($"{HttpRuntime.AppDomainAppPath}App_Data\\{(int)lotJson["ID"]}.bmp") as Bitmap);
 					for (int a = 0; a < parkingLots["Annotations"].Count; a++)
 					{
 						Json ann = parkingLots["Annotations"][a];
