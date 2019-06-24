@@ -1,0 +1,14 @@
+﻿@model List<EagleEye.Views.Camera.Camera>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cameras</h2>
+<div class="panel-group">
+	@foreach (var camera in Model)
+	{
+		<div class="panel">
+			<div class="panel-heading">@camera.Name</div>
+		</div>
+	}
+</div>

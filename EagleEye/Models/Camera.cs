@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Drawing;
+
+namespace EagleEye.Models
+{
+	/*--------------------------------------------------
+	Developer:
+		Gage Coates
+
+	Purpose:
+		Defines a unique camera instance
+
+	Dependencies:
+		Bitmap:
+			Used to define the current image
+	--------------------------------------------------*/
+	public class Camera : IID
+	{
+
+		public Camera(int id,string name)
+		{
+			ID = id;
+			Name = name;
+		}
+		// A unique identifier
+		public int ID { get; private set; } = -1;
+		// A human readable identifier (not unique)
+		public string Name { get; set; }
+		// The most recent image from this camera
+		private Bitmap m_currentImage;
+		public Bitmap CurrentImage {
+			get
+			{
+				return m_currentImage;
+			}
+			set
+			{
+				m_currentImage = value;
+				LastUpdate = DateTime.Now;
+			}
+		}
+		// The time CurrentImage was last updated
+		public DateTime LastUpdate { get; set; }
+	}
+}
