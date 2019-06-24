@@ -115,9 +115,11 @@
     <Compile Include="App_Start\EagleEyeConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CameraController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParkingLotController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,6 +217,15 @@
     <Content Include="Views\ParkingLot\Index.cshtml" />
     <Content Include="Views\ParkingLot\_ParkingLot.cshtml" />
     <Content Include="Views\ParkingLot\Edit.cshtml" />
+    <Content Include="Views\User\Lot.cshtml" />
+    <Content Include="Views\User\UserHome.cshtml" />
+    <Content Include="Views\Admin\AdminHome.cshtml" />
+    <Content Include="Views\Admin\CreateLot.cshtml" />
+    <Content Include="Views\Admin\EditLot.cshtml" />
+    <Content Include="Views\Admin\AdminLot.cshtml" />
+    <Content Include="Views\Admin\RemoveLot.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_UserLayout.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
