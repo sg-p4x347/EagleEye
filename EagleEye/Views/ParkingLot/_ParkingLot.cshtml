@@ -2,15 +2,19 @@
 @{
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section scripts {
+	@Scripts.Render("~/bundles/parking")
+	@RenderSection("scripts",false)
+}
 <h1 class="page-header">@Model.Name</h1>
 <div class="panel">
 	<div class="panel-heading">Live</div>
-	<div class="panel-body dl-horizontal">
-		<div class="btn-group-vertical">
+	<div class="panel-body flex-row">
+		<div class="btn-group-vertical" style="width:200px;">
 			@Html.ActionLink("Back", "Index",null,new { @class="btn btn-default"})
 			@RenderSection("Buttons",false)
 		</div>
-		<div class="panel">
+		<div class="panel" style="width:calc(100% - 200px);">
 			@RenderBody()
 		</div>
 	</div>

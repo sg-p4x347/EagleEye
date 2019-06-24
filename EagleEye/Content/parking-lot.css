@@ -1,4 +1,7 @@
-﻿#viewport {
+﻿body {
+	user-select:none;
+}
+#viewport {
 	width: 700px;
 	height: 400px;
 	position:relative;

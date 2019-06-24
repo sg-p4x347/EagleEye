@@ -1,0 +1,16 @@
+﻿{
+	"Cameras": [
+		{
+			"ID": 0,
+			"Name": "Missouri"
+		}
+	],
+	"ParkingLots": [
+		{
+			"ID": 0,
+			"Name": "Springfield",
+			"Camera": 0,
+			"Annotations": []
+		}
+	]
+}

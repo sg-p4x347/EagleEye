@@ -141,11 +141,12 @@ namespace EagleEye.Models
 		{
 			ParsingState state = ParsingState.None;
 			Json root = new Json();
-			for (; i < json.Length; i++)
+			for (; i < json.Length;)
 			{
 				char ch = json[i];
 				if (state == ParsingState.None)
 				{
+					i++;
 					switch (ch)
 					{
 						case '"':
@@ -184,22 +185,20 @@ namespace EagleEye.Models
 							root.Children = new List<Json>();
 							break;
 						case ']':
-							i++;
 							return null;
 						case '}':
-							i++;
 							return null;
 					}
 				}
 				else if (state == ParsingState.String)
 				{
+					i++;
 					if (ch != '"')
 					{
 						root.Data += ch;
 					}
 					else
 					{
-						i++;
 						return root;
 					}
 				}
@@ -208,6 +207,7 @@ namespace EagleEye.Models
 					if (ch >= '0' && ch <= '9' || ch == '.')
 					{
 						root.Data += ch;
+						i++;
 					}
 					else
 					{
@@ -233,7 +233,6 @@ namespace EagleEye.Models
 					{
 						child.Children = new List<Json> { ParseTree(ref json, ref i) };
 						root.Children.Add(child);
-						
 					}
 					else
 					{
@@ -243,6 +242,7 @@ namespace EagleEye.Models
 				else if (Char.IsLetter(ch))
 				{
 					root.Data += ch;
+					i++;
 				}
 				else
 				{
@@ -274,7 +274,7 @@ namespace EagleEye.Models
 				} else
 				{
 					jsonKey = new Json(key);
-					jsonKey.Children.Add(value);
+					jsonKey.Children = new List<Json> { value };
 					Children.Add(jsonKey);
 				}
 			}
