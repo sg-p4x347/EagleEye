@@ -1,5 +1,97 @@
 ﻿@{
     ViewBag.Title = "User Lot";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<style>
+	input{
+		display: block;
+		margin-right: auto;
+		margin-left: auto;
+		text-align:center;
+		padding-right:5px;
+	}
+	select{
+		display:block;
+		margin: 0px auto;
+	}
+	img{
+		display:block;
+		margin-top: 0px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: -50px;
+	}
+	table, th, td{
+		margin: 5px auto;
+	}
+	#infoTable th, #infoTable td{
+		border: 1px solid black;
+	}
+	th,td, h2, h3{
+		text-align:center;
+		padding:15px;
+	}
+	td{
+		text-align:center;
+	}
+</style>
+@section scripts {
+	<script>
+	var menu = document.getElementById("dropdown");
+	menu.addEventListener("change", setImage)
+	function setImage(event)
+	{
+		if(menu.value == '1')
+		{
+			let img = document.getElementById('lot');
+			$.ajax({
+				url: '/ParkingLot/Baseline',
+				data: {id:0}
+			}).done(data => {
+				img.src = `data:image/png;base64, ${data}`;
+			});
+		}
+		let hd = document.getElementById('message');
+		hd.innerText = "";
+		document.getElementById('image').checked = true;
+		document.getElementById('overlay').checked = true;
+		var x = document.getElementById('tableDiv');
+		x.style.display = "block";
+	}
+	</script>
+}
+<div class="container">
+	<h2>@ViewBag.Title</h2>
+	<div id="container-fluid">
+		<img class="img-responsive" id="lot"/>
+	</div>
+	<h3 id="message">@ViewBag.Message</h3>
+	<div class="row" id="tableDiv" style="display:none">
+		<table id="checkboxTable">
+			<tr>
+				<td>Image<input id="image" class="center-block" type="checkbox" name="imageLook"></td>
+				<td>Overlay<input id="overlay" class="center-block" type="checkbox" name="imageLook"></td>
+			</tr>
+		<table>
+	</div>
+	<div class="row">
+		<table id="infoTable">
+			<tr>
+				<th> Parking Lot </th>
+				<th> Percentage Full </th>
+				<th> Total Spaces </th>
+				<th> Available Spaces </th>
+			</tr>
+			<tr>
+				<td> Lot 1 </td>
+				<td> 0% </td>
+				<td> 24 </td>
+				<td> 0 </td>
+			</tr>
+		</table>
+	</div>
+	<select id="dropdown">
+		<option value="0">Choose a Lot</option>
+		<option value="1">Lot 1</option>
+		<option value="2">Lot 2</option>
+	</select>
+</div>
