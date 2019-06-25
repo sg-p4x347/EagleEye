@@ -10,12 +10,12 @@ namespace EagleEye.Controllers
 	{
         public ActionResult UserHome()
         {
-            ViewBag.Message = "Your Home Page";
+            ViewBag.Message = "Welcome! To the user portal. Click on lot to find a parking spot.";
             return View();
         }
 		public ActionResult Lot()
 		{
-			ViewBag.Message = "Your user Lot page.";
+			ViewBag.Message = "Please select a lot to view";
 
 			return View();
 		}
