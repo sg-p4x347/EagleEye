@@ -34,3 +34,12 @@ textarea {
 	width:100%;
 	height:100%;
 }
+.max-width {
+	width:100%;
+}
+.max-width {
+	height: 100%;
+}
+.justify-between {
+	justify-content:space-between;
+}

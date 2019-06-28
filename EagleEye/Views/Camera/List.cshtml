@@ -1,0 +1,7 @@
+﻿@model List<EagleEye.Views.Camera.Camera>
+<select class="form-control" name="cameras" onchange="cameraSelected(this.value)">
+	@foreach(var camera in Model)
+	{
+		<option value="@camera.ID">@camera.Name</option>
+	}
+</select>

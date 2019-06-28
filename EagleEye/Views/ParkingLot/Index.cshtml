@@ -1,16 +1,37 @@
 ﻿@model List<EagleEye.Views.ParkingLot.ParkingLot>
 @{
-    ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Parking Lots</h2>
+@section scripts {
+	<script>
+		function deleteLot(id) {
+			$.ajax({
+				url: '/ParkingLot/Delete',
+				data: {
+					id: id
+				}
+			}).done(() => {
+				location.reload();
+			});
+		}
+	</script>
+}
+<h1>Parking Lots</h1>
+<a class="btn btn-default btn-lg" href="/ParkingLot/New">
+	<span class="glyphicon glyphicon-plus"></span> Create
+</a>
+<hr />
 <div class="panel-group">
+
 	@foreach (var lot in Model)
 	{
-		<div class="panel">
+		<div class="panel panel-default">
 			<div class="panel-heading">@lot.Name</div>
 			<div class="panel-body">
-				@Html.ActionLink("Edit","Edit",new { id=lot.ID },new { @class = "btn btn-default" })
+				<div class="flex-row justify-between max-width">
+					@Html.ActionLink("Edit", "Edit", new { id = lot.ID }, new { @class = "btn btn-default" })
+					<button class="btn btn-danger" onclick="deleteLot(@lot.ID)">Delete</button>
+				</div>
 			</div>
 		</div>
 	}

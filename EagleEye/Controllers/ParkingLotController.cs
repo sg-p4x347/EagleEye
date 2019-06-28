@@ -13,7 +13,10 @@ namespace EagleEye.Controllers
 			base.Dispose(disposing);
 			EagleEyeConfig.ExportDatabase();
 		}
-		// GET: ParkingLot
+		//--------------------------------------------------
+		// View Actions
+
+		[HttpGet]
 		public ActionResult Index()
         {
             return View(Repository<ParkingLot>.Models.Values.Select(lot => new Views.ParkingLot.ParkingLot(lot)).ToList());
@@ -30,6 +33,14 @@ namespace EagleEye.Controllers
 		{
 			return View("Edit", new Views.ParkingLot.ParkingLot(Repository<ParkingLot>.Get(id)));
 		}
+		[HttpGet]
+		public ActionResult New()
+		{
+			return View("New");
+		}
+
+
+		
 		/*--------------------------------------------------
 		Purpose:
 			Returns a base64 encoded image in the response body
@@ -42,10 +53,11 @@ namespace EagleEye.Controllers
 		public ActionResult Baseline(int id)
 		{
 			ParkingLot lot;
-			if (TryGetLot(id, out lot))
+			if (TryGetLot(id, out lot) && lot.Baseline != null)
 			{
 				using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
 				{
+					
 					lot.Baseline.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
 					Response.ContentType = "image/png";
 					Response.Write(System.Convert.ToBase64String(stream.GetBuffer()));
@@ -63,6 +75,8 @@ namespace EagleEye.Controllers
 			}
 			return new EmptyResult();
 		}
+		//--------------------------------------------------
+		// REST
 		[HttpGet]
 		public ActionResult Create(string name, int cameraID)
 		{
@@ -103,7 +117,7 @@ namespace EagleEye.Controllers
 			}
 			return new EmptyResult();
 		}
-		[HttpDelete]
+		[HttpGet]
 		public ActionResult Delete(int id)
 		{
 			Repository<ParkingLot>.Delete(id);

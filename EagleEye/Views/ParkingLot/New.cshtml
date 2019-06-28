@@ -1,0 +1,28 @@
+﻿@{ 
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="panel-heading">New Parking Lot</h1>
+<form class="form-group" id="newLotForm">
+	<label>Name:</label>
+	@Html.TextBox("name","",new { @class="form-control"})
+	<label>Camera:</label>
+	@{Html.RenderAction("ListView", "Camera");}
+	<br />
+	<button type="submit" class="btn btn-primary">Create</button>
+</form>
+<script>
+	let form = document.getElementById('newLotForm');
+	form.addEventListener('submit', (evt) => {
+		evt.preventDefault();
+		$.ajax({
+			url: '/ParkingLot/Create',
+			data: {
+				name: form.elements["name"].value,
+				cameraID: form.elements["cameras"].value
+			}
+		}).done(() => {
+			location.href = '/ParkingLot/';
+		});
+	});
+</script>
