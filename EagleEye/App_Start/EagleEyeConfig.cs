@@ -28,7 +28,8 @@ namespace EagleEye
 					for (int i = 0; i < parkingLots.Count; i++)
 					{
 						Json lotJson = parkingLots[i];
-						ParkingLot lot = new ParkingLot(lotJson["ID"], lotJson["Name"], Repository<Camera>.Get(lotJson["Camera"]), Bitmap.FromFile($"{HttpRuntime.AppDomainAppPath}App_Data\\{(int)lotJson["ID"]}.bmp") as Bitmap);
+						ParkingLot lot = new ParkingLot(lotJson["ID"], lotJson["Name"], Repository<Camera>.Get(lotJson["Camera"]));
+						lot.Baseline = new Bitmap(Bitmap.FromFile($"{HttpRuntime.AppDomainAppPath}App_Data\\{(int)lotJson["ID"]}.bmp") as Bitmap);
 						for (int a = 0; a < lotJson["Annotations"].Count; a++)
 						{
 							Json ann = lotJson["Annotations"][a];
@@ -86,11 +87,7 @@ namespace EagleEye
 					}
 					lotJson["Annotations"] = annotations;
 					lots.Add(lotJson);
-					//using (Stream writer = new FileStream($"{HttpRuntime.AppDomainAppPath}App_Data\\{lot.ID}.bmp",FileMode.Append))
-					//{
-					//	lot.Baseline.Save(writer, System.Drawing.Imaging.ImageFormat.Bmp);
-					//}
-
+					lot.Baseline.Save($"{HttpRuntime.AppDomainAppPath}App_Data\\{lot.ID}.bmp");
 				}
 				database["ParkingLots"] = lots;
 

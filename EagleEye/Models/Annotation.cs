@@ -17,7 +17,7 @@ namespace EagleEye.Models
 		Vector2:
 			Used to define points
 	--------------------------------------------------*/
-	public class Annotation
+	public class Annotation : IID
 	{
 		public enum AnnotationType
 		{
