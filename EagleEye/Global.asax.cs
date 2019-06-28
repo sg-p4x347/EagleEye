@@ -19,5 +19,9 @@ namespace EagleEye
 			EagleEyeConfig.ImportDatabase();
 			Tests.Tests.RunTests();
 		}
+		~MvcApplication()
+		{
+			EagleEyeConfig.ExportDatabase();
+		}
 	}
 }
