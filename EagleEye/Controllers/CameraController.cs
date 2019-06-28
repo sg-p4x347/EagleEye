@@ -17,5 +17,25 @@ namespace EagleEye.Controllers
 		{
 			return new EmptyResult();
 		}
+		public ActionResult ListView()
+		{
+			return PartialView("List", Repository<Camera>.Models.Values.Select(c => new Views.Camera.Camera(c)).ToList());
+		}
+		[HttpGet]
+		public ActionResult Delete(int id)
+		{
+			Repository<Camera>.Delete(id);
+			return new EmptyResult();
+		}
+		private bool TryGetCamera(int id, out Camera camera)
+		{
+			if (Repository<Camera>.Contains(id))
+			{
+				camera = Repository<Camera>.Get(id);
+				return true;
+			}
+			camera = null;
+			return false;
+		}
     }
 }
