@@ -103,5 +103,7 @@ namespace EagleEye
 				locker.ReleaseWriterLock();
 			}
 		}
+		public static int WebImageWidth { get => 400; }
+		public static Mutex Mutex { get; } = new Mutex();
 	}
 }

@@ -8,7 +8,17 @@ namespace EagleEye.Controllers
 {
     public class CameraController : Controller
     {
-        [HttpGet]
+		public CameraController()
+		{
+			EagleEyeConfig.Mutex.WaitOne();
+		}
+		protected override void Dispose(bool disposing)
+		{
+			base.Dispose(disposing);
+			EagleEyeConfig.ExportDatabase();
+			EagleEyeConfig.Mutex.ReleaseMutex();
+		}
+		[HttpGet]
         public ActionResult Index()
         {
             return View(Repository<Camera>.Models.Values.Select(m => new Views.Camera.Camera(m)).ToList());

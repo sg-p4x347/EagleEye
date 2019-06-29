@@ -43,3 +43,6 @@ textarea {
 .justify-between {
 	justify-content:space-between;
 }
+.hidden {
+	visibility:hidden;
+}

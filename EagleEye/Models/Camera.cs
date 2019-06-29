@@ -24,6 +24,8 @@ namespace EagleEye.Models
 		{
 			ID = id;
 			Name = name;
+			CurrentImage = new Bitmap(400, 300);
+			CurrentImage.Fill(Color.Black);
 		}
 		// A unique identifier
 		public int ID { get; private set; } = -1;

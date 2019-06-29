@@ -4,15 +4,135 @@
 }
 @section scripts {
 	@Scripts.Render("~/bundles/parking")
+	<script>
+		let background = document.getElementById('baseline');
+		let annotations = document.getElementById('editor');
+		let viewport = document.getElementById('viewport');
+		let form = document.getElementById('viewForm');
+		function updateViewportSize() {
+			let width = 700;
+			let ratio = background.naturalHeight / background.naturalWidth;
+			viewport.style.width = `${width}px`;
+			viewport.style.height = `${width * ratio}px`;
+			annotations.width = annotations.clientWidth;
+			annotations.height = annotations.clientHeight;
+		}
+		let backgroundRadio = form.elements['background'];
+		let annotationCheck = form.elements['annotations'][0];
+		let updateInterval = null;
+		for (let i = 0; i < backgroundRadio.length; i++) {
+			backgroundRadio[i].addEventListener('change', (evt) => {
+				switch (backgroundRadio.value) {
+					case 'baseline':
+						displayBaseline();
+						break;
+					case 'feed':
+						displayFeed();
+						break;
+					case 'none':
+						displayNone();
+						break;
+				}
+			});
+		}
+		
+
+		annotationCheck.addEventListener('change', (evt) => {
+			if (annotationCheck.checked) {
+				annotations.classList.remove('hidden');
+			} else {
+				annotations.classList.add('hidden');
+			}
+		})
+		function setBackground(base64data) {
+			background.src = `data:image/png;base64, ${base64data}`;
+			updateViewportSize();
+		}
+		function resetBackground() {
+			if (updateInterval !== null) {
+				window.clearInterval(updateInterval);
+			}
+			background.classList.remove('hidden');
+		}
+		function displayBaseline() {
+			resetBackground();
+			$.ajax({
+				url: '/ParkingLot/Baseline',
+				data: {id:@Model.ID}
+			}).done(data => {
+				setBackground(data);
+			});
+		}
+		function displayNone() {
+			resetBackground();
+			background.classList.add('hidden');
+		}
+
+		function displayFeed() {
+			resetBackground();
+			updateInterval = window.setInterval(() => {
+				$.ajax({
+					url: '/Camera/Get',
+					data: {id:@Model.CameraID}
+				}).done(data => {
+					setBackground(data.CurrentImage);
+				});
+			},1000)
+		}
+		function updateBaseline() {
+			$.ajax({
+				url: '/ParkingLot/UpdateBaseline',
+				data: {id:@Model.ID}
+			}).done(data => {
+				backgroundRadio.value = 'baseline';
+				displayBaseline();
+			});
+		}
+		backgroundRadio.value = 'baseline';
+		displayBaseline();
+		let editor = null;
+		$.ajax({
+			url: '/ParkingLot/Get',
+			data: { id:@Model.ID}
+		}).done(lot => {
+			// Convert annotation points into Vector2 instances
+			lot.Annotations.forEach(a => {
+				let points = a.Points;
+				a.Points = [];
+				points.forEach(p => {
+					a.Points.push(new Vector2(p.X, p.Y));
+				})
+			})
+
+			editor = new AnnotationEditor(lot, annotations);
+		});
+
+	</script>
 	@RenderSection("scripts",false)
 }
 <h1 class="page-header">@Model.Name</h1>
 <div class="panel">
-	<div class="panel-heading">Live</div>
+	<div class="panel-heading">
+		@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
+	</div>
 	<div class="panel-body flex-row">
-		<div class="btn-group-vertical" style="width:200px;">
-			@Html.ActionLink("Back", "Index",null,new { @class="btn btn-default"})
-			@RenderSection("Buttons",false)
+		<div class="flex-column" style="width:200px;">
+			@RenderSection("Buttons", false)
+			<div class="panel panel-info">
+				<div class="panel-heading">View</div>
+				<div class="panel-body">
+					<form id="viewForm">
+						<label>Background:</label>
+						<div class="form-group">
+							@Html.RadioButton("background", "baseline", true) <label>Baseline</label><br />
+							@Html.RadioButton("background", "feed", false) <label>Camera feed</label><br />
+							@Html.RadioButton("background", "none", true) <label>None</label><br />
+						</div>
+
+						@Html.CheckBox("annotations", true) <label>Show Annotations</label>
+					</form>
+				</div>
+			</div>
 		</div>
 		<div class="panel" style="width:calc(100% - 200px);">
 			@RenderBody()

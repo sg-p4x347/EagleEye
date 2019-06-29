@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using EagleEye.Models;
 namespace EagleEye.Views.Camera
 {
 	public class Camera
@@ -17,7 +17,7 @@ namespace EagleEye.Views.Camera
 			{
 				using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
 				{
-					camera.CurrentImage.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+					camera.CurrentImage.Scale(EagleEyeConfig.WebImageWidth).Save(stream, System.Drawing.Imaging.ImageFormat.Png);
 					CurrentImage = System.Convert.ToBase64String(stream.GetBuffer());
 				}
 			}
