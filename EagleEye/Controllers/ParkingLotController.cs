@@ -4,14 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EagleEye.Models;
+using System.Threading;
 namespace EagleEye.Controllers
 {
     public class ParkingLotController : Controller
     {
+		
+		public ParkingLotController()
+		{
+			EagleEyeConfig.Mutex.WaitOne();
+		}
 		protected override void Dispose(bool disposing)
 		{
 			base.Dispose(disposing);
 			EagleEyeConfig.ExportDatabase();
+			EagleEyeConfig.Mutex.ReleaseMutex();
 		}
 		//--------------------------------------------------
 		// View Actions
@@ -63,7 +70,7 @@ namespace EagleEye.Controllers
 				using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
 				{
 					
-					lot.Baseline.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+					lot.Baseline.Scale(EagleEyeConfig.WebImageWidth).Save(stream, System.Drawing.Imaging.ImageFormat.Png);
 					Response.ContentType = "image/png";
 					Response.Write(System.Convert.ToBase64String(stream.GetBuffer()));
 				}
