@@ -43,5 +43,7 @@ namespace EagleEye.Models
 		public List<Vector2> Points { get; private set; } = new List<Vector2>();
 		// The type of annotation
 		public AnnotationType Type { get; set; } = AnnotationType.Parking;
+		// The percentage of occupied pixels
+		public double Occupied { get; set; }
 	}
 }

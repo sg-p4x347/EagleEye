@@ -33,15 +33,15 @@ function send(blob) {
     var reader = new FileReader();
     reader.onloadend = () => {
         var text = btoa(String.fromCharCode.apply(null, new Uint8Array(reader.result)));
-        $.ajax({
-            url: "/Camera/Update",
-            data: {
-                ID: -1,
-                Name: "WhateverTest",
-                CurrentImage: text
-            },
-            method: "POST"
-        })
+		$.ajax({
+			url: "/Camera/Update",
+			data: {
+				ID: -1,
+				Name: "WhateverTest",
+				CurrentImage: text
+			},
+			method: "POST"
+		});
     };
     reader.readAsArrayBuffer(blob);
     
