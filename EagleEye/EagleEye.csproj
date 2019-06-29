@@ -156,6 +156,7 @@
     <Content Include="Scripts\annotation-editor.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\camera-client.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -231,6 +232,7 @@
     <Content Include="Views\Shared\_UserLayout.cshtml" />
     <Content Include="Views\Camera\List.cshtml" />
     <Content Include="Views\ParkingLot\New.cshtml" />
+    <Content Include="Views\Camera\Client.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

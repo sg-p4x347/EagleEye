@@ -25,7 +25,10 @@ namespace EagleEye
 			bundles.Add(new ScriptBundle("~/bundles/parking").Include(
 					  "~/Scripts/annotation-editor.js"));
 
-			bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new ScriptBundle("~/bundles/camera").Include(
+                      "~/Scripts/camera-client.js"));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include(
 					  "~/Content/bootstrap.css",
 					  "~/Content/site.css",
 					  "~/Content/parking-lot.css"));

@@ -28,8 +28,12 @@ namespace EagleEye.Controllers
 		{
 			return PartialView("List", Repository<Camera>.Models.Values.Select(c => new Views.Camera.Camera(c)).ToList());
 		}
-
-		[HttpGet]
+        [HttpGet]
+        public ActionResult Client()
+        {
+            return View();
+        }
+        [HttpGet]
 		public ActionResult Get(int id)
 		{
 			Camera camera;
