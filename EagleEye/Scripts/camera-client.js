@@ -30,9 +30,24 @@ function takeASnap() {
     });
 }
 function send(blob) {
-
+    var reader = new FileReader();
+    reader.onloadend = () => {
+        var text = btoa(String.fromCharCode.apply(null, new Uint8Array(reader.result)));
+        $.ajax({
+            url: "/Camera/Update",
+            data: {
+                ID: -1,
+                Name: "WhateverTest",
+                CurrentImage: text
+            },
+            method: "POST"
+        })
+    };
+    reader.readAsArrayBuffer(blob);
+    
 }
 function repeatingFunct() {
-    //takeASnap().then(download);
-    setTimeout(repeatingFunct, 5000)
+    takeASnap().then(send);
 }
+setInterval(repeatingFunct, 5000)
+begin();
