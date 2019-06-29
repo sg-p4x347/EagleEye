@@ -8,18 +8,49 @@ namespace EagleEye.Controllers
 {
     public class CameraController : Controller
     {
-        // GET: Camera
+        [HttpGet]
         public ActionResult Index()
         {
             return View(Repository<Camera>.Models.Values.Select(m => new Views.Camera.Camera(m)).ToList());
         }
-		public ActionResult Update(Views.Camera.Camera camera)
-		{
-			return new EmptyResult();
-		}
+		[HttpGet]
 		public ActionResult ListView()
 		{
 			return PartialView("List", Repository<Camera>.Models.Values.Select(c => new Views.Camera.Camera(c)).ToList());
+		}
+
+		[HttpGet]
+		public ActionResult Get(int id)
+		{
+			Camera camera;
+			if (TryGetCamera(id, out camera))
+			{
+				return Json(new Views.Camera.Camera(camera), JsonRequestBehavior.AllowGet);
+			}
+			return new HttpNotFoundResult();
+		}
+		[HttpGet]
+		public ActionResult Create(string name)
+		{
+			Repository<Camera>.Add(new Camera(Repository<Camera>.NextID, name));
+			return new EmptyResult();
+		}
+		[HttpPost]
+		public ActionResult Update(Views.Camera.Camera camera)
+		{
+			Camera model;
+			if (TryGetCamera(camera.ID, out model))
+			{
+				model.Name = camera.Name;
+				using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
+				{
+					byte[] buffer = Convert.FromBase64String(camera.CurrentImage);
+					stream.Write(buffer, 0, buffer.Length);
+					model.CurrentImage = System.Drawing.Bitmap.FromStream(stream) as System.Drawing.Bitmap;
+				}
+				return new EmptyResult();
+			}
+			return new HttpNotFoundResult();
 		}
 		[HttpGet]
 		public ActionResult Delete(int id)

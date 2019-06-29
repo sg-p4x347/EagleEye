@@ -31,7 +31,12 @@ namespace EagleEye.Controllers
 		[HttpGet]
 		public ActionResult Edit(int id)
 		{
-			return View("Edit", new Views.ParkingLot.ParkingLot(Repository<ParkingLot>.Get(id)));
+			ParkingLot lot;
+			if (TryGetLot(id, out lot))
+			{
+				return View("Edit", new Views.ParkingLot.ParkingLot(lot));
+			}
+			return new HttpNotFoundResult();
 		}
 		[HttpGet]
 		public ActionResult New()
@@ -62,8 +67,9 @@ namespace EagleEye.Controllers
 					Response.ContentType = "image/png";
 					Response.Write(System.Convert.ToBase64String(stream.GetBuffer()));
 				}
+				return new EmptyResult();
 			}
-			return new EmptyResult();
+			return new HttpNotFoundResult();
 		}
 		[HttpGet]
 		public ActionResult UpdateBaseline(int id)
@@ -72,8 +78,9 @@ namespace EagleEye.Controllers
 			if (TryGetLot(id, out lot))
 			{
 				lot.Baseline = lot.Camera.CurrentImage;
+				return new EmptyResult();
 			}
-			return new EmptyResult();
+			return new HttpNotFoundResult();
 		}
 		//--------------------------------------------------
 		// REST
@@ -89,14 +96,14 @@ namespace EagleEye.Controllers
 			return new EmptyResult();
 		}
 		[HttpGet]
-		public JsonResult Get(int id)
+		public ActionResult Get(int id)
 		{
 			ParkingLot lot;
 			if (TryGetLot(id, out lot))
 			{
 				return Json(new Views.ParkingLot.ParkingLot(lot), JsonRequestBehavior.AllowGet);
 			}
-			return Json(null, JsonRequestBehavior.AllowGet);
+			return new HttpNotFoundResult();
 		}
 		[HttpPost]
 		public ActionResult Update(Views.ParkingLot.ParkingLot lot)
@@ -114,8 +121,9 @@ namespace EagleEye.Controllers
 						modelAnnotation.Add(new Vector2(point.X, point.Y));
 					}
 				}
+				return new EmptyResult();
 			}
-			return new EmptyResult();
+			return new HttpNotFoundResult();
 		}
 		[HttpGet]
 		public ActionResult Delete(int id)
