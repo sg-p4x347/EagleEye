@@ -13,9 +13,11 @@ namespace EagleEye.Views.ParkingLot
 			ID = annotation.ID;
 			Type = annotation.Type.ToString();
 			Points = annotation.Points.Select(p => new Vector2(p)).ToList();
+			Occupied = annotation.Occupied;
 		}
 		public int ID { get; set; }
 		public string Type { get; set; }
+		public double Occupied { get; set; }
 		public List<Vector2> Points { get; set; }
 	}
 }
