@@ -30,6 +30,7 @@
 			<div class="panel-body">
 				<div class="flex-row justify-between max-width">
 					@Html.ActionLink("Edit", "Edit", new { id = lot.ID }, new { @class = "btn btn-default" })
+					@Html.ActionLink("Monitor Status", "Monitor", new { id = lot.ID }, new { @class = "btn btn-info" })
 					<button class="btn btn-danger" onclick="deleteLot(@lot.ID)">Delete</button>
 				</div>
 			</div>

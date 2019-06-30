@@ -54,5 +54,5 @@ function send(blob) {
 
 function repeatingFunct() {
     takeASnap().then(send);
-    setTimeout(repeatingFunct, 1000);
+    setTimeout(repeatingFunct, 2000);
 }

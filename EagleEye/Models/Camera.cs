@@ -54,14 +54,17 @@ namespace EagleEye.Models
 					{
 						m_currentImage = value;
 						LastUpdate = DateTime.Now;
+						Changed(this,new EventArgs());
 					}
 				} else
 				{
 					m_currentImage = value;
 					LastUpdate = DateTime.Now;
+					Changed(this, new EventArgs());
 				}
 			}
 		}
+		public event EventHandler Changed = delegate { };
 		// The time CurrentImage was last updated
 		public DateTime LastUpdate { get; set; }
 	}

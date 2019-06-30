@@ -8,7 +8,7 @@ namespace EagleEye.Views.ParkingLot
 	public class Vector2
 	{
 		public Vector2() { }
-		public Vector2(Models.Vector2 vector)
+		public Vector2(Models.Geometry.Vector2 vector)
 		{
 			X = vector.X;
 			Y = vector.Y;

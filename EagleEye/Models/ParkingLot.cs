@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Drawing;
+using EagleEye.Models.Geometry;
 namespace EagleEye.Models
 {
 	public class ParkingLot : IID
@@ -29,7 +30,14 @@ namespace EagleEye.Models
 			ID = id;
 			Name = name;
 			Camera = camera;
+			Camera.Changed += CameraChangeHandler;
 		}
+
+		private void CameraChangeHandler(object sender, EventArgs e)
+		{
+			Update();
+		}
+
 		// A unique identifier
 		public int ID { get; private set; } = -1;
 		// A human readable identifier (not unique)
@@ -37,7 +45,30 @@ namespace EagleEye.Models
 		// The assocative camera that monitors this parking lot
 		public Camera Camera { get; private set; }
 		// An image that defines the empty state of the parking lot
-		public Bitmap Baseline { get; set; }
+		private Bitmap m_baseline;
+		public Bitmap Baseline { get
+			{
+				if (m_baseline == null)
+					return null;
+				lock (m_baseline)
+				{
+					return new Bitmap(m_baseline);
+				}
+			}
+			set
+			{
+				if (m_baseline != null)
+				{
+					lock (m_baseline)
+					{
+						m_baseline = value;
+					}
+				} else
+				{
+					m_baseline = value;
+				}
+			}
+		}
 		// A list of annotations that define regions of Parking or Isle space
 		public List<Annotation> Annotations { get; private set; } = new List<Annotation>();
 		// Only annotations of Parking type
@@ -52,6 +83,40 @@ namespace EagleEye.Models
 			get
 			{
 				return Annotations.Where(a => a.Type == Annotation.AnnotationType.Isle);
+			}
+		}
+
+		public void Update()
+		{
+			if (Baseline != null && Baseline.SameSize(Camera.CurrentImage))
+			{
+				lock (this)
+				{
+					// Reset percentDifferences to zero
+					Annotations.ForEach(a => a.PercentDifference = 0);
+					// Maps annotations to their area in pixels
+					Dictionary<Annotation, int> annotationPixelAreas = Annotations.ToDictionary(a => a, a => 0);
+					// Get the raw pixel difference (color sensitive)
+					Bitmap difference = Baseline.Scale(0.5).Difference(Camera.CurrentImage.Scale(.5));
+					// Sum up difference percentage contained by each annotation
+					for (int x = 0; x < difference.Width; x++)
+					{
+						for (int y = 0; y < difference.Height; y++)
+						{
+							Vector2 pixelPoint = new Vector2((double)x / difference.Width, (double)y / difference.Height);
+							foreach (Annotation annotation in Annotations.Where(a => a.Contains(pixelPoint)))
+							{
+								annotationPixelAreas[annotation]++;
+								annotation.PercentDifference += difference.GetPixel(x, y).Value();
+							}
+						}
+					}
+					// Normalize the difference percentages by dividing out the total pixel area
+					foreach (var pixelArea in annotationPixelAreas.Where(p => p.Value > 0))
+					{
+						pixelArea.Key.PercentDifference /= pixelArea.Value;
+					}
+				}
 			}
 		}
 	}

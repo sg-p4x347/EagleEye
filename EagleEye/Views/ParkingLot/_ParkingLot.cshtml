@@ -90,22 +90,7 @@
 		}
 		backgroundRadio.value = 'baseline';
 		displayBaseline();
-		let editor = null;
-		$.ajax({
-			url: '/ParkingLot/Get',
-			data: { id:@Model.ID}
-		}).done(lot => {
-			// Convert annotation points into Vector2 instances
-			lot.Annotations.forEach(a => {
-				let points = a.Points;
-				a.Points = [];
-				points.forEach(p => {
-					a.Points.push(new Vector2(p.X, p.Y));
-				})
-			})
-
-			editor = new AnnotationEditor(lot, annotations);
-		});
+		
 
 	</script>
 	@RenderSection("scripts",false)
