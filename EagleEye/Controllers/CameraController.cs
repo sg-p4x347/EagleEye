@@ -52,19 +52,19 @@ namespace EagleEye.Controllers
 		[HttpPost]
 		public ActionResult Update(Views.Camera.Camera camera)
 		{
-			Camera model;
-			if (TryGetCamera(camera.ID, out model))
+			Camera model = Repository<Camera>.Models.Values.FirstOrDefault(c => c.Name == camera.Name);
+			if (model == null)
 			{
-				model.Name = camera.Name;
-				using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
-				{
-					byte[] buffer = Convert.FromBase64String(camera.CurrentImage);
-					stream.Write(buffer, 0, buffer.Length);
-					model.CurrentImage = System.Drawing.Bitmap.FromStream(stream) as System.Drawing.Bitmap;
-				}
-				return new EmptyResult();
+				model = new Camera(Repository<Camera>.NextID, camera.Name);
+				Repository<Camera>.Add(model);
 			}
-			return new HttpNotFoundResult();
+			using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
+			{
+				byte[] buffer = Convert.FromBase64String(camera.CurrentImage);
+				stream.Write(buffer, 0, buffer.Length);
+				model.CurrentImage = System.Drawing.Bitmap.FromStream(stream) as System.Drawing.Bitmap;
+			}
+			return new EmptyResult();
 		}
 		[HttpGet]
 		public ActionResult Delete(int id)
