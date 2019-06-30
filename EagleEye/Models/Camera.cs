@@ -38,13 +38,24 @@ namespace EagleEye.Models
 		public Bitmap CurrentImage {
 			get
 			{
+				if (m_currentImage == null)
+					return null;
+
+				lock (m_currentImage) {
+					return new Bitmap(m_currentImage);
+				}
 				
-				return new Bitmap(m_currentImage);
 			}
 			set
 			{
-
-				lock (m_currentImage)
+				if (m_currentImage != null)
+				{
+					lock (m_currentImage)
+					{
+						m_currentImage = value;
+						LastUpdate = DateTime.Now;
+					}
+				} else
 				{
 					m_currentImage = value;
 					LastUpdate = DateTime.Now;

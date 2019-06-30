@@ -27,9 +27,9 @@ function begin() {
 function takeASnap() {
     const canvas = document.createElement('canvas'); // create a canvas
     const ctx = canvas.getContext('2d'); // get its context
-    canvas.width = vid.videoWidth; // set its size to the one of the video
-    canvas.height = vid.videoHeight;
-    ctx.drawImage(vid, 0, 0); // the video
+	canvas.width = 400; // set its size to the one of the video
+    canvas.height = (canvas.width / vid.videoWidth) * vid.videoHeight;
+	ctx.drawImage(vid, 0, 0, vid.videoWidth, vid.videoHeight, 0, 0, canvas.width, canvas.height); // the video
     return new Promise((res, rej) => {
         canvas.toBlob(res, 'image/jpeg'); // request a Blob from the canvas
     });
@@ -54,5 +54,5 @@ function send(blob) {
 
 function repeatingFunct() {
     takeASnap().then(send);
-    setTimeout(repeatingFunct, 5000);
+    setTimeout(repeatingFunct, 1000);
 }

@@ -1,1 +1,1 @@
-{"Cameras":[{"ID":0,"Name":"Missouri"}],"ParkingLots":[{"ID":0,"Name":"Test","Camera":0,"Annotations":[]}]}
+{"Cameras":[{"ID":0,"Name":"Missouri"},{"ID":1,"Name":"Arkansas"}],"ParkingLots":[{"ID":0,"Name":"Test","Camera":0,"Annotations":[]},{"ID":1,"Name":"Quest","Camera":1,"Annotations":[{"ID":0,"Type":0,"Points":[{"X":0.138571428571429,"Y":0.161904761904762},{"X":0.222857142857143,"Y":0.161904761904762},{"X":0.222857142857143,"Y":0.411428571428571},{"X":0.138571428571429,"Y":0.411428571428571}]}]}]}
