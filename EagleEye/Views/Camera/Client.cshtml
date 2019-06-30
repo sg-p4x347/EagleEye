@@ -5,9 +5,11 @@
 @section scripts{
     @Scripts.Render("~/bundles/camera");
 }
-<div class="booth">
+<div class="container">
+    <label> Camera Name: </label>
+    <input type="text" id="textBox"/>
+    <button id="btn"> Start Camera </button>
     <video id="vid" width="400" height="300" autoplay></video>
-
 </div>
 
 
