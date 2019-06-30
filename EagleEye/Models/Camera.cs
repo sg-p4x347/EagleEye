@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Threading;
 using System.Drawing;
+using System.Collections.Concurrent;
 
 namespace EagleEye.Models
 {
@@ -36,12 +38,17 @@ namespace EagleEye.Models
 		public Bitmap CurrentImage {
 			get
 			{
-				return m_currentImage;
+				
+				return new Bitmap(m_currentImage);
 			}
 			set
 			{
-				m_currentImage = value;
-				LastUpdate = DateTime.Now;
+
+				lock (m_currentImage)
+				{
+					m_currentImage = value;
+					LastUpdate = DateTime.Now;
+				}
 			}
 		}
 		// The time CurrentImage was last updated

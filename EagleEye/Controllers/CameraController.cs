@@ -10,13 +10,10 @@ namespace EagleEye.Controllers
     {
 		public CameraController()
 		{
-			EagleEyeConfig.Mutex.WaitOne();
 		}
 		protected override void Dispose(bool disposing)
 		{
 			base.Dispose(disposing);
-			EagleEyeConfig.ExportDatabase();
-			EagleEyeConfig.Mutex.ReleaseMutex();
 		}
 		[HttpGet]
         public ActionResult Index()
@@ -47,29 +44,34 @@ namespace EagleEye.Controllers
 		public ActionResult Create(string name)
 		{
 			Repository<Camera>.Add(new Camera(Repository<Camera>.NextID, name));
+			EagleEyeConfig.ExportDatabase();
 			return new EmptyResult();
 		}
 		[HttpPost]
 		public ActionResult Update(Views.Camera.Camera camera)
 		{
-			Camera model;
-			if (TryGetCamera(camera.ID, out model))
+			Camera model = Repository<Camera>.Models.Values.FirstOrDefault(c => c.Name == camera.Name);
+			if (model == null)
 			{
-				model.Name = camera.Name;
-				using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
-				{
-					byte[] buffer = Convert.FromBase64String(camera.CurrentImage);
-					stream.Write(buffer, 0, buffer.Length);
-					model.CurrentImage = System.Drawing.Bitmap.FromStream(stream) as System.Drawing.Bitmap;
-				}
-				return new EmptyResult();
+				model = new Camera(Repository<Camera>.NextID, camera.Name);
+				Repository<Camera>.Add(model);
+
+				EagleEyeConfig.ExportDatabase();
 			}
-			return new HttpNotFoundResult();
+			using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
+			{
+				byte[] buffer = Convert.FromBase64String(camera.CurrentImage);
+				stream.Write(buffer, 0, buffer.Length);
+				model.CurrentImage = System.Drawing.Bitmap.FromStream(stream) as System.Drawing.Bitmap;
+			}
+			return new EmptyResult();
 		}
 		[HttpGet]
 		public ActionResult Delete(int id)
 		{
 			Repository<Camera>.Delete(id);
+
+			EagleEyeConfig.ExportDatabase();
 			return new EmptyResult();
 		}
 		private bool TryGetCamera(int id, out Camera camera)

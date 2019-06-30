@@ -12,13 +12,10 @@ namespace EagleEye.Controllers
 		
 		public ParkingLotController()
 		{
-			EagleEyeConfig.Mutex.WaitOne();
 		}
 		protected override void Dispose(bool disposing)
 		{
 			base.Dispose(disposing);
-			EagleEyeConfig.ExportDatabase();
-			EagleEyeConfig.Mutex.ReleaseMutex();
 		}
 		//--------------------------------------------------
 		// View Actions
@@ -85,6 +82,7 @@ namespace EagleEye.Controllers
 			if (TryGetLot(id, out lot))
 			{
 				lot.Baseline = lot.Camera.CurrentImage;
+				EagleEyeConfig.ExportDatabase();
 				return new EmptyResult();
 			}
 			return new HttpNotFoundResult();
@@ -99,6 +97,8 @@ namespace EagleEye.Controllers
 				Camera camera = Repository<Camera>.Get(cameraID);
 				ParkingLot newLot = new ParkingLot(Repository<ParkingLot>.NextID, name, camera);
 				Repository<ParkingLot>.Add(newLot);
+
+				EagleEyeConfig.ExportDatabase();
 			}
 			return new EmptyResult();
 		}
@@ -128,6 +128,7 @@ namespace EagleEye.Controllers
 						modelAnnotation.Add(new Vector2(point.X, point.Y));
 					}
 				}
+				EagleEyeConfig.ExportDatabase();
 				return new EmptyResult();
 			}
 			return new HttpNotFoundResult();
@@ -136,6 +137,8 @@ namespace EagleEye.Controllers
 		public ActionResult Delete(int id)
 		{
 			Repository<ParkingLot>.Delete(id);
+
+			EagleEyeConfig.ExportDatabase();
 			return new EmptyResult();
 		}
 		private bool TryGetLot(int id, out ParkingLot lot)
