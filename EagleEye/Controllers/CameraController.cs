@@ -10,13 +10,10 @@ namespace EagleEye.Controllers
     {
 		public CameraController()
 		{
-			EagleEyeConfig.Mutex.WaitOne();
 		}
 		protected override void Dispose(bool disposing)
 		{
 			base.Dispose(disposing);
-			EagleEyeConfig.ExportDatabase();
-			EagleEyeConfig.Mutex.ReleaseMutex();
 		}
 		[HttpGet]
         public ActionResult Index()
@@ -47,6 +44,7 @@ namespace EagleEye.Controllers
 		public ActionResult Create(string name)
 		{
 			Repository<Camera>.Add(new Camera(Repository<Camera>.NextID, name));
+			EagleEyeConfig.ExportDatabase();
 			return new EmptyResult();
 		}
 		[HttpPost]
@@ -57,6 +55,8 @@ namespace EagleEye.Controllers
 			{
 				model = new Camera(Repository<Camera>.NextID, camera.Name);
 				Repository<Camera>.Add(model);
+
+				EagleEyeConfig.ExportDatabase();
 			}
 			using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
 			{
@@ -70,6 +70,8 @@ namespace EagleEye.Controllers
 		public ActionResult Delete(int id)
 		{
 			Repository<Camera>.Delete(id);
+
+			EagleEyeConfig.ExportDatabase();
 			return new EmptyResult();
 		}
 		private bool TryGetCamera(int id, out Camera camera)

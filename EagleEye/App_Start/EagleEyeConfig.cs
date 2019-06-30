@@ -14,6 +14,9 @@ namespace EagleEye
 		static ReaderWriterLock locker = new ReaderWriterLock();
 		public static void ImportDatabase()
 		{
+			try
+			{
+				locker.AcquireReaderLock(Int32.MaxValue);
 				using (var stream = new StreamReader(DatabasePath))
 				{
 					Json database = Json.Import(stream);
@@ -47,6 +50,10 @@ namespace EagleEye
 						Repository<ParkingLot>.Add(lot);
 					}
 				}
+			} finally
+			{
+				locker.ReleaseReaderLock();
+			}
 		}
 		public static void ExportDatabase()
 		{
@@ -90,7 +97,12 @@ namespace EagleEye
 					lotJson["Annotations"] = annotations;
 					lots.Add(lotJson);
 					if (lot.Baseline != null)
-						lot.Baseline.Save($"{HttpRuntime.AppDomainAppPath}App_Data\\{lot.ID}.bmp");
+						try
+						{
+							lot.Baseline.Save($"{HttpRuntime.AppDomainAppPath}App_Data\\{lot.ID}.bmp");
+						} catch (Exception ex) {
+
+						}
 				}
 				database["ParkingLots"] = lots;
 

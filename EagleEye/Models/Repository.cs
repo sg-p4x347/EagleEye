@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Web;
 
@@ -11,11 +12,13 @@ namespace EagleEye.Models
 	{
 		public static void Add(T model)
 		{
-			Models.Add(model.ID, model);
+			Models.TryAdd(model.ID, model);
 		}
 		public static T Get(int id)
 		{
-			return Models[id];
+			T model;
+			Models.TryGetValue(id, out model);
+			return model;
 		}
 		public static bool Contains(int id)
 		{
@@ -23,7 +26,8 @@ namespace EagleEye.Models
 		}
 		public static void Delete(int id)
 		{
-			Models.Remove(id);
+			T model;
+			Models.TryRemove(id, out model);
 		}
 		public static int NextID
 		{
@@ -33,7 +37,7 @@ namespace EagleEye.Models
 			}
 		}
 
-		public static Dictionary<int, T> Models { get; private set; }  = new Dictionary<int, T>();
+		public static ConcurrentDictionary<int, T> Models { get; private set; }  = new ConcurrentDictionary<int, T>();
 
 	}
 }
