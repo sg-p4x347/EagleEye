@@ -10,13 +10,22 @@
 		let viewport = document.getElementById('viewport');
 		let form = document.getElementById('viewForm');
 		function updateViewportSize() {
-			let width = 700;
+			let width = viewport.clientWidth;
 			let ratio = background.naturalHeight / background.naturalWidth;
-			viewport.style.width = `${width}px`;
-			viewport.style.height = `${width * ratio}px`;
-			annotations.width = annotations.clientWidth;
-			annotations.height = annotations.clientHeight;
+			let height = width * ratio;
+			if (height > viewport.clientHeight) {
+				height = viewport.clientHeight;
+				ratio = background.naturalWidth / background.naturalHeight;
+				width = height * ratio;
+			}
+			annotations.width = width;
+			annotations.height = height;
+			background.width = width;
+			background.height = height;
 		}
+		window.addEventListener('resize', () => {
+			updateViewportSize();
+		})
 		let backgroundRadio = form.elements['background'];
 		let annotationCheck = form.elements['annotations'][0];
 		let updateInterval = null;
@@ -70,12 +79,13 @@
 
 		function displayFeed() {
 			resetBackground();
-			updateInterval = window.setInterval(() => {
+			updateInterval = window.setTimeout(() => {
 				$.ajax({
 					url: '/Camera/Get',
 					data: {id:@Model.CameraID}
 				}).done(data => {
 					setBackground(data.CurrentImage);
+					displayFeed();
 				});
 			},1000)
 		}
@@ -90,53 +100,68 @@
 		}
 		backgroundRadio.value = 'baseline';
 		displayBaseline();
-		let editor = null;
-		$.ajax({
-			url: '/ParkingLot/Get',
-			data: { id:@Model.ID}
-		}).done(lot => {
-			// Convert annotation points into Vector2 instances
-			lot.Annotations.forEach(a => {
-				let points = a.Points;
-				a.Points = [];
-				points.forEach(p => {
-					a.Points.push(new Vector2(p.X, p.Y));
-				})
-			})
-
-			editor = new AnnotationEditor(lot, annotations);
-		});
+		
 
 	</script>
 	@RenderSection("scripts",false)
 }
-<h1 class="page-header">@Model.Name</h1>
-<div class="panel">
-	<div class="panel-heading">
-		@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
-	</div>
-	<div class="panel-body flex-row">
-		<div class="flex-column" style="width:200px;">
+
+<div class="container max-height">
+	@*<div class="row">
+		<div class="col col-sm-3">
+			<h1 class="page-header">
+				@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
+				@Model.Name
+			</h1>
+		</div>
+		<div class="col col-sm-2">
+			Total Spaces
+		</div>
+		<div class="col col-sm-2">
+			0
+		</div>
+		<div class="col col-sm-2">
+			Available
+		</div>
+		<div class="col col-sm-2">
+			0
+		</div>
+		<div class="col col-sm-2">
+			% Full
+		</div>
+		<div class="col col-sm-2">
+			0
+		</div>
+	</div>*@
+	<div class="row max-height">
+		<div class="col col-sm-3 scrollable max-height">
+			<h1 class="page-header">
+				@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
+				@Model.Name
+			</h1>
 			@RenderSection("Buttons", false)
 			<div class="panel panel-info">
 				<div class="panel-heading">View</div>
 				<div class="panel-body">
 					<form id="viewForm">
 						<label>Background:</label>
-						<div class="form-group">
+						<div class="form-group-sm">
 							@Html.RadioButton("background", "baseline", true) <label>Baseline</label><br />
 							@Html.RadioButton("background", "feed", false) <label>Camera feed</label><br />
 							@Html.RadioButton("background", "none", true) <label>None</label><br />
+							@Html.CheckBox("annotations", true) <label>Show Annotations</label>
 						</div>
-
-						@Html.CheckBox("annotations", true) <label>Show Annotations</label>
 					</form>
 				</div>
 			</div>
 		</div>
-		<div class="panel" style="width:calc(100% - 200px);">
-			@RenderBody()
+		<div class="col col-md-9 max-height">
+			<div id="viewport" class="max-width max-height">
+				<img id="baseline" />
+				<canvas id="editor" />
+			</div>
 		</div>
+
 	</div>
 </div>
 

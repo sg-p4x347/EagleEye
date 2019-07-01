@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EagleEye.Models.Geometry
 {
-	struct Vector3
+	public struct Vector3
 	{
 		public Vector3(double x = 0.0, double y = 0.0, double z = 0.0)
 		{
@@ -45,10 +45,7 @@ namespace EagleEye.Models.Geometry
 		{
 			return new Vector3(- b.X, - b.Y,- b.Z);
 		}
-		public double Length()
-		{
-			return Math.Sqrt(X * X + Y * Y + Z * Z);
-		}
+		public double Length { get => Math.Sqrt(LengthSquared()); }
 		public double LengthSquared()
 		{
 			return X * X + Y * Y + Z * Z;
@@ -67,7 +64,7 @@ namespace EagleEye.Models.Geometry
 		}
 		public Vector3 Normalized()
 		{
-			return this / Length();
+			return this / Length;
 		}
 	}
 }

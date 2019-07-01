@@ -8,7 +8,7 @@ namespace EagleEye.Tests
 	public static class Tests
 	{
 		public static void RunTests() {
-			EagleEye.Models.Vector2 vector = new Models.Vector2(1, 0);
+			EagleEye.Models.Geometry.Vector2 vector = new Models.Geometry.Vector2(1, 0);
 			JsonImport();
 		}
 

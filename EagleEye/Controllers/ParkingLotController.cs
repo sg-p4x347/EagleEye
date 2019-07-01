@@ -43,6 +43,16 @@ namespace EagleEye.Controllers
 			return new HttpNotFoundResult();
 		}
 		[HttpGet]
+		public ActionResult Monitor(int id)
+		{
+			ParkingLot lot;
+			if (TryGetLot(id, out lot))
+			{
+				return View("Monitor", new Views.ParkingLot.ParkingLot(lot));
+			}
+			return new HttpNotFoundResult();
+		}
+		[HttpGet]
 		public ActionResult New()
 		{
 			return View("New");
@@ -67,7 +77,7 @@ namespace EagleEye.Controllers
 				using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
 				{
 					
-					lot.Baseline.Scale(EagleEyeConfig.WebImageWidth).Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+					lot.Baseline.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
 					Response.ContentType = "image/png";
 					Response.Write(System.Convert.ToBase64String(stream.GetBuffer()));
 				}
@@ -108,7 +118,10 @@ namespace EagleEye.Controllers
 			ParkingLot lot;
 			if (TryGetLot(id, out lot))
 			{
-				return Json(new Views.ParkingLot.ParkingLot(lot), JsonRequestBehavior.AllowGet);
+				lock (lot)
+				{
+					return Json(new Views.ParkingLot.ParkingLot(lot), JsonRequestBehavior.AllowGet);
+				}
 			}
 			return new HttpNotFoundResult();
 		}
@@ -125,7 +138,7 @@ namespace EagleEye.Controllers
 					model.Annotations.Add(modelAnnotation);
 					foreach (var point in annotation.Points)
 					{
-						modelAnnotation.Add(new Vector2(point.X, point.Y));
+						modelAnnotation.Add(new Models.Geometry.Vector2(point.X,point.Y));
 					}
 				}
 				EagleEyeConfig.ExportDatabase();

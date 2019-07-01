@@ -14,7 +14,7 @@ namespace EagleEye.Models.Geometry
 		Store an associative pair of doubles that represent
 		2d cartesian coordinates
 	--------------------------------------------------*/
-	struct Vector2
+	public struct Vector2
 	{
 		public Vector2(double x, double y)
 		{
@@ -45,10 +45,7 @@ namespace EagleEye.Models.Geometry
 		{
 			return X * X + Y * Y;
 		}
-		public double Length()
-		{
-			return Math.Sqrt(X * X + Y * Y);
-		}
+		public double Length { get => Math.Sqrt(LengthSquared()); }
 		public double Dot(Vector3 b)
 		{
 			return X * b.X + Y * b.Z;
@@ -57,9 +54,13 @@ namespace EagleEye.Models.Geometry
 		{
 			return X * b.X + Y * b.Y;
 		}
+		public Vector2 Normal()
+		{
+			return new Vector2(-Y, X);
+		}
 		public Vector2 Normalized()
 		{
-			return this / Length();
+			return this / Length;
 		}
 	}
 }

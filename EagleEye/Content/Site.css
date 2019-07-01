@@ -25,6 +25,7 @@ textarea {
 .flex-row {
 	display:flex;
 	flex-direction:row;
+	align-items:center;
 }
 .flex-column {
 	display:flex;
@@ -37,7 +38,7 @@ textarea {
 .max-width {
 	width:100%;
 }
-.max-width {
+.max-height {
 	height: 100%;
 }
 .justify-between {
@@ -45,4 +46,7 @@ textarea {
 }
 .hidden {
 	visibility:hidden;
+}
+.scrollable {
+	overflow-y:auto;
 }

@@ -9,6 +9,10 @@ namespace EagleEye.Models
 {
 	static class ExtensionMethods
 	{
+		public static bool SameSize(this Bitmap a, Bitmap b)
+		{
+			return a.Width == b.Width && a.Height == b.Height;
+		}
 		static public List<Point> FindIslands(this Bitmap source, int count, int thresholdArea)
 		{
 			int gridSize = (int)Math.Floor(Math.Sqrt((double)thresholdArea));
@@ -95,7 +99,7 @@ namespace EagleEye.Models
 			}
 			return result;
 		}
-		static public Bitmap Posturize(this Bitmap source, int threshold = 382)
+		static public Bitmap Posterize(this Bitmap source, int threshold = 382)
 		{
 			Bitmap result = new Bitmap(source.Width, source.Height);
 			for (int x = 0; x < source.Width; x++)
@@ -206,6 +210,11 @@ namespace EagleEye.Models
 				}
 			}
 			return result;
+		}
+		static public double Value(this Color color)
+		{
+			// 765.0 is 255 * 3, e.g. the maximum value
+			return (color.R + color.G + color.B) / 765.0;
 		}
 	}
 }

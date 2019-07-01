@@ -4,22 +4,38 @@
 }
 @section Buttons {
 <div class="panel panel-default">
-	<div class="panel-heading">Edit</div>
-	<div class="panel-body">
-		<div class="btn-group-vertical max-width">
-			<button class="btn btn-primary" onclick="editor.save()">Save</button>
-			<button class="btn btn-default" onclick="editor.newSpace()">New Parking Space</button>
-			<button class="btn btn-default" onclick="editor.newIsle()">New Isle</button>
-			<button class="btn btn-default" onclick="updateBaseline()">Update Baseline</button>
-		</div>
+	<div class="panel-heading flex-row justify-between">
+		<span>Edit</span>
+		<button class="btn btn-primary" onclick="editor.save()">Save</button>
+	</div>
+	<div class=" btn-group-vertical max-width">
+		
+		<button class="btn btn-default" onclick="editor.newSpace()">New Parking Space</button>
+		<button class="btn btn-default" onclick="editor.newIsle()">New Isle</button>
+		<button class="btn btn-default" onclick="updateBaseline()">Update Baseline</button>
 	</div>
 </div>
 
 }
 @section scripts {
-	
+	<script>
+		let editor = null;
+		$.ajax({
+			url: '/ParkingLot/Get',
+			data: { id:@Model.ID}
+		}).done(lot => {
+			// Convert annotation points into Vector2 instances
+			lot.Annotations.forEach(a => {
+				let points = a.Points;
+				a.Points = [];
+				points.forEach(p => {
+					a.Points.push(new Vector2(p.X, p.Y));
+				})
+			})
+
+			editor = new AnnotationEditor(lot, annotations);
+			editor.tick();
+		});
+	</script>
 }
-<div id="viewport">
-	<img id="baseline" />
-	<canvas id="editor" />
-</div>
+
