@@ -5,13 +5,36 @@
 @section Buttons {
 	<div class="panel panel-default">
 		<div class="panel-heading">
+			Statistics
+		</div>
+		<table class="panel-body table">
+			<tr>
+				<th class="bg-success">Available</th>
+				<td id="availableSpaces" class="bg-success">...</td>
+			</tr>
+			<tr>
+				<th class="bg-danger">Occupied</th>
+				<td id="occupiedSpaces" class="bg-danger">...</td>
+			</tr>
+			<tr>
+				<th  class="bg-warning">Partially Obstructed</th>
+				<td id="partialSpaces" class="bg-warning">...</td>
+			</tr>
+			<tr>
+				<th>Total Spaces</th>
+				<td id="totalSpaces" >...</td>
+			</tr>
+		</table>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
 			Debug
 		</div>
 		<div class="panel-body">
 			<label>Partially Obstructed Threshold:</label>
-			<input class="form-control" type="range" min="0" max="1" step=".01" id="partiallyObstructedThreshold" />
+			<input class="form-control" type="range" min="0" max="1" step=".01" value="0.1" id="partiallyObstructedThreshold" />
 			<label>Obstructed Threshold:</label>
-			<input class="form-control" type="range" min="0" max="1" step=".01" id="obstructedThreshold"/>
+			<input class="form-control" type="range" min="0" max="1" step=".01" value="0.25" id="obstructedThreshold" />
 		</div>
 	</div>
 }
@@ -47,7 +70,28 @@
 				// update the existing viewer's lot
 				viewer.lot = lot;
 			}
-			
+			// Update statistics
+			let total = 0;
+			let available = 0;
+			let occupied = 0;
+			let partial = 0;
+			lot.Annotations.forEach(annotation => {
+				if (annotation.Type === 'Parking') {
+					total++;
+					if (annotation.PercentDifference > document.getElementById('obstructedThreshold').value) {
+						occupied++;
+					} else if (annotation.PercentDifference > document.getElementById('partiallyObstructedThreshold').value) {
+						partial++;
+					} else {
+						available++;
+					}
+				}
+			});
+			document.getElementById('availableSpaces').innerHTML = available;
+			document.getElementById('occupiedSpaces').innerHTML = occupied;
+			document.getElementById('partialSpaces').innerHTML = partial;
+			document.getElementById('totalSpaces').innerHTML = total;
+
 			window.setTimeout(() => {
 				updateViewer();
 			}, 1000);
@@ -56,7 +100,3 @@
 	updateViewer();
 	</script>
 }
-<div id="viewport">
-	<img id="baseline" />
-	<canvas id="editor" />
-</div>

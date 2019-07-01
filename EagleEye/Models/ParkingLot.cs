@@ -50,6 +50,7 @@ namespace EagleEye.Models
 			{
 				if (m_baseline == null)
 					return null;
+
 				lock (m_baseline)
 				{
 					return new Bitmap(m_baseline);

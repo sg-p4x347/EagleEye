@@ -62,7 +62,7 @@
 		this.lot.Annotations.forEach(annotation => {
 			renderAnnotation(ctx, annotation);
 		});
-		if (this.drawMode !== 'Select') {
+		if (this.drawMode !== undefined && this.drawMode !== 'Select') {
 			ctx.fillStyle = 'rgba(255,255,255,0.5)';
 			ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 			if (this.drawing) {
