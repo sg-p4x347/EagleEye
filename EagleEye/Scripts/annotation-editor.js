@@ -204,4 +204,7 @@
 	newIsle() {
 		this.drawMode = 'Isle';
 	}
+	newConstant() {
+		this.drawMode = 'Constant';
+	}
 }

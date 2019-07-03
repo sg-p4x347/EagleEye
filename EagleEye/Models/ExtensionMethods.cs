@@ -134,6 +134,41 @@ namespace EagleEye.Models
 			}
 			return result;
 		}
+		static public Tuple<int,int,int> AverageDifference(this Bitmap a, Bitmap b)
+		{
+			int red = 0, green = 0, blue = 0;
+			
+			for (int x = 0; x < a.Width; x++)
+			{
+				for (int y = 0; y < a.Height; y++)
+				{
+					Color colorA = a.GetPixel(x, y);
+					Color colorB = b.GetPixel(x, y);
+					red += colorA.R - colorB.R;
+					green += colorA.G - colorB.G;
+					blue += colorA.B - colorB.B;
+				}
+			}
+			int pixelCount = a.Width * a.Height;
+			return new Tuple<int,int,int>(red / pixelCount, green / pixelCount, blue / pixelCount);
+		}
+		static public Bitmap Add(this Bitmap source, Tuple<int,int,int> offset)
+		{
+			Bitmap result = new Bitmap(source);
+			for (int x = 0; x < result.Width; x++)
+			{
+				for (int y = 0; y < result.Height; y++)
+				{
+					Color baseColor = source.GetPixel(x, y);
+					result.SetPixel(x, y, Color.FromArgb(
+						Math.Max(0, Math.Min(255, baseColor.R + offset.Item1)),
+						Math.Max(0, Math.Min(255, baseColor.G + offset.Item2)),
+						Math.Max(0, Math.Min(255, baseColor.B + offset.Item3))
+					));
+				}
+			}
+			return result;
+		}
 		static public void Fill(this Bitmap source, Color color)
 		{
 			for (int x = 0; x < source.Width; x++)
