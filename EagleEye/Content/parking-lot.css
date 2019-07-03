@@ -5,19 +5,21 @@
 .body-content {
 	height: 100%;
 }
-#viewport {
-	position:relative;
-	
+
+#viewport, #baseline, #editor {
+    position: absolute;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
+
+
 #baseline {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	border-radius: 0 0 12px 12px;
+    border-radius: 0 0 12px 12px;
 }
+
 #editor {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	border-radius: 12px;
+    border-radius: 12px;
 }

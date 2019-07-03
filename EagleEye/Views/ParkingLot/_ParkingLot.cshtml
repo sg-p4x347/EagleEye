@@ -2,6 +2,9 @@
 @{
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+
+</style>
 @section scripts {
 	@Scripts.Render("~/bundles/parking")
 	<script>
@@ -46,17 +49,19 @@
 		}
 		
 
-		annotationCheck.addEventListener('change', (evt) => {
-			if (annotationCheck.checked) {
-				annotations.classList.remove('hidden');
-			} else {
-				annotations.classList.add('hidden');
-			}
-		})
+        annotationCheck.addEventListener('change', (evt) => {
+            if (annotationCheck.checked) {
+                annotations.classList.remove('hidden');
+            } else {
+                annotations.classList.add('hidden');
+            }
+        });
+
 		function setBackground(base64data) {
-			background.src = `data:image/png;base64, ${base64data}`;
-			updateViewportSize();
-		}
+            background.src = `data:image/png;base64, ${base64data}`;
+            setTimeout(updateViewportSize);
+        }
+
 		function resetBackground() {
 			if (updateInterval !== null) {
 				window.clearInterval(updateInterval);
