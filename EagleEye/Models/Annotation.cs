@@ -23,7 +23,8 @@ namespace EagleEye.Models
 		public enum AnnotationType
 		{
 			Parking,
-			Isle
+			Isle,
+			Constant
 		}
 		public Annotation(int id, AnnotationType type)
 		{

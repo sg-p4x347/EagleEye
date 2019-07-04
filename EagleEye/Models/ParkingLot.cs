@@ -98,7 +98,9 @@ namespace EagleEye.Models
 					// Maps annotations to their area in pixels
 					Dictionary<Annotation, int> annotationPixelAreas = Annotations.ToDictionary(a => a, a => 0);
 					// Get the raw pixel difference (color sensitive)
-					Bitmap difference = Baseline.Scale(0.5).Difference(Camera.CurrentImage.Scale(.5));
+					Bitmap baseline = Baseline.Scale(0.5);
+					Bitmap current = Camera.CurrentImage.Scale(.5);
+					Bitmap difference = baseline.Difference(current.Add(AverageDifference(baseline,current,Annotations.Where(a => a.Type == Annotation.AnnotationType.Constant))));
 					// Sum up difference percentage contained by each annotation
 					for (int x = 0; x < difference.Width; x++)
 					{
@@ -119,6 +121,12 @@ namespace EagleEye.Models
 					}
 				}
 			}
+		}
+		private Tuple<int, int, int> AverageDifference(Bitmap a, Bitmap b, IEnumerable<Annotation> clip)
+		{
+			var averageA = a.Average((x, y) => clip.Any(c => c.Contains(new Vector2((double)x / a.Width, (double)y / a.Height))));
+			var averageB = b.Average((x, y) => clip.Any(c => c.Contains(new Vector2((double)x / b.Width, (double)y / b.Height))));
+			return new Tuple<int, int, int>(averageA.R - averageB.R, averageA.G - averageB.G, averageA.B - averageB.B);
 		}
 	}
 }

@@ -131,14 +131,17 @@ namespace EagleEye.Controllers
 			ParkingLot model;
 			if (TryGetLot(lot.ID, out model))
 			{
-				model.Annotations.Clear();
-				foreach (var annotation in lot.Annotations)
+				lock (model)
 				{
-					var modelAnnotation = new Annotation(model.Annotations.Count > 0 ? model.Annotations.Max(a => a.ID) + 1 : 0, (Annotation.AnnotationType)Enum.Parse(typeof(Annotation.AnnotationType), annotation.Type));
-					model.Annotations.Add(modelAnnotation);
-					foreach (var point in annotation.Points)
+					model.Annotations.Clear();
+					foreach (var annotation in lot.Annotations)
 					{
-						modelAnnotation.Add(new Models.Geometry.Vector2(point.X,point.Y));
+						var modelAnnotation = new Annotation(model.Annotations.Count > 0 ? model.Annotations.Max(a => a.ID) + 1 : 0, (Annotation.AnnotationType)Enum.Parse(typeof(Annotation.AnnotationType), annotation.Type));
+						model.Annotations.Add(modelAnnotation);
+						foreach (var point in annotation.Points)
+						{
+							modelAnnotation.Add(new Models.Geometry.Vector2(point.X, point.Y));
+						}
 					}
 				}
 				EagleEyeConfig.ExportDatabase();
