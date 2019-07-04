@@ -169,6 +169,34 @@ namespace EagleEye.Models
 			}
 			return result;
 		}
+		static public Color Average(this Bitmap source, Func<int,int,bool> pixelSelector)
+		{
+			int r = 0;
+			int g = 0;
+			int b = 0;
+			int total = 0;
+			for (int x = 0; x < source.Width; x++)
+			{
+				for (int y = 0; y < source.Height; y++)
+				{
+					if (pixelSelector(x,y))
+					{
+						total++;
+						var color = source.GetPixel(x, y);
+						r += color.R;
+						g += color.G;
+						b += color.B;
+					}
+				}
+			}
+			if (total > 0)
+			{
+				return Color.FromArgb(r / total, g / total, b / total);
+			} else
+			{
+				return Color.Black;
+			}
+		}
 		static public void Fill(this Bitmap source, Color color)
 		{
 			for (int x = 0; x < source.Width; x++)

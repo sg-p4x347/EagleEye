@@ -124,33 +124,9 @@ namespace EagleEye.Models
 		}
 		private Tuple<int, int, int> AverageDifference(Bitmap a, Bitmap b, IEnumerable<Annotation> clip)
 		{
-			int red = 0;
-			int green = 0;
-			int blue = 0;
-			int total = 0;
-			for (int x = 0; x < a.Width; x++)
-			{
-				for (int y = 0; y < a.Height; y++)
-				{
-					Vector2 pixelPoint = new Vector2((double)x / a.Width, (double)y / a.Height);
-					if (clip.Any(c => c.Contains(pixelPoint)))
-					{
-						Color colorA = a.GetPixel(x, y);
-						Color colorB = b.GetPixel(x, y);
-						red += colorA.R - colorB.R;
-						green += colorA.G - colorB.G;
-						blue += colorA.B - colorB.B;
-						total++;
-					}
-				}
-			}
-			if (total > 0)
-			{
-				return new Tuple<int, int, int>(red / total, green / total, blue / total);
-			} else
-			{
-				return new Tuple<int, int, int>(0, 0, 0);
-			}
+			var averageA = a.Average((x, y) => clip.Any(c => c.Contains(new Vector2((double)x / a.Width, (double)y / a.Height))));
+			var averageB = b.Average((x, y) => clip.Any(c => c.Contains(new Vector2((double)x / b.Width, (double)y / b.Height))));
+			return new Tuple<int, int, int>(averageA.R - averageB.R, averageA.G - averageB.G, averageA.B - averageB.B);
 		}
 	}
 }
