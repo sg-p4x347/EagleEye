@@ -128,5 +128,19 @@ namespace EagleEye.Models
 			var averageB = b.Average((x, y) => clip.Any(c => c.Contains(new Vector2((double)x / b.Width, (double)y / b.Height))));
 			return new Tuple<int, int, int>(averageA.R - averageB.R, averageA.G - averageB.G, averageA.B - averageB.B);
 		}
+		private List<Vector2> AStarReconstructPath(Dictionary<Vector2,Vector2> cameFrom, Vector2 current)
+		{
+			List<Vector2> totalPath = new List<Vector2> { current };
+			while(totalPath.Contains(current))
+			{
+				current = cameFrom[current];
+				totalPath.Add(current);
+			}
+			return totalPath;
+		}
+		public List<Vector2> AStar(IEnumerable<Vector2> graph, Vector2 source, Vector2 target)
+		{
+
+		}
 	}
 }

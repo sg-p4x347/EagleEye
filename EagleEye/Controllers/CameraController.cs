@@ -60,6 +60,7 @@ namespace EagleEye.Controllers
 			}
 			using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
 			{
+				
 				byte[] buffer = Convert.FromBase64String(camera.CurrentImage);
 				stream.Write(buffer, 0, buffer.Length);
 				model.CurrentImage = System.Drawing.Bitmap.FromStream(stream) as System.Drawing.Bitmap;
