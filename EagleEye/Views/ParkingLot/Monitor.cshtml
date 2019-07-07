@@ -37,23 +37,48 @@
 			<input class="form-control" type="range" min="0" max="1" step=".01" value="0.25" id="obstructedThreshold" />
 		</div>
 	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Path
+		</div>
+		<div class="panel-body">
+			<button class="btn btn-default" onclick="createPath()">Create</button>
+		</div>
+	</div>
 }
 @section scripts {
 	<script>
 	let viewer = null;
+	function createPath() {
+		viewer.setPath(viewer.aStar(new Vector2(0, 0), viewer.lot.Annotations[6].midpoints));
+		@*$.ajax({
+			url: '/ParkingLot/CreatePath',
+			method: 'POST',
+			data: { LotID:@Model.ID, Start: new Vector2(0,0), Goal:6}
+		}).done(data => {
+			let path = [];
+			data.forEach(v => path.push(new Vector2(v.X, v.Y)));
+			viewer.setPath(path);
+		});*@
+	}
 	function updateViewer() {
 		$.ajax({
 			url: '/ParkingLot/Get',
 			data: { id:@Model.ID}
 		}).done(lot => {
 			// Convert annotation points into Vector2 instances
-			lot.Annotations.forEach(a => {
-				let points = a.Points;
-				a.Points = [];
+			let annotationModels = lot.Annotations;
+			lot.Annotations = [];
+			annotationModels.forEach(a => {
+				let annotation = new Annotation(a);
+				let points = annotation.Points;
+				annotation.Points = [];
 				points.forEach(p => {
-					a.Points.push(new Vector2(p.X, p.Y));
-				})
-			})
+					annotation.Points.push(new Vector2(p.X, p.Y));
+				});
+				lot.Annotations.push(annotation);
+			});
+			
 			if (viewer === null) {
 				// create a new viewer
 				viewer = new AnnotationViewer(lot, annotations, (self, ctx, annotation) => {

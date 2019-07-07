@@ -97,6 +97,19 @@ namespace EagleEye.Controllers
 			}
 			return new HttpNotFoundResult();
 		}
+		[HttpPost]
+		public JsonResult CreatePath(Views.ParkingLot.Path path)
+		{
+			ParkingLot lot;
+			if (TryGetLot(path.LotID, out lot))
+			{
+				return Json(
+					lot.CreatePath(new Models.Geometry.Vector2(path.Start.X, path.Start.Y), lot.Annotations.Find(a => a.ID == path.Goal)),
+					JsonRequestBehavior.AllowGet
+				);
+			}
+			return Json(null,JsonRequestBehavior.AllowGet);
+		}
 		//--------------------------------------------------
 		// REST
 		[HttpGet]

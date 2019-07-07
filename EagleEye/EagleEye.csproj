@@ -132,6 +132,7 @@
     <Compile Include="Models\IID.cs" />
     <Compile Include="Models\ImageStream.cs" />
     <Compile Include="Models\Json.cs" />
+    <Compile Include="Models\NavigationContext.cs" />
     <Compile Include="Models\ParkingLot.cs" />
     <Compile Include="Models\PointSorter.cs" />
     <Compile Include="Models\Repository.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Views\Camera\Camera.cs" />
     <Compile Include="Views\ParkingLot\Annotation.cs" />
     <Compile Include="Views\ParkingLot\ParkingLot.cs" />
+    <Compile Include="Views\ParkingLot\Path.cs" />
     <Compile Include="Views\ParkingLot\Vector2.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +179,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\extensions.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
