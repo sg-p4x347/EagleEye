@@ -1,11 +1,6 @@
 ﻿// JavaScript source code
 var btn = document.getElementById('btn');
 btn.addEventListener('click', begin, false);
-function delay(t, v) {
-    return new Promise(function (resolve) {
-        setTimeout(resolve.bind(null, v), t)
-    });
-}
 
 function begin() {
     var tb = document.getElementById('textBox').value;
@@ -17,11 +12,9 @@ function begin() {
             return vid.play(); // returns a Promise
         })
         .then(() => {
-            return delay(2000).then(function () {
-                repeatingFunct();
-            });
+            repeatingFunct();
         })
-        .catch(e => console.log('please use the fiddle instead'));
+        .catch(e => console.log('Something went wrong when starting the camera.'));
 }
 
 function takeASnap() {
