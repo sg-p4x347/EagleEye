@@ -77,7 +77,7 @@
 						return;
 
 				}
-				this.drawing = new Annotation(this.drawMode);
+				this.drawing = new Annotation({ Type: this.drawMode });
 				this.drawing.Points.push(new Vector2(evt.offsetX / this.canvas.width, evt.offsetY / this.canvas.height));
 				this.drawing.Points.push(new Vector2(evt.offsetX / this.canvas.width, evt.offsetY / this.canvas.height));
 				this.drawing.Points.push(new Vector2(evt.offsetX / this.canvas.width, evt.offsetY / this.canvas.height));

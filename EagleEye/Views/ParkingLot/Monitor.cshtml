@@ -50,11 +50,11 @@
 	<script>
 	let viewer = null;
 	function createPath() {
-		viewer.setPath(viewer.aStar(new Vector2(0, 0), viewer.lot.Annotations[6].midpoints));
+		viewer.setPath(viewer.aStar(new Vector2(1,1), viewer.lot.Annotations[6].midpoints));
 		@*$.ajax({
 			url: '/ParkingLot/CreatePath',
 			method: 'POST',
-			data: { LotID:@Model.ID, Start: new Vector2(0,0), Goal:6}
+			data: { LotID:@Model.ID, Start: new Vector2(0,0), Goal:0}
 		}).done(data => {
 			let path = [];
 			data.forEach(v => path.push(new Vector2(v.X, v.Y)));
@@ -89,7 +89,11 @@
 					} else {
 						ctx.fillStyle = 'rgba(0,255,0,0.5)';
 					}
-				}, (self, ctx, point) => ctx.fillStyle = 'black');
+				}, (self, ctx, point) => {
+					ctx.strokeStyle = 'black';
+					ctx.lineWidth = '1';
+					ctx.fillStyle = 'black'
+				});
 				viewer.tick();
 			} else {
 				// update the existing viewer's lot
