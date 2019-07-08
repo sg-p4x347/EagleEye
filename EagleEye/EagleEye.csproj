@@ -257,6 +257,7 @@
     <Content Include="Views\Camera\Client.cshtml" />
     <Content Include="Views\ParkingLot\Monitor.cshtml" />
     <Content Include="Views\User\TempIndex.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
