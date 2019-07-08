@@ -50,11 +50,11 @@
 	<script>
 	let viewer = null;
 	function createPath() {
-		viewer.setPath(viewer.aStar(new Vector2(0, 0), viewer.lot.Annotations[6].midpoints));
+		viewer.setPath(viewer.aStar(new Vector2(1,1), viewer.lot.Annotations[6].midpoints));
 		@*$.ajax({
 			url: '/ParkingLot/CreatePath',
 			method: 'POST',
-			data: { LotID:@Model.ID, Start: new Vector2(0,0), Goal:6}
+			data: { LotID:@Model.ID, Start: new Vector2(0,0), Goal:0}
 		}).done(data => {
 			let path = [];
 			data.forEach(v => path.push(new Vector2(v.X, v.Y)));
@@ -82,14 +82,29 @@
 			if (viewer === null) {
 				// create a new viewer
 				viewer = new AnnotationViewer(lot, annotations, (self, ctx, annotation) => {
-					if (annotation.PercentDifference > document.getElementById('obstructedThreshold').value) {
-						ctx.fillStyle = 'rgba(255,0,0,0.5)';
-					} else if (annotation.PercentDifference > document.getElementById('partiallyObstructedThreshold').value) {
-						ctx.fillStyle = 'rgba(255,255,0,0.5)';
+					if (annotation.Type === 'Parking') {
+						if (annotation.PercentDifference > document.getElementById('obstructedThreshold').value) {
+							ctx.fillStyle = 'rgba(255,0,0,0.5)';
+						} else if (annotation.PercentDifference > document.getElementById('partiallyObstructedThreshold').value) {
+							ctx.fillStyle = 'rgba(255,255,0,0.5)';
+						} else {
+							ctx.fillStyle = 'rgba(0,255,0,0.5)';
+						}
+						return true;
 					} else {
-						ctx.fillStyle = 'rgba(0,255,0,0.5)';
+						return false;
 					}
-				}, (self, ctx, point) => ctx.fillStyle = 'black');
+					
+				}, (self, ctx, annotation) => {
+					if (annotation.Type === 'Parking') {
+						ctx.strokeStyle = 'black';
+						ctx.lineWidth = '1';
+						ctx.fillStyle = 'black'
+						return true;
+					} else {
+						return false;
+					}
+				});
 				viewer.tick();
 			} else {
 				// update the existing viewer's lot

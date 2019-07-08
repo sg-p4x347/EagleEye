@@ -34,32 +34,32 @@
 		ctx.setLineDash([]);
 		ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		function renderAnnotation(ctx, annotation) {
-			ctx.beginPath();
-			annotation.Points.forEach((point, i) => {
-				let screen = self.toScreen(point);
-				if (i === 0) {
-					ctx.moveTo(screen.X, screen.Y);
-				} else {
-					ctx.lineTo(screen.X, screen.Y);
-				}
-			});
-			ctx.closePath();
-			if (typeof self.prepareAnnotationRender === 'function') {
-				self.prepareAnnotationRender(self,ctx,annotation);
-			}
-			ctx.fill();
-			ctx.lineWidth = self.lineWidth;
-			ctx.stroke();
-
-			annotation.Points.forEach((point, i) => {
-				let screen = self.toScreen(point);
+			
+			if (self.prepareAnnotationRender(self, ctx, annotation)) {
 				ctx.beginPath();
-				ctx.arc(screen.X, screen.Y, point === self.hover ? self.pointRadius : self.pointDisplayRadius, 0, Math.PI * 2);
-
-				self.preparePointRender(self,ctx, point);
+				annotation.Points.forEach((point, i) => {
+					let screen = self.toScreen(point);
+					if (i === 0) {
+						ctx.moveTo(screen.X, screen.Y);
+					} else {
+						ctx.lineTo(screen.X, screen.Y);
+					}
+				});
+				ctx.closePath();
 				ctx.fill();
+				ctx.lineWidth = self.lineWidth;
 				ctx.stroke();
-			});
+			}
+			if (self.preparePointRender(self, ctx, annotation)) {
+				annotation.Points.forEach((point, i) => {
+					let screen = self.toScreen(point);
+					ctx.beginPath();
+					ctx.arc(screen.X, screen.Y, point === self.hover ? self.pointRadius : self.pointDisplayRadius, 0, Math.PI * 2);
+
+					ctx.fill();
+					ctx.stroke();
+				});
+			}
 		}
 		this.lot.Annotations.forEach(annotation => {
 			renderAnnotation(ctx, annotation);
@@ -77,6 +77,11 @@
 		}
 
 		if (this.path) {
+			ctx.beginPath();
+			ctx.strokeStyle = 'blue';
+			ctx.lineWidth = '8';
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
 			this.path.forEach((point, i) => {
 				let screen = self.toScreen(point);
 				if (i === 0) {
@@ -91,13 +96,13 @@
 	}
 	generateNodes() {
 		let nodes = [];
-		this.lot.Annotations.forEach(an => {
+		this.lot.Annotations.where(an => an.Type === "Isle").forEach(an => {
 			let midpoints = an.midpoints;
 			for (let i = 0; i < 2; i++) {
 				let start = midpoints[i];
 				let end = midpoints[i + 2];
 				let segment = end.subtract(start);
-				let step = segment.length / Math.floor(segment.length / AnnotationViewer.nodeDistance);
+				let step = segment.length / Math.ceil(segment.length / AnnotationViewer.nodeDistance);
 				for (let t = 0; t <= segment.length; t += step) {
 					nodes.push(start.add(segment.normalized().scale(t)));
 				}
@@ -107,7 +112,7 @@
 	}
 	aStarReconstructPath(cameFrom, current) {
 		let totalPath = [current];
-		while (cameFrom.any()) {
+		while (cameFrom.get(current)) {
 			current = cameFrom.get(current);
 			totalPath.push(current);
 		}
@@ -121,7 +126,9 @@
 		}
 	}
 	aStarNeighbors(nodes,a) {
-		return nodes.where(n => n !== a && !this.lot.Annotations.any(an => an.Type === 'Parking' && an.intersects(a, n.subtract(a))));
+		return nodes.where(n => {
+			return n !== a && !this.lot.Annotations.any(an => an.Type === 'Parking' && an.intersects(a,n));
+		});
 	}
 	static get nodeDistance() {
 		return 0.05;
@@ -157,7 +164,7 @@
 		let fScore = new HashMap();
 		nodes.forEach(n => {
 			fScore.set(n, Infinity);
-		})
+		});
 		
 
 		// For the first node, that value is completely heuristic.
@@ -200,14 +207,14 @@
 				// This path is the best until now. Record it!
 				cameFrom.set(neighbor, current);
 
-				gScore.get(neighbor) = tentativeGScore;
+				gScore.set(neighbor,tentativeGScore);
 
-				fScore.get(neighbor) = tentativeGScore + goal.minValue(g => this.aStarHeuristicCostEstimate(neighbor, g));
+				fScore.set(neighbor, tentativeGScore + goal.minValue(g => this.aStarHeuristicCostEstimate(neighbor, g)));
 			});
 			
 		}
 		// A valid path was not found, return a path containing just the start node
-		return [start];
+		return this.aStarReconstructPath(cameFrom, current);
 		
 	}
 }
@@ -255,9 +262,11 @@ class Vector2 {
 	
 }
 class Annotation {
-	constructor(model) {
-		for (let prop in model) {
-			this[prop] = model[prop];
+	constructor(props) {
+		this.ID = -1;
+		this.Points = [];
+		for (let prop in props) {
+			this[prop] = props[prop];
 		}
 	}
 	get area() {
@@ -294,9 +303,9 @@ function SAT(A, B) {
 		axes.push(p.subtract(A[(i + 1) % A.length]).normal.normalized());
 	});
 	B.forEach((p, i) => {
-		axes.push(p.subtract(A[(i + 1) % A.length]).normal.normalized());
+		axes.push(p.subtract(B[(i + 1) % B.length]).normal.normalized());
 	});
-	let intersection = false;
+	let intersection = true;
 	axes.forEach(axis => {
 		let projA = { min: Infinity, max: -Infinity };
 		let projB = { min: Infinity, max: -Infinity };
@@ -314,8 +323,8 @@ function SAT(A, B) {
 			if (proj > projB.max)
 				projB.max = proj;
 		});
-		if (projA.min <= projB.max && projB.min <= projA.max) {
-			intersection = true;
+		if (!(projA.min < projB.max && projB.min < projA.max)) {
+			intersection = false;
 			return true;
 		}
 	});
