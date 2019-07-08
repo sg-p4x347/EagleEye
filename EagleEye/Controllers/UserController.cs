@@ -3,55 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Security.Claims;
 namespace EagleEye.Controllers
 {
-    public class UserController : Controller
+	[AllowAnonymous]
+	public class UserController : Controller
     {
-        // GET: User
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return View("TempIndex",new Views.User.User());
         }
 		[HttpPost]
-		public ActionResult Login(User model)
+		public ActionResult Login(Views.User.User user)
 		{
-			if (!ModelState.IsValid) //Checks if input fields have the correct format
-			{
-				return View(model);
-			}
-			using (var db = new MainDbContext())
-			{
-				var user = db.Users.Where(u => u.UID == model.UID).FirstOrDefault();
-				if (user != null)
-				{
-					var decryptedPassword = CustomDecrypt.Decrypt(user.Password);
+			var identity = new ClaimsIdentity(new[] {
+				new Claim(ClaimTypes.Role, user.AccessLevel.ToString())
+			}, "ApplicationCookie");
 
-					if (model.UID != null && model.Password == decryptedPassword)
-					{
+			var ctx = Request.GetOwinContext();
+			var authManager = ctx.Authentication;
+			authManager.SignIn(identity);
 
-						var identity = new ClaimsIdentity(new[] {
-						new Claim("Uid", user.UID),
-						new Claim(ClaimTypes.Name, user.Name)
-					}, "ApplicationCookie");
+			return RedirectToAction("Index", "Home");
+		}
+		[HttpGet]
+		public ActionResult Logout()
+		{
+			var ctx = Request.GetOwinContext();
+			var authManager = ctx.Authentication;
 
-						var ctx = Request.GetOwinContext();
-						var authManager = ctx.Authentication;
-						authManager.SignIn(identity);
-
-						return RedirectToAction("Index", "Home");
-					}
-					else
-					{
-						ModelState.AddModelError("", "Invalid Password");
-					}
-				}
-				else
-				{
-					ModelState.AddModelError("", "Invalid UID");
-				}
-			}
-			return View(model);
+			authManager.SignOut("ApplicationCookie");
+			return RedirectToAction("Index", "User");
 		}
 	}
 }

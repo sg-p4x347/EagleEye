@@ -17,9 +17,12 @@
 	</script>
 }
 <h1>Parking Lots</h1>
+@if (Request.IsAdmin())
+{
 <a class="btn btn-default btn-lg" href="/ParkingLot/New">
 	<span class="glyphicon glyphicon-plus"></span> Create
 </a>
+}
 <hr />
 <div class="panel-group">
 
@@ -33,11 +36,14 @@
 				</h2>
 			</div>
 			<div class="panel-body">
+				@if (Request.IsAdmin())
+				{
 				<div class="flex-row justify-between max-width">
 					@Html.ActionLink("Edit", "Edit", new { id = lot.ID }, new { @class = "btn btn-default" })
 					
 					<button class="btn btn-danger" onclick="deleteLot(@lot.ID)">Delete</button>
 				</div>
+				}
 			</div>
 		</div>
 	}

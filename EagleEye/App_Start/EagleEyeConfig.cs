@@ -6,6 +6,7 @@ using System.IO;
 using EagleEye.Models;
 using System.Drawing;
 using System.Threading;
+
 namespace EagleEye
 {
 	public class EagleEyeConfig
