@@ -3,21 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Security.Claims;
 namespace EagleEye.Controllers
 {
+	[AllowAnonymous]
 	public class UserController : Controller
-	{
-        public ActionResult UserHome()
+    {
+        [HttpGet]
+        public ActionResult Index()
         {
-            ViewBag.Message = "Welcome! To the user portal. Click on lot to find a parking spot.";
-            return View();
+            return View("TempIndex",new Views.User.User());
         }
-		public ActionResult Lot()
+		[HttpPost]
+		public ActionResult Login(Views.User.User user)
 		{
-			ViewBag.Message = "Please select a lot to view";
+			var identity = new ClaimsIdentity(new[] {
+				new Claim(ClaimTypes.Role, user.AccessLevel.ToString())
+			}, "ApplicationCookie");
 
-			return View();
+			var ctx = Request.GetOwinContext();
+			var authManager = ctx.Authentication;
+			authManager.SignIn(identity);
+
+			return RedirectToAction("Index", "Home");
+		}
+		[HttpGet]
+		public ActionResult Logout()
+		{
+			var ctx = Request.GetOwinContext();
+			var authManager = ctx.Authentication;
+
+			authManager.SignOut("ApplicationCookie");
+			return RedirectToAction("Index", "User");
 		}
 	}
 }

@@ -13,7 +13,9 @@
 		this.pointDisplayRadius = 2;
 		
 	}
-	
+	setPath(path) {
+		this.path = path;
+	}
 	toScreen(point) {
 		return {
 			X: this.canvas.width * point.X, Y: this.canvas.height * point.Y
@@ -74,7 +76,153 @@
 			renderAnnotation(ctx, this.drawing);
 		}
 
+		if (this.path) {
+			this.path.forEach((point, i) => {
+				let screen = self.toScreen(point);
+				if (i === 0) {
+					ctx.moveTo(screen.X, screen.Y);
+				} else {
+					ctx.lineTo(screen.X, screen.Y);
+				}
+			});
+			ctx.stroke();
+		}
 
+	}
+	generateNodes() {
+		let nodes = [];
+		this.lot.Annotations.forEach(an => {
+			let midpoints = an.midpoints;
+			for (let i = 0; i < 2; i++) {
+				let start = midpoints[i];
+				let end = midpoints[i + 2];
+				let segment = end.subtract(start);
+				let step = segment.length / Math.floor(segment.length / AnnotationViewer.nodeDistance);
+				for (let t = 0; t <= segment.length; t += step) {
+					nodes.push(start.add(segment.normalized().scale(t)));
+				}
+			}
+		});
+		return nodes;
+	}
+	aStarReconstructPath(cameFrom, current) {
+		let totalPath = [current];
+		while (cameFrom.any()) {
+			current = cameFrom.get(current);
+			totalPath.push(current);
+		}
+		return totalPath;
+	}
+	aStarHeuristicCostEstimate(a, b) {
+		if (a === b) {
+			return 0;
+		} else {
+			return a.subtract(b).length;
+		}
+	}
+	aStarNeighbors(nodes,a) {
+		return nodes.where(n => n !== a && !this.lot.Annotations.any(an => an.Type === 'Parking' && an.intersects(a, n.subtract(a))));
+	}
+	static get nodeDistance() {
+		return 0.05;
+	}
+
+	aStar(start, goal) {
+		let nodes = this.generateNodes();
+		nodes.push(start);
+		goal.forEach(n => nodes.push(n));
+		// The set of nodes already evaluated
+		let closedSet = [];
+
+		// The set of currently discovered nodes that are not evaluated yet.
+		// Initially, only the start node is known.
+		let openSet = [start];
+
+		// For each node, which node it can most efficiently be reached from.
+		// If a node can be reached from many nodes, cameFrom will eventually contain the
+		// most efficient previous step.
+		let cameFrom = new HashMap();
+
+		// For each node, the cost of getting from the start node to that node.
+		let gScore = new HashMap();
+		nodes.forEach(n => {
+			gScore.set(n, Infinity);
+		});
+		
+		// The cost of going from start to start is zero.
+		gScore.set(start, 0);
+
+		// For each node, the total cost of getting from the start node to the goal
+		// by passing by that node. That value is partly known, partly heuristic.
+		let fScore = new HashMap();
+		nodes.forEach(n => {
+			fScore.set(n, Infinity);
+		})
+		
+
+		// For the first node, that value is completely heuristic.
+		fScore[start] = this.aStarHeuristicCostEstimate(start, goal[0]);
+
+		let current = start;
+		while (openSet.length > 0) {
+			let min = { node: null, fScore: Infinity };
+			for (let i = 0; i < openSet.length; i++) {
+				let value = fScore.get(openSet[i]);
+				if (value <= min.fScore) {
+					min = { node: openSet[i], fScore: value };
+				}
+			}
+			current = min.node;
+
+			if (goal.contains(current))
+				return this.aStarReconstructPath(cameFrom, current);
+
+			openSet.remove(current);
+
+			closedSet.push(current);
+
+			this.aStarNeighbors(nodes, current).forEach(neighbor => {
+
+				if (closedSet.contains(neighbor))
+					return; // Ignore the neighbor which is already evaluated.
+
+				// The distance from start to a neighbor
+				let tentativeGScore = gScore.get(current) + current.subtract(neighbor).length;
+
+
+				if (!openSet.contains(neighbor)) {  // Discover a new node
+					openSet.push(neighbor);
+				}
+				else if (tentativeGScore >= gScore.get(neighbor)) {
+					return;
+				}
+
+				// This path is the best until now. Record it!
+				cameFrom.set(neighbor, current);
+
+				gScore.get(neighbor) = tentativeGScore;
+
+				fScore.get(neighbor) = tentativeGScore + goal.minValue(g => this.aStarHeuristicCostEstimate(neighbor, g));
+			});
+			
+		}
+		// A valid path was not found, return a path containing just the start node
+		return [start];
+		
+	}
+}
+class HashMap {
+	constructor() {
+		this.map = {};
+	}
+	set(key, value) {
+		this.map[JSON.stringify(key)] = value;
+	}
+	get(key) {
+		return this.map[JSON.stringify(key)];
+	}
+	remove(key) {
+		delete this.map[JSON.stringify(key)];
 	}
 }
 class Vector2 {
@@ -84,6 +232,9 @@ class Vector2 {
 	}
 	add(b) {
 		return new Vector2(this.X + b.X, this.Y + b.Y);
+	}
+	scale(scalar) {
+		return new Vector2(this.X * scalar, this.Y * scalar);
 	}
 	subtract(b) {
 		return new Vector2(this.X - b.X, this.Y - b.Y);
@@ -101,12 +252,13 @@ class Vector2 {
 	get length() {
 		return Math.sqrt(this.X * this.X + this.Y * this.Y);
 	}
+	
 }
 class Annotation {
-	constructor(type) {
-		this.ID = -1;
-		this.Type = type;
-		this.Points = [];
+	constructor(model) {
+		for (let prop in model) {
+			this[prop] = model[prop];
+		}
 	}
 	get area() {
 		return this.triangleArea(this.Points[0], this.Points[1], this.Points[2])
@@ -123,4 +275,49 @@ class Annotation {
 		}
 		return Math.abs(area - this.area) <= 0.001;
 	}
+	intersects(a, b) {
+		return SAT(this.Points, [a, b]);
+	}
+	get midpoints() {
+		let midpoints = [];
+		for (let i = 0; i < 4; i++) {
+			let a = this.Points[i];
+			let b = this.Points[(i + 1) % 4];
+			midpoints.push(a.add(b).scale(0.5));
+		}
+		return midpoints;
+	}
+}
+function SAT(A, B) {
+	let axes = [];
+	A.forEach((p, i) => {
+		axes.push(p.subtract(A[(i + 1) % A.length]).normal.normalized());
+	});
+	B.forEach((p, i) => {
+		axes.push(p.subtract(A[(i + 1) % A.length]).normal.normalized());
+	});
+	let intersection = false;
+	axes.forEach(axis => {
+		let projA = { min: Infinity, max: -Infinity };
+		let projB = { min: Infinity, max: -Infinity };
+		A.forEach(p => {
+			let proj = p.dot(axis);
+			if (proj < projA.min)
+				projA.min = proj;
+			if (proj > projA.max)
+				projA.max = proj;
+		});
+		B.forEach(p => {
+			let proj = p.dot(axis);
+			if (proj < projB.min)
+				projB.min = proj;
+			if (proj > projB.max)
+				projB.max = proj;
+		});
+		if (projA.min <= projB.max && projB.min <= projA.max) {
+			intersection = true;
+			return true;
+		}
+	});
+	return intersection;
 }

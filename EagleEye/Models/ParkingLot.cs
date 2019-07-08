@@ -70,6 +70,11 @@ namespace EagleEye.Models
 				}
 			}
 		}
+		public List<Vector2> CreatePath(Vector2 start, Annotation goal)
+		{
+			NavigationContext context = new NavigationContext(Annotations);
+			return context.AStar(start, goal.Midpoints());
+		}
 		// A list of annotations that define regions of Parking or Isle space
 		public List<Annotation> Annotations { get; private set; } = new List<Annotation>();
 		// Only annotations of Parking type
@@ -128,5 +133,6 @@ namespace EagleEye.Models
 			var averageB = b.Average((x, y) => clip.Any(c => c.Contains(new Vector2((double)x / b.Width, (double)y / b.Height))));
 			return new Tuple<int, int, int>(averageA.R - averageB.R, averageA.G - averageB.G, averageA.B - averageB.B);
 		}
+		
 	}
 }

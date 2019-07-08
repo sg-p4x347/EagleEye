@@ -41,6 +41,14 @@ namespace EagleEye.Models.Geometry
 		{
 			return new Vector2(a.X - b.X, a.Y - b.Y);
 		}
+		static public bool operator==(Vector2 a, Vector2 b)
+		{
+			return a.X == b.X && a.Y == b.Y;
+		}
+		static public bool operator !=(Vector2 a, Vector2 b)
+		{
+			return !(a == b);
+		}
 		public double LengthSquared()
 		{
 			return X * X + Y * Y;

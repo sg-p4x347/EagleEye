@@ -21,7 +21,16 @@
             <div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li>@Html.ActionLink("Lots", "Index", "ParkingLot")</li>
+					@if (Request.IsAdmin())
+					{
 					<li>@Html.ActionLink("Cameras", "Index", "Camera")</li>
+					}
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					@if (Request.IsAuthenticated)
+					{
+					<li>@Html.ActionLink(Request.GetOwinContext().Authentication.User.Claims.FirstOrDefault().Value,"Index","User")</li>
+					}
 				</ul>
             </div>
         </div>

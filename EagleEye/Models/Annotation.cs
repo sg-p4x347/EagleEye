@@ -58,6 +58,34 @@ namespace EagleEye.Models
 			}
 			return Math.Abs(area - Area) <= 0.0001; // A small fudge factor to compensate for floating point inacuraccy
 		}
+		public bool Intersects(Vector2 start, Vector2 lineDir)
+		{
+			Vector2 normal = lineDir.Normal().Normalized();
+			int? direction = null;
+			foreach (Vector2 point in Points)
+			{
+				double projection = normal.Dot(point - start);
+
+				if (direction == null)
+				{
+					direction = Math.Sign(projection);
+				} else if (direction != Math.Sign(projection)) {
+					return true;
+				}
+			}
+			return false;
+		}
+		public List<Vector2> Midpoints()
+		{
+			List<Vector2> midpoints = new List<Vector2>();
+			for (int i = 0; i < 4; i++)
+			{
+				Vector2 a = Points[i];
+				Vector2 b = Points[(i + 1) % 4];
+				midpoints.Add((a + b) / 2);
+			}
+			return midpoints;
+		}
 		// A unique identifier
 		public int ID { get; private set; } = -1;
 		// A list of points that define the region

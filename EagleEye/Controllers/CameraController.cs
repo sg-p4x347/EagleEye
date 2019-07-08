@@ -16,17 +16,20 @@ namespace EagleEye.Controllers
 			base.Dispose(disposing);
 		}
 		[HttpGet]
+		[Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             return View(Repository<Camera>.Models.Values.Select(m => new Views.Camera.Camera(m)).ToList());
         }
 		[HttpGet]
+		[Authorize(Roles = "Administrator")]
 		public ActionResult ListView()
 		{
 			return PartialView("List", Repository<Camera>.Models.Values.Select(c => new Views.Camera.Camera(c)).ToList());
 		}
         [HttpGet]
-        public ActionResult Client()
+		[Authorize(Roles = "Administrator")]
+		public ActionResult Client()
         {
             return View();
         }
@@ -41,6 +44,7 @@ namespace EagleEye.Controllers
 			return new HttpNotFoundResult();
 		}
 		[HttpGet]
+		[Authorize(Roles = "Administrator")]
 		public ActionResult Create(string name)
 		{
 			Repository<Camera>.Add(new Camera(Repository<Camera>.NextID, name));
@@ -48,6 +52,7 @@ namespace EagleEye.Controllers
 			return new EmptyResult();
 		}
 		[HttpPost]
+		[Authorize(Roles = "Administrator")]
 		public ActionResult Update(Views.Camera.Camera camera)
 		{
 			Camera model = Repository<Camera>.Models.Values.FirstOrDefault(c => c.Name == camera.Name);
@@ -60,6 +65,7 @@ namespace EagleEye.Controllers
 			}
 			using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
 			{
+				
 				byte[] buffer = Convert.FromBase64String(camera.CurrentImage);
 				stream.Write(buffer, 0, buffer.Length);
 				model.CurrentImage = System.Drawing.Bitmap.FromStream(stream) as System.Drawing.Bitmap;
@@ -67,6 +73,7 @@ namespace EagleEye.Controllers
 			return new EmptyResult();
 		}
 		[HttpGet]
+		[Authorize(Roles = "Administrator")]
 		public ActionResult Delete(int id)
 		{
 			Repository<Camera>.Delete(id);
