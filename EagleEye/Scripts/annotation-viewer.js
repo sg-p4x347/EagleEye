@@ -34,34 +34,32 @@
 		ctx.setLineDash([]);
 		ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		function renderAnnotation(ctx, annotation) {
-			ctx.beginPath();
-			annotation.Points.forEach((point, i) => {
-				let screen = self.toScreen(point);
-				if (i === 0) {
-					ctx.moveTo(screen.X, screen.Y);
-				} else {
-					ctx.lineTo(screen.X, screen.Y);
-				}
-			});
-			ctx.closePath();
-			if (typeof self.prepareAnnotationRender === 'function') {
-				self.prepareAnnotationRender(self,ctx,annotation);
-			}
-			ctx.fill();
-			ctx.lineWidth = self.lineWidth;
-			ctx.stroke();
-
-			annotation.Points.forEach((point, i) => {
-				let screen = self.toScreen(point);
+			
+			if (self.prepareAnnotationRender(self, ctx, annotation)) {
 				ctx.beginPath();
-				
-
-				self.preparePointRender(self, ctx, point);
-				ctx.arc(screen.X, screen.Y, point === self.hover ? self.pointRadius : self.pointDisplayRadius, 0, Math.PI * 2);
-
+				annotation.Points.forEach((point, i) => {
+					let screen = self.toScreen(point);
+					if (i === 0) {
+						ctx.moveTo(screen.X, screen.Y);
+					} else {
+						ctx.lineTo(screen.X, screen.Y);
+					}
+				});
+				ctx.closePath();
 				ctx.fill();
+				ctx.lineWidth = self.lineWidth;
 				ctx.stroke();
-			});
+			}
+			if (self.preparePointRender(self, ctx, annotation)) {
+				annotation.Points.forEach((point, i) => {
+					let screen = self.toScreen(point);
+					ctx.beginPath();
+					ctx.arc(screen.X, screen.Y, point === self.hover ? self.pointRadius : self.pointDisplayRadius, 0, Math.PI * 2);
+
+					ctx.fill();
+					ctx.stroke();
+				});
+			}
 		}
 		this.lot.Annotations.forEach(annotation => {
 			renderAnnotation(ctx, annotation);

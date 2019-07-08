@@ -5,9 +5,12 @@
 				case 'Parking': ctx.fillStyle = 'rgba(255,0,0,0.5)'; break;
 				case 'Isle': ctx.fillStyle = 'rgba(0,0,255,0.5)'; break;
 				case 'Select': ctx.fillStyle = 'rgba(0,0,192,0.25)'; break;
+				case 'Constant': ctx.fillStyle = 'rgba(255,255,255,0.25)'; break;
 			}
+			return true;
 		}, function (self,ctx, point) {
 			ctx.fillStyle = self.selected(point) ? 'blue' : 'black';
+			return true;
 		});
 		// Selecting points
 		this.shift = false;

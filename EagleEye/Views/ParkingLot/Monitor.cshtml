@@ -82,17 +82,28 @@
 			if (viewer === null) {
 				// create a new viewer
 				viewer = new AnnotationViewer(lot, annotations, (self, ctx, annotation) => {
-					if (annotation.PercentDifference > document.getElementById('obstructedThreshold').value) {
-						ctx.fillStyle = 'rgba(255,0,0,0.5)';
-					} else if (annotation.PercentDifference > document.getElementById('partiallyObstructedThreshold').value) {
-						ctx.fillStyle = 'rgba(255,255,0,0.5)';
+					if (annotation.Type === 'Parking') {
+						if (annotation.PercentDifference > document.getElementById('obstructedThreshold').value) {
+							ctx.fillStyle = 'rgba(255,0,0,0.5)';
+						} else if (annotation.PercentDifference > document.getElementById('partiallyObstructedThreshold').value) {
+							ctx.fillStyle = 'rgba(255,255,0,0.5)';
+						} else {
+							ctx.fillStyle = 'rgba(0,255,0,0.5)';
+						}
+						return true;
 					} else {
-						ctx.fillStyle = 'rgba(0,255,0,0.5)';
+						return false;
 					}
-				}, (self, ctx, point) => {
-					ctx.strokeStyle = 'black';
-					ctx.lineWidth = '1';
-					ctx.fillStyle = 'black'
+					
+				}, (self, ctx, annotation) => {
+					if (annotation.Type === 'Parking') {
+						ctx.strokeStyle = 'black';
+						ctx.lineWidth = '1';
+						ctx.fillStyle = 'black'
+						return true;
+					} else {
+						return false;
+					}
 				});
 				viewer.tick();
 			} else {
