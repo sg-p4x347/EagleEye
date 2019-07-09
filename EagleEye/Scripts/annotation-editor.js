@@ -1,6 +1,7 @@
 ﻿class AnnotationEditor extends AnnotationViewer {
 	constructor(lot, canvas) {
-		super(lot, canvas, (self,ctx, annotation) => {
+		super(lot, canvas, (self, ctx, annotation) => {
+			ctx.strokeStyle = 'black';
 			switch (annotation.Type) {
 				case 'Parking': ctx.fillStyle = 'rgba(255,0,0,0.5)'; break;
 				case 'Isle': ctx.fillStyle = 'rgba(0,0,255,0.5)'; break;
@@ -8,8 +9,14 @@
 				case 'Constant': ctx.fillStyle = 'rgba(255,255,255,0.25)'; break;
 			}
 			return true;
-		}, function (self,ctx, point) {
-			ctx.fillStyle = self.selected(point) ? 'blue' : 'black';
+		}, function (self, ctx,annotation, point) {
+			if (self.selected(point)) {
+				ctx.fillStyle = 'blue';
+				ctx.strokeStyle = 'blue';
+			} else {
+				ctx.fillStyle = 'black';
+				ctx.strokeStyle = 'black';
+			}
 			return true;
 		});
 		// Selecting points

@@ -1,47 +1,20 @@
-﻿@{
-                /**/
-
-                Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@model EagleEye.Views.User.User
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Eagle Eye</title>
-    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="EagleEye.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap-grid.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-
-
-</head>
-<body>
-    <header class="w3-container w3-black">
-        <h1><b>Welcome to EagleEye Parking!</b></h1>
-        <h2><b>Choose a User</b></h2>
-    </header>
-
-
-
-    <div class="panel">
-        <input type="button" class="btn btn-danger" name="name" value="Admin" />
-        <input type="button" class="btn btn-warning" name="name" value="Default" />
-
-    </div>
-    <div class="panel-middle">
-        <input type="button" class="btn btn-success btn-block" name="name" value="Enter" />
-
-    </div>
-
-
-    <script src="EagleEye.js"></script>
-
-    <footer>
-        © Copyright EagleEye 2019
-    </footer>
-
-</body>
-
-</html>
+<header class="w3-container w3-black">
+	<h1><b>Welcome to EagleEye Parking!</b></h1>
+	<h2><b>Choose a User</b></h2>
+</header>
+<div class="panel">
+	@using (Html.BeginForm("Login", "User", FormMethod.Post, new { @style = "display:inline-block" }))
+	{
+		<input class="hidden" name="AccessLevel" value = "Administrator" />
+		<button type="submit" class="btn btn-danger" name="AccessLevel">Admin</button>
+	}
+	@using (Html.BeginForm("Login", "User", FormMethod.Post, new { @style = "display:inline-block" }))
+	{
+		<input class="hidden" name="AccessLevel" value="User" />
+		<button type="submit" class="btn btn-warning" name="AccessLevel">Default</button>
+	}
+</div>

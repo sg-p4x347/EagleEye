@@ -13,6 +13,22 @@
 		this.pointDisplayRadius = 2;
 		
 	}
+	get start() {
+		return this.m_start;
+	}
+	set start(value) {
+		this.m_start = value;
+		if (this.goal)
+			this.setPath(this.aStar(this.start, this.goal.midpoints));
+	}
+	get goal() {
+		return this.m_goal;
+	}
+	set goal(value) {
+		this.m_goal = value;
+		if (this.start)
+			this.setPath(this.aStar(this.start, this.goal.midpoints));
+	}
 	setPath(path) {
 		this.path = path;
 	}
@@ -47,19 +63,22 @@
 				});
 				ctx.closePath();
 				ctx.fill();
-				ctx.lineWidth = self.lineWidth;
 				ctx.stroke();
+				
 			}
-			if (self.preparePointRender(self, ctx, annotation)) {
-				annotation.Points.forEach((point, i) => {
+			
+			
+			annotation.Points.forEach((point, i) => {
+				if (self.preparePointRender(self, ctx, annotation,point)) {
 					let screen = self.toScreen(point);
 					ctx.beginPath();
 					ctx.arc(screen.X, screen.Y, point === self.hover ? self.pointRadius : self.pointDisplayRadius, 0, Math.PI * 2);
 
 					ctx.fill();
 					ctx.stroke();
-				});
-			}
+				}
+			});
+		
 		}
 		this.lot.Annotations.forEach(annotation => {
 			renderAnnotation(ctx, annotation);
@@ -110,6 +129,7 @@
 		});
 		return nodes;
 	}
+	
 	aStarReconstructPath(cameFrom, current) {
 		let totalPath = [current];
 		while (cameFrom.get(current)) {
@@ -278,11 +298,7 @@ class Annotation {
 		return ab.length * 0.5 * Math.abs(ab.normal.normalized().dot(c.subtract(a)));
 	}
 	contains(point) {
-		let area = 0;
-		for (let i = 0; i < this.Points.length; i++) {
-			area += this.triangleArea(point, this.Points[i], this.Points[(i + 1) % this.Points.length]);
-		}
-		return Math.abs(area - this.area) <= 0.001;
+		return SAT(this.Points, [point]);
 	}
 	intersects(a, b) {
 		return SAT(this.Points, [a, b]);
@@ -299,12 +315,14 @@ class Annotation {
 }
 function SAT(A, B) {
 	let axes = [];
-	A.forEach((p, i) => {
-		axes.push(p.subtract(A[(i + 1) % A.length]).normal.normalized());
-	});
-	B.forEach((p, i) => {
-		axes.push(p.subtract(B[(i + 1) % B.length]).normal.normalized());
-	});
+	if (A.length > 1)
+		A.forEach((p, i) => {
+			axes.push(p.subtract(A[(i + 1) % A.length]).normal.normalized());
+		});
+	if (B.length > 1)
+		B.forEach((p, i) => {
+			axes.push(p.subtract(B[(i + 1) % B.length]).normal.normalized());
+		});
 	let intersection = true;
 	axes.forEach(axis => {
 		let projA = { min: Infinity, max: -Infinity };

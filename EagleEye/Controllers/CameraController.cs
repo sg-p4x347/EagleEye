@@ -33,6 +33,8 @@ namespace EagleEye.Controllers
         {
             return View();
         }
+		//--------------------------------------------------
+		// REST
         [HttpGet]
 		public ActionResult Get(int id)
 		{

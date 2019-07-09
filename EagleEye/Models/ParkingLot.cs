@@ -70,11 +70,6 @@ namespace EagleEye.Models
 				}
 			}
 		}
-		public List<Vector2> CreatePath(Vector2 start, Annotation goal)
-		{
-			NavigationContext context = new NavigationContext(Annotations);
-			return context.AStar(start, goal.Midpoints());
-		}
 		// A list of annotations that define regions of Parking or Isle space
 		public List<Annotation> Annotations { get; private set; } = new List<Annotation>();
 		// Only annotations of Parking type

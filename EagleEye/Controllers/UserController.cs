@@ -12,7 +12,7 @@ namespace EagleEye.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View("TempIndex",new Views.User.User());
+            return View("Login",new Views.User.User());
         }
 		[HttpPost]
 		public ActionResult Login(Views.User.User user)
