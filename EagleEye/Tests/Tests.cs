@@ -10,7 +10,6 @@ namespace EagleEye.Tests
 		public static void RunTests() {
 			EagleEye.Models.Geometry.Vector2 vector = new Models.Geometry.Vector2(1, 0);
 			//JsonImport();
-			Navigation();
 			Intersection();
 		}
 		static ParkingLot TestLot()
@@ -80,12 +79,6 @@ namespace EagleEye.Tests
 			isle.Points.Add(new Models.Geometry.Vector2(0.5, 0.5));
 			isle.Points.Add(new Models.Geometry.Vector2(0, 0.5));
 			bool test = isle.Intersects(new Models.Geometry.Vector2(0.5, 1), new Models.Geometry.Vector2(1, -.5));
-		}
-		static void Navigation()
-		{
-			ParkingLot lot = TestLot();
-			var context = new NavigationContext(lot.Annotations);
-			//var path = context.AStar(new Models.Geometry.Vector2(0, 0), new Models.Geometry.Vector2(0.875, 0.5));
 		}
 	}
 }

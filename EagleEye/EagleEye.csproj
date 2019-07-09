@@ -149,7 +149,6 @@
     <Compile Include="Models\IID.cs" />
     <Compile Include="Models\ImageStream.cs" />
     <Compile Include="Models\Json.cs" />
-    <Compile Include="Models\NavigationContext.cs" />
     <Compile Include="Models\ParkingLot.cs" />
     <Compile Include="Models\PointSorter.cs" />
     <Compile Include="Models\Repository.cs" />
