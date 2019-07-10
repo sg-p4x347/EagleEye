@@ -99,8 +99,18 @@ namespace EagleEye.Models
 					Dictionary<Annotation, int> annotationPixelAreas = Annotations.ToDictionary(a => a, a => 0);
 					// Get the raw pixel difference (color sensitive)
 					Bitmap baseline = Baseline.Scale(0.5);
-					Bitmap current = Camera.CurrentImage.Scale(.5);
-					Bitmap difference = baseline.Difference(current.Add(AverageDifference(baseline,current,Annotations.Where(a => a.Type == Annotation.AnnotationType.Constant))));
+					Bitmap current = Camera.CurrentImage.Scale(0.5);
+					Bitmap difference = baseline.Difference(
+						current.Add(
+							AverageDifference(
+								baseline,
+								current,
+								Annotations.Where(a => 
+									a.Type == Annotation.AnnotationType.Constant
+								)
+							)
+						)
+					);
 					// Sum up difference percentage contained by each annotation
 					for (int x = 0; x < difference.Width; x++)
 					{

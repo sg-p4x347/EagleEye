@@ -147,7 +147,6 @@
     <Compile Include="Models\Geometry\Vector2.cs" />
     <Compile Include="Models\Geometry\Vector3.cs" />
     <Compile Include="Models\IID.cs" />
-    <Compile Include="Models\ImageStream.cs" />
     <Compile Include="Models\Json.cs" />
     <Compile Include="Models\ParkingLot.cs" />
     <Compile Include="Models\PointSorter.cs" />
@@ -162,7 +161,6 @@
     <Compile Include="Views\User\User.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\database_backup.txt" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -185,7 +183,6 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="App_Data\test.json" />
     <Content Include="App_Data\database.json" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -243,19 +240,10 @@
     <Content Include="Views\ParkingLot\_ParkingLot.cshtml" />
     <Content Include="Views\ParkingLot\Edit.cshtml" />
     <Content Include="Views\User\Lot.cshtml" />
-    <Content Include="Views\User\UserHome.cshtml" />
-    <Content Include="Views\Admin\AdminHome.cshtml" />
-    <Content Include="Views\Admin\CreateLot.cshtml" />
-    <Content Include="Views\Admin\EditLot.cshtml" />
-    <Content Include="Views\Admin\AdminLot.cshtml" />
-    <Content Include="Views\Admin\RemoveLot.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Shared\_UserLayout.cshtml" />
     <Content Include="Views\Camera\List.cshtml" />
     <Content Include="Views\ParkingLot\New.cshtml" />
     <Content Include="Views\Camera\Client.cshtml" />
     <Content Include="Views\ParkingLot\Monitor.cshtml" />
-    <Content Include="Views\User\TempIndex.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup />
