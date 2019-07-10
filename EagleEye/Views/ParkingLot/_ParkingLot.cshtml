@@ -89,12 +89,12 @@
 					url: '/Camera/Get',
 					data: {id:@Model.CameraID}
 				}).done(data => {
-					if (annotationCheck.value === 'feed') {
+					if (backgroundRadio.value === 'feed') {
 						setBackground(data.CurrentImage);
 						displayFeed();
 					}
 				});
-			},0)
+			},500)
 		}
 		function updateBaseline() {
 			$.ajax({
@@ -105,8 +105,7 @@
 				displayBaseline();
 			});
 		}
-		backgroundRadio.value = 'baseline';
-		displayBaseline();
+		displayFeed();
 		
 
 	</script>

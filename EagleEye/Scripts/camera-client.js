@@ -20,7 +20,7 @@ function begin() {
 function takeASnap() {
     const canvas = document.createElement('canvas'); // create a canvas
     const ctx = canvas.getContext('2d'); // get its context
-	canvas.width = 300; // set its size to the one of the video
+	canvas.width = 200; // set its size to the one of the video
     canvas.height = (canvas.width / vid.videoWidth) * vid.videoHeight;
 	ctx.drawImage(vid, 0, 0, vid.videoWidth, vid.videoHeight, 0, 0, canvas.width, canvas.height); // the video
     return new Promise((res, rej) => {
@@ -32,17 +32,20 @@ function send(blob) {
     var reader = new FileReader();
     reader.onloadend = () => {
         var text = btoa(String.fromCharCode.apply(null, new Uint8Array(reader.result)));
-        $.ajax({
-            url: "/Camera/Update",
-            data: {
-                ID: -1,
-                Name: document.getElementById('textBox').value,
-                CurrentImage: text
-            },
-            method: "POST"
-        }).done(() => {
-            repeatingFunct();
-        })
+		$.ajax({
+			url: "/Camera/Update",
+			data: {
+				ID: -1,
+				Name: document.getElementById('textBox').value,
+				CurrentImage: text
+			},
+			method: "POST"
+		}).done(() => {
+			window.setTimeout(() => {
+				repeatingFunct();
+			}, 1000);
+			
+		});
     };
     reader.readAsArrayBuffer(blob);
 }

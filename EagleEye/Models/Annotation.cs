@@ -58,6 +58,45 @@ namespace EagleEye.Models
 			}
 			return Math.Abs(area - Area) <= 0.0001; // A small fudge factor to compensate for floating point inacuraccy
 		}
+		private bool SAT(IList<Vector2> A, IList<Vector2> B)
+		{
+			List<Vector2> axes = new List<Vector2>();
+			if (A.Count > 1)
+				for (int i = 0; i < A.Count; i++)
+					axes.Add((A[i] - A[(i + 1) % 4]).Normal().Normalized());
+			if (B.Count > 1)
+				for (int i = 0; i < B.Count; i++)
+					axes.Add((B[i] - B[(i + 1) % 4]).Normal().Normal());
+			foreach (var axis in axes)
+			{
+				var projAmin = double.PositiveInfinity;
+				var projBmin = double.PositiveInfinity;
+				var projAmax = double.NegativeInfinity;
+				var projBmax = double.NegativeInfinity;
+
+				foreach (var p in A)
+				{
+					var proj = p.Dot(axis);
+					if (proj < projAmin)
+						projAmin = proj;
+					if (proj > projAmax)
+						projAmax = proj;
+				}
+				foreach (var p in B)
+				{
+					var proj = p.Dot(axis);
+					if (proj < projBmin)
+						projBmin = proj;
+					if (proj > projBmax)
+						projBmax = proj;
+				}
+				// A separating axis has been found, early out with false
+				if (!(projAmin < projBmax && projBmin < projAmax))
+					return false;
+			}
+			// Search was exhaustive, there must be an intersection
+			return true;
+		}
 		public bool Intersects(Vector2 start, Vector2 lineDir)
 		{
 			Vector2 normal = lineDir.Normal().Normalized();

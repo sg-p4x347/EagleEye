@@ -70,7 +70,10 @@
   </Binaries>
   <Reports>
     <Report>
-      <Path>EagleEye_190709.vspx</Path>
+      <Path>EagleEye_190709(5).vspx</Path>
+    </Report>
+    <Report>
+      <Path>EagleEye_190709(6).vspx</Path>
     </Report>
   </Reports>
   <Launches>
