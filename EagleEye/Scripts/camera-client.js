@@ -40,6 +40,8 @@ function send(blob) {
                 CurrentImage: text
             },
             method: "POST"
+        }).done(() => {
+            repeatingFunct();
         })
     };
     reader.readAsArrayBuffer(blob);
@@ -47,5 +49,4 @@ function send(blob) {
 
 function repeatingFunct() {
     takeASnap().then(send);
-    setTimeout(repeatingFunct, 2000);
 }
