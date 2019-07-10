@@ -17,7 +17,12 @@ namespace EagleEye.Views.Camera
 			{
 				using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
 				{
-					camera.CurrentImage.Scale(EagleEyeConfig.WebImageWidth).Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+					// Scaling
+					//camera.CurrentImage.Scale(EagleEyeConfig.WebImageWidth).Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+					
+					// No scaling
+					camera.CurrentImage.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+
 					CurrentImage = System.Convert.ToBase64String(stream.GetBuffer());
 				}
 			}

@@ -98,8 +98,8 @@ namespace EagleEye.Models
 					// Maps annotations to their area in pixels
 					Dictionary<Annotation, int> annotationPixelAreas = Annotations.ToDictionary(a => a, a => 0);
 					// Get the raw pixel difference (color sensitive)
-					Bitmap baseline = Baseline.Scale(0.5);
-					Bitmap current = Camera.CurrentImage.Scale(0.5);
+					Bitmap baseline = Baseline;
+					Bitmap current = Camera.CurrentImage;
 					Bitmap difference = baseline.Difference(
 						current.Add(
 							AverageDifference(

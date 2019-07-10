@@ -89,8 +89,10 @@
 					url: '/Camera/Get',
 					data: {id:@Model.CameraID}
 				}).done(data => {
-					setBackground(data.CurrentImage);
-					displayFeed();
+					if (annotationCheck.value === 'feed') {
+						setBackground(data.CurrentImage);
+						displayFeed();
+					}
 				});
 			},1000)
 		}
@@ -151,8 +153,8 @@
 					<form id="viewForm">
 						<label>Background:</label>
 						<div class="form-group-sm">
-							@Html.RadioButton("background", "baseline", true) <label>Baseline</label><br />
-							@Html.RadioButton("background", "feed", false) <label>Camera feed</label><br />
+							@Html.RadioButton("background", "baseline", false) <label>Baseline</label><br />
+							@Html.RadioButton("background", "feed", true) <label>Camera feed</label><br />
 							@Html.RadioButton("background", "none", false) <label>None</label><br />
 							@Html.CheckBox("annotations", true) <label>Show Annotations</label>
 						</div>
