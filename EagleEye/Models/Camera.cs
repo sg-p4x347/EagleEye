@@ -13,7 +13,8 @@ namespace EagleEye.Models
 		Gage Coates
 
 	Purpose:
-		Defines a unique camera instance
+		Defines a unique camera instance that maintains
+		a current image
 
 	Dependencies:
 		Bitmap:

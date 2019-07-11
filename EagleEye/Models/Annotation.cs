@@ -12,7 +12,8 @@ namespace EagleEye.Models
 
 	Purpose:
 		Defines a set of points that make up a 2D region
-		marked as either Parking or Isle
+		marked as a specific Type, which is defined by
+		the AnnotationType enum
 
 	Dependencies:
 		Vector2:
@@ -33,31 +34,71 @@ namespace EagleEye.Models
 		}
 		/*--------------------------------------------------
 		Purpose:
-			Adds a point to the Points collection
+			Adds a point to the Points collection, ensuring
+			there is a maximum of 4 points sorted in a uniform
+			order about their common center
 		--------------------------------------------------*/
 		public void Add(Vector2 point)
 		{
-			Points.Add(point);
+			if (Points.Count < 4)
+			{
+				Points.Add(point);
+				Points.Sort(new PointSorter(Points.Centroid()));
+			}
 		}
+		/*---------------------------------------------------
+		Purpose:
+			Calculates the area of a triangle defined by
+			three Vector2 vertices
+
+		Returns:
+			The area of the triangle as a double
+		---------------------------------------------------*/
 		private double TriangleArea(Vector2 a, Vector2 b, Vector2 c)
 		{
 			var ab = b - a;
-			return ab.Length * 0.5 * Math.Abs(ab.Normal().Normalized().Dot(c - a));
+			// Area is defined by 1/2 * base * height
+			// Taking the dot product of one edge (ac) with
+			// a normal vector perpendicular to another edge (ab)
+			// will yield the height of the triangle
+			return 0.5 * ab.Length * Math.Abs(ab.Normal().Normalized().Dot(c - a));
 		}
-		public double Area { get
+		// The convex area bounded by all points
+		public double Area {
+			get
 			{
+				// Sums the area of two adjacent triangles
 				return TriangleArea(Points[0], Points[1], Points[2]) + TriangleArea(Points[0], Points[2], Points[3]);
 			}
 		}
+		/*---------------------------------------------------
+		Purpose:
+			Determines whether the given point is contained
+			within the annotation
+
+		Returns:
+			true if contained, else false
+		---------------------------------------------------*/
 		public bool Contains(Vector2 point)
 		{
+			// Sum the area of all 4 triangles (one triangle for each point in the annotation)
 			double area = 0.0;
 			for (int i = 0; i < Points.Count; i++)
 			{
 				area += TriangleArea(point, Points[i], Points[(i + 1) % Points.Count]);
 			}
+			// If the difference between the actual area and the 4 triangles is not equal, 
+			// the point must lie outside the annotation
 			return Math.Abs(area - Area) <= 0.0001; // A small fudge factor to compensate for floating point inacuraccy
 		}
+		/*---------------------------------------------------
+		Purpose:
+			the Separating Axis Theorem (SAT)
+			Determines whether two convex sets of points intersect
+
+		Returns:
+			true if an intersection is found, else false
+		---------------------------------------------------*/
 		private bool SAT(IList<Vector2> A, IList<Vector2> B)
 		{
 			List<Vector2> axes = new List<Vector2>();
@@ -96,34 +137,6 @@ namespace EagleEye.Models
 			}
 			// Search was exhaustive, there must be an intersection
 			return true;
-		}
-		public bool Intersects(Vector2 start, Vector2 lineDir)
-		{
-			Vector2 normal = lineDir.Normal().Normalized();
-			int? direction = null;
-			foreach (Vector2 point in Points)
-			{
-				double projection = normal.Dot(point - start);
-
-				if (direction == null)
-				{
-					direction = Math.Sign(projection);
-				} else if (direction != Math.Sign(projection)) {
-					return true;
-				}
-			}
-			return false;
-		}
-		public List<Vector2> Midpoints()
-		{
-			List<Vector2> midpoints = new List<Vector2>();
-			for (int i = 0; i < 4; i++)
-			{
-				Vector2 a = Points[i];
-				Vector2 b = Points[(i + 1) % 4];
-				midpoints.Add((a + b) / 2);
-			}
-			return midpoints;
 		}
 		// A unique identifier
 		public int ID { get; private set; } = -1;

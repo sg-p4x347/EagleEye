@@ -149,7 +149,7 @@
     <Compile Include="Models\IID.cs" />
     <Compile Include="Models\Json.cs" />
     <Compile Include="Models\ParkingLot.cs" />
-    <Compile Include="Models\PointSorter.cs" />
+    <Compile Include="Models\Geometry\PointSorter.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Tests.cs" />

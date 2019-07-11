@@ -9,8 +9,7 @@ namespace EagleEye.Tests
 	{
 		public static void RunTests() {
 			EagleEye.Models.Geometry.Vector2 vector = new Models.Geometry.Vector2(1, 0);
-			//JsonImport();
-			Intersection();
+			//JsonImport();\
 		}
 		static ParkingLot TestLot()
 		{
@@ -70,15 +69,6 @@ namespace EagleEye.Tests
 			using (System.IO.StreamWriter stream = new System.IO.StreamWriter(HttpRuntime.AppDomainAppPath + "/App_Data/test_export.json")) {
 				json.Export(stream);
 			}
-		}
-		static void Intersection()
-		{
-			Annotation isle = new Annotation(0, Annotation.AnnotationType.Isle);
-			isle.Points.Add(new Models.Geometry.Vector2(0, 0));
-			isle.Points.Add(new Models.Geometry.Vector2(0.5, 0));
-			isle.Points.Add(new Models.Geometry.Vector2(0.5, 0.5));
-			isle.Points.Add(new Models.Geometry.Vector2(0, 0.5));
-			bool test = isle.Intersects(new Models.Geometry.Vector2(0.5, 1), new Models.Geometry.Vector2(1, -.5));
 		}
 	}
 }
