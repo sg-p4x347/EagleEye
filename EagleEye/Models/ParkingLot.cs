@@ -13,7 +13,9 @@ namespace EagleEye.Models
 			Gage Coates
 
 		Purpose:
-			Purpose
+			Stores accociated annotation data, baseline,
+			and camera reference. Updates annotation state
+			based on camera state
 
 		Dependencies:
 			Bitmap:
