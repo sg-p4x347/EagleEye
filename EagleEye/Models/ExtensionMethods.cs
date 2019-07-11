@@ -9,6 +9,8 @@ namespace EagleEye.Models
 {
 	static class ExtensionMethods
 	{
+		//--------------------------------------------------
+		// Bitmap extensions
 		public static bool SameSize(this Bitmap a, Bitmap b)
 		{
 			return a.Width == b.Width && a.Height == b.Height;
@@ -274,10 +276,29 @@ namespace EagleEye.Models
 			}
 			return result;
 		}
+
+		//--------------------------------------------------
+		// Color extensions
 		static public double Value(this Color color)
 		{
 			// 765.0 is 255 * 3, e.g. the maximum value
 			return (color.R + color.G + color.B) / 765.0;
+		}
+
+		//--------------------------------------------------
+		// IEnumerable<Vector2> extensions
+
+		/*---------------------------------------------------
+		Purpose:
+			Calculates the average center point from a collection
+			of Vector2 instances
+
+		Returns:
+			A Vector2 instance representing the center point
+		---------------------------------------------------*/
+		static public Geometry.Vector2 Centroid(this IEnumerable<Geometry.Vector2> vertices)
+		{
+			return new Geometry.Vector2(vertices.Average(v => v.X), vertices.Average(v => v.Y));
 		}
 	}
 }
