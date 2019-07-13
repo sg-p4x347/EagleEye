@@ -6,13 +6,37 @@ using System.IO;
 using System.Text;
 namespace EagleEye.Models
 {
+	/*--------------------------------------------------
+	Developer:
+		Gage Coates
+
+	Purpose:
+		Parses a json formated stream of characters into
+		an tree structure of Json instances
+
+	Notes:
+		Every node in the tree, including primives, are
+		stored as Json instances differentiated by
+		the Type property
+	--------------------------------------------------*/
 	public class Json
 	{
+		/*---------------------------------------------------
+		Purpose:
+			Parses a stream into a Json tree
+
+		Returns:
+			A Json object representing the entire stream
+		---------------------------------------------------*/
 		static public Json Import(StreamReader stream) {
 			int i = 0;
 			string json = stream.ReadToEnd();
 			return ParseTree(ref json, ref i);
 		}
+		/*---------------------------------------------------
+		Purpose:
+			Serializes the Json tree to a stream
+		---------------------------------------------------*/
 		public void Export(StreamWriter stream)
 		{
 			switch (Type)
@@ -93,6 +117,7 @@ namespace EagleEye.Models
 				return json;
 			}
 		}
+		// Creates a new Array instace
 		public static Json Array
 		{
 			get
@@ -103,6 +128,7 @@ namespace EagleEye.Models
 				return json;
 			}
 		}
+		// Creates a new Object instance
 		public static Json Object
 		{
 			get
@@ -113,30 +139,52 @@ namespace EagleEye.Models
 				return json;
 			}
 		}
+		// The raw data associated with this Json node
+		// This is only used for primitive types
 		private string Data { get; set; }
+		// Differentiates Json instance types
 		public JsonType Type { get; private set; }
+		// The child instances, primitives do not use this
 		private List<Json> Children { get; set; }
+		// Defines different parsing states
 		private enum ParsingState
 		{
+
 			None,
+			//--------------------------------------------------
+			// Primitive types (has a value for Data)
 			String,
 			Number,
 			True,
 			False,
 			Null,
 			Undefined,
+			//--------------------------------------------------
+			// Complex types (contains children)
 			Object,
 			Array,
 		}
 		public enum JsonType
 		{
+			//--------------------------------------------------
+			// Primitive types (has a value for Data)
 			Null,
 			String,
 			Number,
 			Boolean,
+			//--------------------------------------------------
+			// Complex types (contains children)
 			Object,
 			Array,
 		}
+		/*---------------------------------------------------
+		Purpose:
+			Recursively parses the input string as a Json node starting at
+			index i
+
+		Returns:
+			A Json node
+		---------------------------------------------------*/
 		static private Json ParseTree(ref string json, ref int i)
 		{
 			ParsingState state = ParsingState.None;
@@ -251,6 +299,13 @@ namespace EagleEye.Models
 			}
 			return root;
 		}
+		/*---------------------------------------------------
+		Purpose:
+			Tests whether this Object instance contains a key
+
+		Returns:
+			true if the key is present, else false
+		---------------------------------------------------*/
 		public bool ContainsKey(string key)
 		{
 			if (Type != JsonType.Object)
@@ -258,36 +313,61 @@ namespace EagleEye.Models
 
 			return Children.Any(c => c.Data == key);
 		}
+		/*---------------------------------------------------
+		Purpose:
+			Returns the value assocated with the given key
+			if this is an Object
+
+		Returns:
+			A Json node if the value is found, 
+			else a null (not a Null instance)
+		---------------------------------------------------*/
 		public Json this[string key]
 		{
 			get
 			{
-				return Children.First(c => c.Data == key).Children.First();
+				if (Type == JsonType.Object)
+					return Children.First(c => c.Data == key).Children.First();
+				return null;
 			}
 			set
 			{
-
-				Json jsonKey = Children.Find(c => c.Data == key);
-				if (jsonKey != null)
+				if (Type == JsonType.Object)
 				{
-					jsonKey.Children[0] = value;
-				} else
-				{
-					jsonKey = new Json(key);
-					jsonKey.Children = new List<Json> { value };
-					Children.Add(jsonKey);
+					Json jsonKey = Children.Find(c => c.Data == key);
+					if (jsonKey != null)
+					{
+						jsonKey.Children[0] = value;
+					}
+					else
+					{
+						jsonKey = new Json(key);
+						jsonKey.Children = new List<Json> { value };
+						Children.Add(jsonKey);
+					}
 				}
 			}
 		}
+		/*---------------------------------------------------
+		Purpose:
+			Returns the value at the given index if this is an
+			Array
+
+		Returns:
+			A Json node if found, else null (not a Null instance)
+		---------------------------------------------------*/
 		public Json this[int index]
 		{
 			get
 			{
-				return Children.ElementAt(index);
+				if (Type == JsonType.Array)
+					return Children.ElementAt(index);
+				return null;
 			}
 			set
 			{
-				Children[index] = value;
+				if (Type == JsonType.Array)
+					Children[index] = value;
 			}
 		}
 		public int Count
@@ -299,6 +379,10 @@ namespace EagleEye.Models
 				return 0;
 			}
 		}
+		/*---------------------------------------------------
+		Purpose:
+			Adds the Json node to an Array
+		---------------------------------------------------*/
 		public void Add(Json json)
 		{
 			if (Type == JsonType.Array)
@@ -306,6 +390,9 @@ namespace EagleEye.Models
 				Children.Add(json);
 			}
 		}
+		//--------------------------------------------------
+		// Implict conversions from .NET primitives 
+		// to Json primitives
 		public static implicit operator Json(int number)
 		{
 			return new Json(number);
@@ -322,6 +409,9 @@ namespace EagleEye.Models
 		{
 			return new Json(boolean);
 		}
+		//--------------------------------------------------
+		// Implict conversions from Json primitives
+		// to .NET primitives
 		public static implicit operator int(Json json)
 		{
 			return Int32.Parse(json.Data);
