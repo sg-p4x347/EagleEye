@@ -8,25 +8,25 @@ namespace EagleEye.Models
 {
 	public class ParkingLot : IID
 	{
-		/*--------------------------------------------------
-		Developer:
-			Gage Coates
+		/// <summary>
+		//Developer:
+		//	Gage Coates
 
-		Purpose:
-			Stores accociated annotation data, baseline,
-			and camera reference. Updates annotation state
-			based on camera state
+		//Purpose:
+		//	Stores accociated annotation data, baseline,
+		//	and camera reference. Updates annotation state
+		//	based on camera state
 
-		Dependencies:
-			Bitmap:
-				Defines the baseline image
-			Camera:
-				A parking lot must have an associated camera
-				to compare against the baseline
-			Annotation:
-				Defines regions in the baseline that should be
-				included in calculations
-		--------------------------------------------------*/
+		//Dependencies:
+		//	Bitmap:
+		//		Defines the baseline image
+		//	Camera:
+		//		A parking lot must have an associated camera
+		//		to compare against the baseline
+		//	Annotation:
+		//		Defines regions in the baseline that should be
+		//		included in calculations
+		/// </summary>
 		public ParkingLot(int id,string name, Camera camera)
 		{
 			ID = id;
@@ -34,11 +34,11 @@ namespace EagleEye.Models
 			Camera = camera;
 			Camera.Changed += CameraChangeHandler;
 		}
-		/*---------------------------------------------------
-		Purpose:
-			Subsribes to the Camera.Changed event and
-			kicks off an update
-		---------------------------------------------------*/
+		/// <summary>
+		//Purpose:
+		//	Subsribes to the Camera.Changed event and
+		//	kicks off an update
+		/// </summary>
 		private void CameraChangeHandler(object sender, EventArgs e)
 		{
 			Update();
@@ -92,11 +92,11 @@ namespace EagleEye.Models
 				return Annotations.Where(a => a.Type == Annotation.AnnotationType.Isle);
 			}
 		}
-		/*---------------------------------------------------
-		Purpose:
-			Encapsulates the entire parking lot state
-			change, triggerd by Camera changes
-		---------------------------------------------------*/
+		/// <summary>
+		//Purpose:
+		//	Encapsulates the entire parking lot state
+		//	change, triggerd by Camera changes
+		/// </summary>
 		public void Update()
 		{
 			if (Baseline != null && Baseline.SameSize(Camera.CurrentImage))
@@ -144,19 +144,19 @@ namespace EagleEye.Models
 				}
 			}
 		}
-		/*---------------------------------------------------
-		Purpose:
-			Returns the average difference for each color channel
-			between two images bounded by the specified
-			annotations
+		/// <summary>
+		//Purpose:
+		//	Returns the average difference for each color channel
+		//	between two images bounded by the specified
+		//	annotations
 
-		Returns:
-			A Tuple of signed integers that represent an average
-			difference in R G B channels
-		Notes:
-			The returned values can be negative if averageB
-			is "brighter" than averageA
-		---------------------------------------------------*/
+		//Returns:
+		//	A Tuple of signed integers that represent an average
+		//	difference in R G B channels
+		//Notes:
+		//	The returned values can be negative if averageB
+		//	is "brighter" than averageA
+		/// </summary>
 		private Tuple<int, int, int> AverageDifference(Bitmap a, Bitmap b, IEnumerable<Annotation> clip)
 		{
 			var averageA = a.Average((x, y) => clip.Any(c => c.Contains(new Vector2((double)x / a.Width, (double)y / a.Height))));

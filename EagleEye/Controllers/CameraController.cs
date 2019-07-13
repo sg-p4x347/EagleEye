@@ -9,63 +9,63 @@ namespace EagleEye.Controllers
 
     public class CameraController : Controller
     {
-		/*--------------------------------------------------
-		Developer:
-			Gage Coates
+		/// <summary>
+		//Developer:
+		//	Gage Coates
 
-		Purpose:
-			Provides a common interface for requests that
-			directly involve Camera models
+		//Purpose:
+		//	Provides a common interface for requests that
+		//	directly involve Camera models
 
-		Dependencies:
-			Controller:
-				Base MVC controller methods
-			Camera:
-				The subject of operations
-			Repository:
-				Used to retrieve and update Camera instances
-		--------------------------------------------------*/
+		//Dependencies:
+		//	Controller:
+		//		Base MVC controller methods
+		//	Camera:
+		//		The subject of operations
+		//	Repository:
+		//		Used to retrieve and update Camera instances
+		/// </summary>
 		public CameraController()
 		{
 		}
 		//--------------------------------------------------
 		// Views
 
-		/*--------------------------------------------------
-		Purpose:
-			Creates a view that lists all cameras
+		/// <summary>
+		//Purpose:
+		//	Creates a view that lists all cameras
 
-		Returns:
-			An html view
-		--------------------------------------------------*/
+		//Returns:
+		//	An html view
+		/// </summary>
 		[HttpGet]
 		[Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             return View(Repository<Camera>.Models.Values.Select(m => new Views.Camera.Camera(m)).ToList());
         }
-		/*--------------------------------------------------
-		Purpose:
-			Creates a partial view that defines a select list
-			of all cameras
+		/// <summary>
+		//Purpose:
+		//	Creates a partial view that defines a select list
+		//	of all cameras
 
-		Returns:
-			An html partial view
-		--------------------------------------------------*/
+		//Returns:
+		//	An html partial view
+		/// </summary>
 		[HttpGet]
 		[Authorize(Roles = "Administrator")]
 		public ActionResult ListView()
 		{
 			return PartialView("List", Repository<Camera>.Models.Values.Select(c => new Views.Camera.Camera(c)).ToList());
 		}
-		/*--------------------------------------------------
-		Purpose:
-			Creates a view that allows for the setup of a
-			camera instace by name
+		/// <summary>
+		//Purpose:
+		//	Creates a view that allows for the setup of a
+		//	camera instace by name
 
-		Returns:
-			An html view
-		--------------------------------------------------*/
+		//Returns:
+		//	An html view
+		/// </summary>
 		[HttpGet]
 		[Authorize(Roles = "Administrator")]
 		public ActionResult Client()
@@ -75,14 +75,14 @@ namespace EagleEye.Controllers
 		//--------------------------------------------------
 		// REST
 
-		/*--------------------------------------------------
-		Purpose:
-			Creates a Json representation of a camera
-			model
+		/// <summary>
+		//Purpose:
+		//	Creates a Json representation of a camera
+		//	model
 
-		Returns:
-			A json response body
-		--------------------------------------------------*/
+		//Returns:
+		//	A json response body
+		/// </summary>
 		[HttpGet]
 		public ActionResult Get(int id)
 		{
@@ -93,13 +93,13 @@ namespace EagleEye.Controllers
 			}
 			return new HttpNotFoundResult();
 		}
-		/*--------------------------------------------------
-		Purpose:
-			Creates a new Camera instance by name
+		/// <summary>
+		//Purpose:
+		//	Creates a new Camera instance by name
 
-		Returns:
-			An empty response
-		--------------------------------------------------*/
+		//Returns:
+		//	An empty response
+		/// </summary>
 		[HttpGet]
 		[Authorize(Roles = "Administrator")]
 		public ActionResult Create(string name)
@@ -108,13 +108,13 @@ namespace EagleEye.Controllers
 			EagleEyeConfig.ExportDatabase();
 			return new EmptyResult();
 		}
-		/*--------------------------------------------------
-		Purpose:
-			Updates a Camera model
+		/// <summary>
+		//Purpose:
+		//	Updates a Camera model
 
-		Returns:
-			An empty response
-		--------------------------------------------------*/
+		//Returns:
+		//	An empty response
+		/// </summary>
 		[HttpPost]
 		[Authorize(Roles = "Administrator")]
 		public ActionResult Update(Views.Camera.Camera camera)
@@ -136,13 +136,13 @@ namespace EagleEye.Controllers
 			}
 			return new EmptyResult();
 		}
-		/*--------------------------------------------------
-		Purpose:
-			Deletes a Camera model by id
+		/// <summary>
+		//Purpose:
+		//	Deletes a Camera model by id
 
-		Returns:
-			An empty response
-		--------------------------------------------------*/
+		//Returns:
+		//	An empty response
+		/// </summary>
 		[HttpGet]
 		[Authorize(Roles = "Administrator")]
 		public ActionResult Delete(int id)
@@ -152,16 +152,16 @@ namespace EagleEye.Controllers
 			EagleEyeConfig.ExportDatabase();
 			return new EmptyResult();
 		}
-		/*--------------------------------------------------
-		Purpose:
-			Tries to get a camera by id, returning a boolean
-			value for success
+		/// <summary>
+		//Purpose:
+		//	Tries to get a camera by id, returning a boolean
+		//	value for success
 
-		Returns:
-			If successful, the model is passed out through
-			the camera parameter and true is returned, else
-			false is returned
-		--------------------------------------------------*/
+		//Returns:
+		//	If successful, the model is passed out through
+		//	the camera parameter and true is returned, else
+		//	false is returned
+		/// </summary>
 		private bool TryGetCamera(int id, out Camera camera)
 		{
 			if (Repository<Camera>.Contains(id))

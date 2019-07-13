@@ -6,43 +6,40 @@ using System.Web.Mvc;
 using System.Security.Claims;
 namespace EagleEye.Controllers
 {
-	/*--------------------------------------------------
-	Developer:
-		Gage Coates
-
-	Purpose:
-		Provides authentication actions for unauthenticated
-		users to login to the system as either an administrator
-		or standard user
-
-	Dependencies:
-		Controller:
-			Base MVC controller methods
-	--------------------------------------------------*/
+	/// <summary>
+	/// Developer:
+	/// 	Gage Coates
+	/// 
+	/// Purpose:
+	///		Provides authentication actions for unauthenticated
+	///		users to login to the system as either an administrator
+	///		or standard user
+	/// 
+	/// Dependencies:
+	/// 	Controller:
+	///			Base MVC controller methods
+	/// </summary>
 	[AllowAnonymous]
 	public class UserController : Controller
-    {
-		/*--------------------------------------------------
-		Purpose:
-			Creates a login view
-
-		Returns:
-			An html view
-		--------------------------------------------------*/
+    { 
+		/// <summary>
+		/// Creates a login view
+		/// </summary>
+		/// <returns>
+		/// An html view
+		/// </returns>
 		[HttpGet]
         public ActionResult Index()
         {
             return View("Login",new Views.User.User());
         }
-		/*--------------------------------------------------
-		Purpose:
-			Logs a user in and provisions them with the
-			appropriate role. Subsiquent requests are
-			authenticated with this role
+		/// <summary>
+		/// 	Logs a user in and provisions them with the
+		/// 	appropriate role. Subsiquent requests are
+		///	authenticated with this role
+		/// </summary>
+		/// <returns>A redirect to /Home/Index</returns>
 
-		Returns:
-			A redirect to /Home/Index
-		--------------------------------------------------*/
 		[HttpPost]
 		public ActionResult Login(Views.User.User user)
 		{
@@ -56,13 +53,13 @@ namespace EagleEye.Controllers
 
 			return RedirectToAction("Index", "Home");
 		}
-		/*--------------------------------------------------
-		Purpose:
-			Logs a user out and unauthenticates requests
+		/// <summary>
+		//Purpose:
+		//	Logs a user out and unauthenticates requests
 
-		Returns:
-			A redirect to /User/Index
-		--------------------------------------------------*/
+		//Returns:
+		//	A redirect to /User/Index
+		/// </summary>
 		[HttpGet]
 		public ActionResult Logout()
 		{

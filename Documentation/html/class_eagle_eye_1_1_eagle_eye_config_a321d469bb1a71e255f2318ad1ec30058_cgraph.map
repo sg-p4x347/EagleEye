@@ -1,0 +1,6 @@
+<map id="EagleEye.EagleEyeConfig.ImportDatabase" name="EagleEye.EagleEyeConfig.ImportDatabase">
+<area shape="rect" id="node1" title=" " alt="" coords="5,49,184,90"/>
+<area shape="rect" id="node2" href="$class_eagle_eye_1_1_models_1_1_json.html#ae79a899679f529bfebb18683afd1c9d1" title=" " alt="" coords="243,5,438,32"/>
+<area shape="rect" id="node3" href="$class_eagle_eye_1_1_models_1_1_repository.html#aca9fded0480d870f0ec7837700243a2b" title=" " alt="" coords="232,56,449,83"/>
+<area shape="rect" id="node4" href="$class_eagle_eye_1_1_models_1_1_annotation.html#a47912a5775f0ead932d1cddb43213cd1" title="Adds a point to the Points collection, ensuring there is a maximum of 4 points sorted in a uniform or..." alt="" coords="232,107,449,133"/>
+</map>

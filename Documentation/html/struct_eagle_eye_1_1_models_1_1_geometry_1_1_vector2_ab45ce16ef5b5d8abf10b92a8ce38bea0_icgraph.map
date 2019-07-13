@@ -1,0 +1,8 @@
+<map id="EagleEye.Models.Geometry.Vector2.Vector2" name="EagleEye.Models.Geometry.Vector2.Vector2">
+<area shape="rect" id="node1" title="Constructs a new vector from two components" alt="" coords="243,136,432,177"/>
+<area shape="rect" id="node2" href="$struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2.html#a22a207e259bc6984ae867a3911a93f46" title="Scales a vector by a scalar value" alt="" coords="5,5,195,47"/>
+<area shape="rect" id="node3" href="$struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2.html#a4306acd1970edab7db3d8654d2eb5c9d" title="Scales a vector by a scalar value" alt="" coords="5,71,195,112"/>
+<area shape="rect" id="node4" href="$struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2.html#a2fee5bfd7f9b9f9cafe352390bef52a3" title="Adds two vectors component&#45;wise" alt="" coords="5,136,195,177"/>
+<area shape="rect" id="node5" href="$struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2.html#a349448334f4d2eb0c85774289baf399d" title="Subtracts two vectors component&#45;wise" alt="" coords="5,201,195,243"/>
+<area shape="rect" id="node6" href="$struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2.html#aaf51a15fdc764b60449c16358a1520ee" title="Creates a perpindicualr vector with the same magnitude" alt="" coords="5,267,195,308"/>
+</map>

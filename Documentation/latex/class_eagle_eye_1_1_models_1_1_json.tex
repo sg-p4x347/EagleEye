@@ -1,0 +1,328 @@
+\hypertarget{class_eagle_eye_1_1_models_1_1_json}{}\section{Eagle\+Eye.\+Models.\+Json Class Reference}
+\label{class_eagle_eye_1_1_models_1_1_json}\index{EagleEye.Models.Json@{EagleEye.Models.Json}}
+
+
+ 
+
+
+
+
+Collaboration diagram for Eagle\+Eye.\+Models.\+Json\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_eagle_eye_1_1_models_1_1_json__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133c}{Json\+Type}} \{ \newline
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133cabbb93ef26e3c101ff11cdd21cab08a94}{Json\+Type.\+Null}}, 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133ca27118326006d3829667a400ad23d5d98}{Json\+Type.\+String}}, 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133cab2ee912b91d69b435159c7c3f6df7f5f}{Json\+Type.\+Number}}, 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133ca27226c864bac7454a8504f8edb15d95b}{Json\+Type.\+Boolean}}, 
+\newline
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133ca497031794414a552435f90151ac3b54b}{Json\+Type.\+Object}}, 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133ca4410ec34d9e6c1a68100ca0ce033fb17}{Json\+Type.\+Array}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_ad911e1ca9e6ba8a8ae4c85152593c691}{Export}} (Stream\+Writer stream)
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_ad5ccac28bacaf78710b8d7fb73911426}{Json}} (string str)
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a2b753342c141001d4d8ba07c2040728f}{Json}} (int number)
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_aeab0ffd54a14d95ef7a275f665ef6d0c}{Json}} (double number)
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_ae12564ad6ef249ccd5bbdd57560db23d}{Json}} (bool boolean)
+\item 
+bool \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a140f24f32b5b39c66584f13eb2fbf586}{Contains\+Key}} (string key)
+\item 
+void \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a4b23b3ec238276219d3d953b385fac93}{Add}} (\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} json)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_ae79a899679f529bfebb18683afd1c9d1}{Import}} (Stream\+Reader stream)
+\item 
+static implicit \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a2116f2d9d1d806f4cdc6afee774b7945}{operator Json}} (int number)
+\item 
+static implicit \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a2a8bcde77f6eacf7e1b80e69cdbf71dd}{operator Json}} (double number)
+\item 
+static implicit \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a5c1034bc7b7079844e4a1a22af60e098}{operator Json}} (string str)
+\item 
+static implicit \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_aae9601c0e30fb42bab9eebfa7493bf37}{operator Json}} (bool boolean)
+\item 
+static implicit \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a2af5ba2026820d0c8fdc671ee0b46a4d}{operator int}} (\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} json)
+\item 
+static implicit \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_aa26017e55f0d47af0b446c02c0899102}{operator double}} (\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} json)
+\item 
+static implicit \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_adddb99cd1e17f4bd10547a6178f61288}{operator string}} (\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} json)
+\item 
+static implicit \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a396aab5debc375cb57b9e2ce58c932fd}{operator bool}} (\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} json)
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a5a747d9202e52fdcfba6fd6cc821d5f0}{Null}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a35e8187d23b3971fe9064b643fe66a5a}{Array}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a2196bd75222570b3e481efc887c28bf5}{Object}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133c}{Json\+Type}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a8b9b9f8ed1df50c3d00d2bd7cbbd9e46}{Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a5406f24d73c683b7cfd14fcc16e1292b}{this\mbox{[}string key\mbox{]}}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a6a06a70ad6294d135adfa0d66b8b5978}{this\mbox{[}int index\mbox{]}}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+int \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_a3f1f39dbe0728fa7591a88435c5ce7b4}{Count}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133c}\label{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133c}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!JsonType@{JsonType}}
+\index{JsonType@{JsonType}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{JsonType}{JsonType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133c}{Eagle\+Eye.\+Models.\+Json.\+Json\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Null@{Null}!EagleEye.Models.Json@{EagleEye.Models.Json}}\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Null@{Null}}}\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133cabbb93ef26e3c101ff11cdd21cab08a94}\label{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133cabbb93ef26e3c101ff11cdd21cab08a94}} 
+Null&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{String@{String}!EagleEye.Models.Json@{EagleEye.Models.Json}}\index{EagleEye.Models.Json@{EagleEye.Models.Json}!String@{String}}}\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133ca27118326006d3829667a400ad23d5d98}\label{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133ca27118326006d3829667a400ad23d5d98}} 
+String&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Number@{Number}!EagleEye.Models.Json@{EagleEye.Models.Json}}\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Number@{Number}}}\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133cab2ee912b91d69b435159c7c3f6df7f5f}\label{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133cab2ee912b91d69b435159c7c3f6df7f5f}} 
+Number&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Boolean@{Boolean}!EagleEye.Models.Json@{EagleEye.Models.Json}}\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Boolean@{Boolean}}}\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133ca27226c864bac7454a8504f8edb15d95b}\label{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133ca27226c864bac7454a8504f8edb15d95b}} 
+Boolean&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Object@{Object}!EagleEye.Models.Json@{EagleEye.Models.Json}}\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Object@{Object}}}\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133ca497031794414a552435f90151ac3b54b}\label{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133ca497031794414a552435f90151ac3b54b}} 
+Object&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Array@{Array}!EagleEye.Models.Json@{EagleEye.Models.Json}}\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Array@{Array}}}\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133ca4410ec34d9e6c1a68100ca0ce033fb17}\label{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133ca4410ec34d9e6c1a68100ca0ce033fb17}} 
+Array&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_ad5ccac28bacaf78710b8d7fb73911426}\label{class_eagle_eye_1_1_models_1_1_json_ad5ccac28bacaf78710b8d7fb73911426}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Json@{Json}}
+\index{Json@{Json}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{Json()}{Json()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Eagle\+Eye.\+Models.\+Json.\+Json (\begin{DoxyParamCaption}\item[{string}]{str }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a2b753342c141001d4d8ba07c2040728f}\label{class_eagle_eye_1_1_models_1_1_json_a2b753342c141001d4d8ba07c2040728f}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Json@{Json}}
+\index{Json@{Json}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{Json()}{Json()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Eagle\+Eye.\+Models.\+Json.\+Json (\begin{DoxyParamCaption}\item[{int}]{number }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_aeab0ffd54a14d95ef7a275f665ef6d0c}\label{class_eagle_eye_1_1_models_1_1_json_aeab0ffd54a14d95ef7a275f665ef6d0c}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Json@{Json}}
+\index{Json@{Json}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{Json()}{Json()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Eagle\+Eye.\+Models.\+Json.\+Json (\begin{DoxyParamCaption}\item[{double}]{number }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_ae12564ad6ef249ccd5bbdd57560db23d}\label{class_eagle_eye_1_1_models_1_1_json_ae12564ad6ef249ccd5bbdd57560db23d}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Json@{Json}}
+\index{Json@{Json}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{Json()}{Json()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Eagle\+Eye.\+Models.\+Json.\+Json (\begin{DoxyParamCaption}\item[{bool}]{boolean }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a4b23b3ec238276219d3d953b385fac93}\label{class_eagle_eye_1_1_models_1_1_json_a4b23b3ec238276219d3d953b385fac93}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Add@{Add}}
+\index{Add@{Add}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void Eagle\+Eye.\+Models.\+Json.\+Add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}}}]{json }\end{DoxyParamCaption})}
+
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_json_a4b23b3ec238276219d3d953b385fac93_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a140f24f32b5b39c66584f13eb2fbf586}\label{class_eagle_eye_1_1_models_1_1_json_a140f24f32b5b39c66584f13eb2fbf586}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!ContainsKey@{ContainsKey}}
+\index{ContainsKey@{ContainsKey}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{ContainsKey()}{ContainsKey()}}
+{\footnotesize\ttfamily bool Eagle\+Eye.\+Models.\+Json.\+Contains\+Key (\begin{DoxyParamCaption}\item[{string}]{key }\end{DoxyParamCaption})}
+
+
+
+
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_ad911e1ca9e6ba8a8ae4c85152593c691}\label{class_eagle_eye_1_1_models_1_1_json_ad911e1ca9e6ba8a8ae4c85152593c691}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Export@{Export}}
+\index{Export@{Export}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{Export()}{Export()}}
+{\footnotesize\ttfamily void Eagle\+Eye.\+Models.\+Json.\+Export (\begin{DoxyParamCaption}\item[{Stream\+Writer}]{stream }\end{DoxyParamCaption})}
+
+
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{class_eagle_eye_1_1_models_1_1_json_ad911e1ca9e6ba8a8ae4c85152593c691_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{class_eagle_eye_1_1_models_1_1_json_ad911e1ca9e6ba8a8ae4c85152593c691_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_ae79a899679f529bfebb18683afd1c9d1}\label{class_eagle_eye_1_1_models_1_1_json_ae79a899679f529bfebb18683afd1c9d1}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Import@{Import}}
+\index{Import@{Import}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{Import()}{Import()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} Eagle\+Eye.\+Models.\+Json.\+Import (\begin{DoxyParamCaption}\item[{Stream\+Reader}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_json_ae79a899679f529bfebb18683afd1c9d1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a396aab5debc375cb57b9e2ce58c932fd}\label{class_eagle_eye_1_1_models_1_1_json_a396aab5debc375cb57b9e2ce58c932fd}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily static implicit Eagle\+Eye.\+Models.\+Json.\+operator bool (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}}}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_aa26017e55f0d47af0b446c02c0899102}\label{class_eagle_eye_1_1_models_1_1_json_aa26017e55f0d47af0b446c02c0899102}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!operator double@{operator double}}
+\index{operator double@{operator double}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{operator double()}{operator double()}}
+{\footnotesize\ttfamily static implicit Eagle\+Eye.\+Models.\+Json.\+operator double (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}}}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a2af5ba2026820d0c8fdc671ee0b46a4d}\label{class_eagle_eye_1_1_models_1_1_json_a2af5ba2026820d0c8fdc671ee0b46a4d}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!operator int@{operator int}}
+\index{operator int@{operator int}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{operator int()}{operator int()}}
+{\footnotesize\ttfamily static implicit Eagle\+Eye.\+Models.\+Json.\+operator int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}}}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a2116f2d9d1d806f4cdc6afee774b7945}\label{class_eagle_eye_1_1_models_1_1_json_a2116f2d9d1d806f4cdc6afee774b7945}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!operator Json@{operator Json}}
+\index{operator Json@{operator Json}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{operator Json()}{operator Json()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily static implicit Eagle\+Eye.\+Models.\+Json.\+operator \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} (\begin{DoxyParamCaption}\item[{int}]{number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a2a8bcde77f6eacf7e1b80e69cdbf71dd}\label{class_eagle_eye_1_1_models_1_1_json_a2a8bcde77f6eacf7e1b80e69cdbf71dd}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!operator Json@{operator Json}}
+\index{operator Json@{operator Json}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{operator Json()}{operator Json()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily static implicit Eagle\+Eye.\+Models.\+Json.\+operator \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} (\begin{DoxyParamCaption}\item[{double}]{number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a5c1034bc7b7079844e4a1a22af60e098}\label{class_eagle_eye_1_1_models_1_1_json_a5c1034bc7b7079844e4a1a22af60e098}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!operator Json@{operator Json}}
+\index{operator Json@{operator Json}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{operator Json()}{operator Json()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily static implicit Eagle\+Eye.\+Models.\+Json.\+operator \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} (\begin{DoxyParamCaption}\item[{string}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_aae9601c0e30fb42bab9eebfa7493bf37}\label{class_eagle_eye_1_1_models_1_1_json_aae9601c0e30fb42bab9eebfa7493bf37}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!operator Json@{operator Json}}
+\index{operator Json@{operator Json}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{operator Json()}{operator Json()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily static implicit Eagle\+Eye.\+Models.\+Json.\+operator \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} (\begin{DoxyParamCaption}\item[{bool}]{boolean }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_adddb99cd1e17f4bd10547a6178f61288}\label{class_eagle_eye_1_1_models_1_1_json_adddb99cd1e17f4bd10547a6178f61288}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!operator string@{operator string}}
+\index{operator string@{operator string}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{operator string()}{operator string()}}
+{\footnotesize\ttfamily static implicit Eagle\+Eye.\+Models.\+Json.\+operator string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}}}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a35e8187d23b3971fe9064b643fe66a5a}\label{class_eagle_eye_1_1_models_1_1_json_a35e8187d23b3971fe9064b643fe66a5a}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Array@{Array}}
+\index{Array@{Array}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{Array}{Array}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} Eagle\+Eye.\+Models.\+Json.\+Array\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a3f1f39dbe0728fa7591a88435c5ce7b4}\label{class_eagle_eye_1_1_models_1_1_json_a3f1f39dbe0728fa7591a88435c5ce7b4}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Count@{Count}}
+\index{Count@{Count}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{Count}{Count}}
+{\footnotesize\ttfamily int Eagle\+Eye.\+Models.\+Json.\+Count\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a5a747d9202e52fdcfba6fd6cc821d5f0}\label{class_eagle_eye_1_1_models_1_1_json_a5a747d9202e52fdcfba6fd6cc821d5f0}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Null@{Null}}
+\index{Null@{Null}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{Null}{Null}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} Eagle\+Eye.\+Models.\+Json.\+Null\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a2196bd75222570b3e481efc887c28bf5}\label{class_eagle_eye_1_1_models_1_1_json_a2196bd75222570b3e481efc887c28bf5}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Object@{Object}}
+\index{Object@{Object}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{Object}{Object}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} Eagle\+Eye.\+Models.\+Json.\+Object\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a6a06a70ad6294d135adfa0d66b8b5978}\label{class_eagle_eye_1_1_models_1_1_json_a6a06a70ad6294d135adfa0d66b8b5978}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!this\mbox{[}int index\mbox{]}@{this[int index]}}
+\index{this\mbox{[}int index\mbox{]}@{this[int index]}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{this[int index]}{this[int index]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} Eagle\+Eye.\+Models.\+Json.\+this\mbox{[}int index\mbox{]}\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a5406f24d73c683b7cfd14fcc16e1292b}\label{class_eagle_eye_1_1_models_1_1_json_a5406f24d73c683b7cfd14fcc16e1292b}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!this\mbox{[}string key\mbox{]}@{this[string key]}}
+\index{this\mbox{[}string key\mbox{]}@{this[string key]}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{this[string key]}{this[string key]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json}{Json}} Eagle\+Eye.\+Models.\+Json.\+this\mbox{[}string key\mbox{]}\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_json_a8b9b9f8ed1df50c3d00d2bd7cbbd9e46}\label{class_eagle_eye_1_1_models_1_1_json_a8b9b9f8ed1df50c3d00d2bd7cbbd9e46}} 
+\index{EagleEye.Models.Json@{EagleEye.Models.Json}!Type@{Type}}
+\index{Type@{Type}!EagleEye.Models.Json@{EagleEye.Models.Json}}
+\subsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_json_afdf0e16163f8b9bab5b45d6d01e8133c}{Json\+Type}} Eagle\+Eye.\+Models.\+Json.\+Type\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Gage Omega/\+Programming/\+Eagle\+Eye/\+Eagle\+Eye/\+Models/\mbox{\hyperlink{_json_8cs}{Json.\+cs}}\end{DoxyCompactItemize}

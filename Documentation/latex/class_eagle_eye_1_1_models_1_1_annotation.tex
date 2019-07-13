@@ -1,0 +1,200 @@
+\hypertarget{class_eagle_eye_1_1_models_1_1_annotation}{}\section{Eagle\+Eye.\+Models.\+Annotation Class Reference}
+\label{class_eagle_eye_1_1_models_1_1_annotation}\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}
+
+
+Developer\+: Gage Coates  
+
+
+
+
+Inheritance diagram for Eagle\+Eye.\+Models.\+Annotation\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{class_eagle_eye_1_1_models_1_1_annotation__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Eagle\+Eye.\+Models.\+Annotation\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{class_eagle_eye_1_1_models_1_1_annotation__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9}{Annotation\+Type}} \{ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9abaaacd7280e91aface947a1cc19d0f79}{Annotation\+Type.\+Parking}}, 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9a20f769ca3c0a534fb6a628e793f3b84a}{Annotation\+Type.\+Isle}}, 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9acb17869fe51048b5a5c4c6106551a255}{Annotation\+Type.\+Constant}}
+ \}
+\begin{DoxyCompactList}\small\item\em Differentiates annotation\textquotesingle{}s semantic meaning \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a7dbb2b3cc18d9a83a530bb59172532e8}{Annotation}} (int id, \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9}{Annotation\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Constructs an annotation from a unique ID and type \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a47912a5775f0ead932d1cddb43213cd1}{Add}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} point)
+\begin{DoxyCompactList}\small\item\em Adds a point to the Points collection, ensuring there is a maximum of 4 points sorted in a uniform order about their common center \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_afa6be3269640630b76dce0c9dee1a239}{Contains}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} point)
+\begin{DoxyCompactList}\small\item\em Determines whether the given point is contained within the annotation \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a7aa19d95b7a54855720530c69e9b2500}{Area}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The convex area enclosed by all points \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_aeebf4ecafcfcdf37537dcd03d0cc150e}{ID}} = -\/1\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em A unique identifier \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} $>$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a6a74da70cd09dda23b55cc889e5c84bb}{Points}} = new List$<$\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em A list of points that define the region \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9}{Annotation\+Type}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a06bc959cdecde76cfbea151576ab8ef5}{Type}} = \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9abaaacd7280e91aface947a1cc19d0f79}{Annotation\+Type.\+Parking}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The type of annotation \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a47f59fa94ef8e7709e677aae1397ee00}{Percent\+Difference}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The percentage of occupied pixels \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Developer\+: Gage Coates 
+
+Purpose\+: Defines a set of points that make up a 2D region marked as a specific Type, which is defined by the Annotation\+Type enum
+
+Dependencies\+: Vector2\+: Used to define points 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9}\label{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9}} 
+\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}!AnnotationType@{AnnotationType}}
+\index{AnnotationType@{AnnotationType}!EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}
+\subsubsection{\texorpdfstring{AnnotationType}{AnnotationType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9}{Eagle\+Eye.\+Models.\+Annotation.\+Annotation\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Differentiates annotation\textquotesingle{}s semantic meaning 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Parking@{Parking}!EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}!Parking@{Parking}}}\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9abaaacd7280e91aface947a1cc19d0f79}\label{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9abaaacd7280e91aface947a1cc19d0f79}} 
+Parking&Represents a parking space \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Isle@{Isle}!EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}!Isle@{Isle}}}\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9a20f769ca3c0a534fb6a628e793f3b84a}\label{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9a20f769ca3c0a534fb6a628e793f3b84a}} 
+Isle&Represents a driving isle \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Constant@{Constant}!EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}!Constant@{Constant}}}\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9acb17869fe51048b5a5c4c6106551a255}\label{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9acb17869fe51048b5a5c4c6106551a255}} 
+Constant&Represents a region that does not change, e.\+g. no vehicles can obstruct this region \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_annotation_a7dbb2b3cc18d9a83a530bb59172532e8}\label{class_eagle_eye_1_1_models_1_1_annotation_a7dbb2b3cc18d9a83a530bb59172532e8}} 
+\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}!Annotation@{Annotation}}
+\index{Annotation@{Annotation}!EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}
+\subsubsection{\texorpdfstring{Annotation()}{Annotation()}}
+{\footnotesize\ttfamily Eagle\+Eye.\+Models.\+Annotation.\+Annotation (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9}{Annotation\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Constructs an annotation from a unique ID and type 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & A unique integer ID\\
+\hline
+{\em type} & The type of annotation\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_annotation_a47912a5775f0ead932d1cddb43213cd1}\label{class_eagle_eye_1_1_models_1_1_annotation_a47912a5775f0ead932d1cddb43213cd1}} 
+\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}!Add@{Add}}
+\index{Add@{Add}!EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}
+\subsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void Eagle\+Eye.\+Models.\+Annotation.\+Add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{point }\end{DoxyParamCaption})}
+
+
+
+Adds a point to the Points collection, ensuring there is a maximum of 4 points sorted in a uniform order about their common center 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_annotation_a47912a5775f0ead932d1cddb43213cd1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_annotation_afa6be3269640630b76dce0c9dee1a239}\label{class_eagle_eye_1_1_models_1_1_annotation_afa6be3269640630b76dce0c9dee1a239}} 
+\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}!Contains@{Contains}}
+\index{Contains@{Contains}!EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}
+\subsubsection{\texorpdfstring{Contains()}{Contains()}}
+{\footnotesize\ttfamily bool Eagle\+Eye.\+Models.\+Annotation.\+Contains (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{point }\end{DoxyParamCaption})}
+
+
+
+Determines whether the given point is contained within the annotation 
+
+\begin{DoxyReturn}{Returns}
+true if contained, else false 
+\end{DoxyReturn}
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_annotation_a7aa19d95b7a54855720530c69e9b2500}\label{class_eagle_eye_1_1_models_1_1_annotation_a7aa19d95b7a54855720530c69e9b2500}} 
+\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}!Area@{Area}}
+\index{Area@{Area}!EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}
+\subsubsection{\texorpdfstring{Area}{Area}}
+{\footnotesize\ttfamily double Eagle\+Eye.\+Models.\+Annotation.\+Area\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The convex area enclosed by all points 
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_annotation_aeebf4ecafcfcdf37537dcd03d0cc150e}\label{class_eagle_eye_1_1_models_1_1_annotation_aeebf4ecafcfcdf37537dcd03d0cc150e}} 
+\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}!ID@{ID}}
+\index{ID@{ID}!EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}
+\subsubsection{\texorpdfstring{ID}{ID}}
+{\footnotesize\ttfamily int Eagle\+Eye.\+Models.\+Annotation.\+ID = -\/1\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+A unique identifier 
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_annotation_a47f59fa94ef8e7709e677aae1397ee00}\label{class_eagle_eye_1_1_models_1_1_annotation_a47f59fa94ef8e7709e677aae1397ee00}} 
+\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}!PercentDifference@{PercentDifference}}
+\index{PercentDifference@{PercentDifference}!EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}
+\subsubsection{\texorpdfstring{PercentDifference}{PercentDifference}}
+{\footnotesize\ttfamily double Eagle\+Eye.\+Models.\+Annotation.\+Percent\+Difference\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The percentage of occupied pixels 
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_annotation_a6a74da70cd09dda23b55cc889e5c84bb}\label{class_eagle_eye_1_1_models_1_1_annotation_a6a74da70cd09dda23b55cc889e5c84bb}} 
+\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}!Points@{Points}}
+\index{Points@{Points}!EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}
+\subsubsection{\texorpdfstring{Points}{Points}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}$>$ Eagle\+Eye.\+Models.\+Annotation.\+Points = new List$<$\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}$>$()\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+A list of points that define the region 
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_annotation_a06bc959cdecde76cfbea151576ab8ef5}\label{class_eagle_eye_1_1_models_1_1_annotation_a06bc959cdecde76cfbea151576ab8ef5}} 
+\index{EagleEye.Models.Annotation@{EagleEye.Models.Annotation}!Type@{Type}}
+\index{Type@{Type}!EagleEye.Models.Annotation@{EagleEye.Models.Annotation}}
+\subsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9}{Annotation\+Type}} Eagle\+Eye.\+Models.\+Annotation.\+Type = \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation_a38b72003ea887909fe12d6382092f7d9abaaacd7280e91aface947a1cc19d0f79}{Annotation\+Type.\+Parking}}\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The type of annotation 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Gage Omega/\+Programming/\+Eagle\+Eye/\+Eagle\+Eye/\+Models/\mbox{\hyperlink{_models_2_annotation_8cs}{Annotation.\+cs}}\end{DoxyCompactItemize}

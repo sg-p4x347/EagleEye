@@ -8,18 +8,18 @@ using System.Collections.Concurrent;
 
 namespace EagleEye.Models
 {
-	/*--------------------------------------------------
-	Developer:
-		Gage Coates
+	/// <summary>
+	//Developer:
+	//	Gage Coates
 
-	Purpose:
-		Defines a unique camera instance that maintains
-		a current image
+	//Purpose:
+	//	Defines a unique camera instance that maintains
+	//	a current image
 
-	Dependencies:
-		Bitmap:
-			Used to define the current image
-	--------------------------------------------------*/
+	//Dependencies:
+	//	Bitmap:
+	//		Used to define the current image
+	/// </summary>
 	public class Camera : IID
 	{
 

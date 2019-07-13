@@ -1,0 +1,77 @@
+\hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_point_sorter}{}\section{Eagle\+Eye.\+Models.\+Geometry.\+Point\+Sorter Class Reference}
+\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_point_sorter}\index{EagleEye.Models.Geometry.PointSorter@{EagleEye.Models.Geometry.PointSorter}}
+
+
+Developer\+: Gage Coates  
+
+
+
+
+Inheritance diagram for Eagle\+Eye.\+Models.\+Geometry.\+Point\+Sorter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_point_sorter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Eagle\+Eye.\+Models.\+Geometry.\+Point\+Sorter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_point_sorter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_point_sorter_ac598f34ac3edaa7ee2a700c46e08fa63}{Point\+Sorter}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} center)
+\begin{DoxyCompactList}\small\item\em Consructs a sorter with a specific center point \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_point_sorter_a418d1236f488e527d3f236efef379d3b}{Compare}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} a, \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} b)
+\begin{DoxyCompactList}\small\item\em Returns the ordinal position of a relative to b \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Developer\+: Gage Coates 
+
+Purpose\+: Sort \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} instances counterclockwise according to a given center point
+
+Dependencies\+: \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}\+: The subject of the comparison; used to calculate relative angles in 2d space
+
+Notes\+: Compare deferres angle comparisons to the default Compare\+To function defined for double 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_point_sorter_ac598f34ac3edaa7ee2a700c46e08fa63}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_point_sorter_ac598f34ac3edaa7ee2a700c46e08fa63}} 
+\index{EagleEye.Models.Geometry.PointSorter@{EagleEye.Models.Geometry.PointSorter}!PointSorter@{PointSorter}}
+\index{PointSorter@{PointSorter}!EagleEye.Models.Geometry.PointSorter@{EagleEye.Models.Geometry.PointSorter}}
+\subsubsection{\texorpdfstring{PointSorter()}{PointSorter()}}
+{\footnotesize\ttfamily Eagle\+Eye.\+Models.\+Geometry.\+Point\+Sorter.\+Point\+Sorter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{center }\end{DoxyParamCaption})}
+
+
+
+Consructs a sorter with a specific center point 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_point_sorter_a418d1236f488e527d3f236efef379d3b}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_point_sorter_a418d1236f488e527d3f236efef379d3b}} 
+\index{EagleEye.Models.Geometry.PointSorter@{EagleEye.Models.Geometry.PointSorter}!Compare@{Compare}}
+\index{Compare@{Compare}!EagleEye.Models.Geometry.PointSorter@{EagleEye.Models.Geometry.PointSorter}}
+\subsubsection{\texorpdfstring{Compare()}{Compare()}}
+{\footnotesize\ttfamily int Eagle\+Eye.\+Models.\+Geometry.\+Point\+Sorter.\+Compare (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{a,  }\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{b }\end{DoxyParamCaption})}
+
+
+
+Returns the ordinal position of a relative to b 
+
+\begin{DoxyReturn}{Returns}
+-\/1 if a is located clockwise of b 0 if a is located along the same rotational axis as b 1 if a is located counterclockwise of b 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Gage Omega/\+Programming/\+Eagle\+Eye/\+Eagle\+Eye/\+Models/\+Geometry/\mbox{\hyperlink{_point_sorter_8cs}{Point\+Sorter.\+cs}}\end{DoxyCompactItemize}

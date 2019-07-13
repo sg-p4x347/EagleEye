@@ -1,0 +1,6 @@
+<map id="EagleEye.Models.Annotation.Add" name="EagleEye.Models.Annotation.Add">
+<area shape="rect" id="node1" title="Adds a point to the Points collection, ensuring there is a maximum of 4 points sorted in a uniform or..." alt="" coords="467,46,684,73"/>
+<area shape="rect" id="node2" href="$class_eagle_eye_1_1_eagle_eye_config.html#a321d469bb1a71e255f2318ad1ec30058" title=" " alt="" coords="233,5,412,47"/>
+<area shape="rect" id="node4" href="$class_eagle_eye_1_1_controllers_1_1_parking_lot_controller.html#aa0484b67b0469d5c81421d793405ac50" title=" " alt="" coords="227,71,419,112"/>
+<area shape="rect" id="node3" href="$class_eagle_eye_1_1_mvc_application.html#a106011264463f339f3b61880a28238c6" title=" " alt="" coords="5,5,179,47"/>
+</map>

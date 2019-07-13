@@ -1,0 +1,395 @@
+\hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{}\section{Eagle\+Eye.\+Models.\+Geometry.\+Vector2 Struct Reference}
+\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+
+
+Developer\+: Gage Coates  
+
+
+
+
+Collaboration diagram for Eagle\+Eye.\+Models.\+Geometry.\+Vector2\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ab45ce16ef5b5d8abf10b92a8ce38bea0}{Vector2}} (double x, double y)
+\begin{DoxyCompactList}\small\item\em Constructs a new vector from two components \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a0164d7dc637cbdf4ace7b30aebaa3542}{Length\+Squared}} ()
+\begin{DoxyCompactList}\small\item\em Returns x squared + y squared \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ac438b69be09b24284a433e741b70a559}{Dot}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} b)
+\begin{DoxyCompactList}\small\item\em Returns the sum of the products for each component \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_aaf51a15fdc764b60449c16358a1520ee}{Normal}} ()
+\begin{DoxyCompactList}\small\item\em Creates a perpindicualr vector with the same magnitude \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a7b5b76cccf512fc7bbaae7121f16fa64}{Normalized}} ()
+\begin{DoxyCompactList}\small\item\em Creates a normalized vector in the same direction as this vector, e.\+g. a vector of length = 1 \end{DoxyCompactList}\item 
+override bool \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a5c16724484326fee5f9551a2b3c95f75}{Equals}} (object obj)
+\begin{DoxyCompactList}\small\item\em Compares this to another object \end{DoxyCompactList}\item 
+override string \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ad6c5d2e69555886b7f9bbd56f814a908}{To\+String}} ()
+\begin{DoxyCompactList}\small\item\em Generates a string representation of the vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a22a207e259bc6984ae867a3911a93f46}{operator $\ast$}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} vector, double scalar)
+\begin{DoxyCompactList}\small\item\em Scales a vector by a scalar value \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a4306acd1970edab7db3d8654d2eb5c9d}{operator/}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} vector, double scalar)
+\begin{DoxyCompactList}\small\item\em Scales a vector by a scalar value \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a2fee5bfd7f9b9f9cafe352390bef52a3}{operator+}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} a, \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} b)
+\begin{DoxyCompactList}\small\item\em Adds two vectors component-\/wise \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a349448334f4d2eb0c85774289baf399d}{operator -\/}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} a, \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} b)
+\begin{DoxyCompactList}\small\item\em Subtracts two vectors component-\/wise \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_af4c7aab632ee36849bc5ad2731cb2b86}{operator==}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} a, \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} b)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_eagle_eye_1_1_tests}{Tests}} equality between two vectors component-\/wise \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_acd00f015d699aa6b3c1799e6a8ebe561}{operator !=}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} a, \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} b)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_eagle_eye_1_1_tests}{Tests}} inequality between two vectors component-\/wise \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a2b3544fa189d93a2f390502febb12abb}{X}}
+\begin{DoxyCompactList}\small\item\em The X component \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ab8159c6235530a915d7d358605658f66}{Y}}
+\begin{DoxyCompactList}\small\item\em The Y component \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a2ea7f8dfe7ca54c5a1b964c4612e6e2a}{Zero}} = new \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}(0, 0)
+\begin{DoxyCompactList}\small\item\em Creates a Zero vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ab34c91570ff8b9bd67cec2ddee176893}{Length}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Returns the length of this vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Developer\+: Gage Coates 
+
+Purpose\+: Store an associative pair of doubles that represent 2d cartesian coordinates 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ab45ce16ef5b5d8abf10b92a8ce38bea0}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ab45ce16ef5b5d8abf10b92a8ce38bea0}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!Vector2@{Vector2}}
+\index{Vector2@{Vector2}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{Vector2()}{Vector2()}}
+{\footnotesize\ttfamily Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+Vector2 (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})}
+
+
+
+Constructs a new vector from two components 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The cartesian x component\\
+\hline
+{\em y} & The cartesian y component\\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ab45ce16ef5b5d8abf10b92a8ce38bea0_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ac438b69be09b24284a433e741b70a559}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ac438b69be09b24284a433e741b70a559}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!Dot@{Dot}}
+\index{Dot@{Dot}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{Dot()}{Dot()}}
+{\footnotesize\ttfamily double Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+Dot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{b }\end{DoxyParamCaption})}
+
+
+
+Returns the sum of the products for each component 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & A second vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The dot product 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a5c16724484326fee5f9551a2b3c95f75}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a5c16724484326fee5f9551a2b3c95f75}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!Equals@{Equals}}
+\index{Equals@{Equals}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{Equals()}{Equals()}}
+{\footnotesize\ttfamily override bool Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+Equals (\begin{DoxyParamCaption}\item[{object}]{obj }\end{DoxyParamCaption})}
+
+
+
+Compares this to another object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & Another object\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if equal, else false
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a0164d7dc637cbdf4ace7b30aebaa3542}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a0164d7dc637cbdf4ace7b30aebaa3542}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!LengthSquared@{LengthSquared}}
+\index{LengthSquared@{LengthSquared}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{LengthSquared()}{LengthSquared()}}
+{\footnotesize\ttfamily double Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+Length\+Squared (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns x squared + y squared 
+
+\begin{DoxyReturn}{Returns}
+A double representing the length squared 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_aaf51a15fdc764b60449c16358a1520ee}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_aaf51a15fdc764b60449c16358a1520ee}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!Normal@{Normal}}
+\index{Normal@{Normal}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{Normal()}{Normal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+Normal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a perpindicualr vector with the same magnitude 
+
+\begin{DoxyReturn}{Returns}
+A new \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_aaf51a15fdc764b60449c16358a1520ee_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a7b5b76cccf512fc7bbaae7121f16fa64}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a7b5b76cccf512fc7bbaae7121f16fa64}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!Normalized@{Normalized}}
+\index{Normalized@{Normalized}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{Normalized()}{Normalized()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+Normalized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a normalized vector in the same direction as this vector, e.\+g. a vector of length = 1 
+
+\begin{DoxyReturn}{Returns}
+A new \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_acd00f015d699aa6b3c1799e6a8ebe561}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_acd00f015d699aa6b3c1799e6a8ebe561}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!operator "!=@{operator "!=}}
+\index{operator "!=@{operator "!=}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{operator "!=()}{operator !=()}}
+{\footnotesize\ttfamily static bool Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+operator != (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{a,  }\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\mbox{\hyperlink{namespace_eagle_eye_1_1_tests}{Tests}} inequality between two vectors component-\/wise 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The left hand side\\
+\hline
+{\em b} & The right hand side\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if unequal, else false
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a22a207e259bc6984ae867a3911a93f46}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a22a207e259bc6984ae867a3911a93f46}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!operator $\ast$@{operator $\ast$}}
+\index{operator $\ast$@{operator $\ast$}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{operator $\ast$()}{operator *()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+operator $\ast$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{vector,  }\item[{double}]{scalar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Scales a vector by a scalar value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The vector to be scaled\\
+\hline
+{\em scalar} & The scalar value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new scaled vector
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a22a207e259bc6984ae867a3911a93f46_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a349448334f4d2eb0c85774289baf399d}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a349448334f4d2eb0c85774289baf399d}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!operator -\/@{operator -\/}}
+\index{operator -\/@{operator -\/}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{operator -\/()}{operator -()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+operator -\/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{a,  }\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Subtracts two vectors component-\/wise 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The left hand side\\
+\hline
+{\em b} & The right hand side\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new vector that is the difference of a and b
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a349448334f4d2eb0c85774289baf399d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a2fee5bfd7f9b9f9cafe352390bef52a3}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a2fee5bfd7f9b9f9cafe352390bef52a3}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!operator+@{operator+}}
+\index{operator+@{operator+}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{a,  }\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Adds two vectors component-\/wise 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The left hand side\\
+\hline
+{\em b} & The right hand side\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new vector that is the sum of a and b
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a2fee5bfd7f9b9f9cafe352390bef52a3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a4306acd1970edab7db3d8654d2eb5c9d}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a4306acd1970edab7db3d8654d2eb5c9d}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!operator/@{operator/}}
+\index{operator/@{operator/}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{operator/()}{operator/()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+operator/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{vector,  }\item[{double}]{scalar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Scales a vector by a scalar value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The vector to be scaled\\
+\hline
+{\em scalar} & The scalar value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new scaled vector
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a4306acd1970edab7db3d8654d2eb5c9d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_af4c7aab632ee36849bc5ad2731cb2b86}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_af4c7aab632ee36849bc5ad2731cb2b86}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!operator==@{operator==}}
+\index{operator==@{operator==}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily static bool Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{a,  }\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\mbox{\hyperlink{namespace_eagle_eye_1_1_tests}{Tests}} equality between two vectors component-\/wise 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The left hand side\\
+\hline
+{\em b} & The right hand side\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if equal, else false
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ad6c5d2e69555886b7f9bbd56f814a908}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ad6c5d2e69555886b7f9bbd56f814a908}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!ToString@{ToString}}
+\index{ToString@{ToString}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily override string Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+To\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Generates a string representation of the vector 
+
+\begin{DoxyReturn}{Returns}
+A string
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a2b3544fa189d93a2f390502febb12abb}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a2b3544fa189d93a2f390502febb12abb}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!X@{X}}
+\index{X@{X}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{X}{X}}
+{\footnotesize\ttfamily double Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+X}
+
+
+
+The X component 
+
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ab8159c6235530a915d7d358605658f66}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ab8159c6235530a915d7d358605658f66}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!Y@{Y}}
+\index{Y@{Y}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{Y}{Y}}
+{\footnotesize\ttfamily double Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+Y}
+
+
+
+The Y component 
+
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a2ea7f8dfe7ca54c5a1b964c4612e6e2a}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_a2ea7f8dfe7ca54c5a1b964c4612e6e2a}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!Zero@{Zero}}
+\index{Zero@{Zero}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{Zero}{Zero}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}} Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+Zero = new \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2}{Vector2}}(0, 0)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates a Zero vector 
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ab34c91570ff8b9bd67cec2ddee176893}\label{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2_ab34c91570ff8b9bd67cec2ddee176893}} 
+\index{EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}!Length@{Length}}
+\index{Length@{Length}!EagleEye.Models.Geometry.Vector2@{EagleEye.Models.Geometry.Vector2}}
+\subsubsection{\texorpdfstring{Length}{Length}}
+{\footnotesize\ttfamily double Eagle\+Eye.\+Models.\+Geometry.\+Vector2.\+Length\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Returns the length of this vector 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Gage Omega/\+Programming/\+Eagle\+Eye/\+Eagle\+Eye/\+Models/\+Geometry/\mbox{\hyperlink{_models_2_geometry_2_vector2_8cs}{Vector2.\+cs}}\end{DoxyCompactItemize}

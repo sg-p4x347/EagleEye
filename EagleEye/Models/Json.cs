@@ -6,37 +6,37 @@ using System.IO;
 using System.Text;
 namespace EagleEye.Models
 {
-	/*--------------------------------------------------
-	Developer:
-		Gage Coates
+	/// <summary>
+	//Developer:
+	//	Gage Coates
 
-	Purpose:
-		Parses a json formated stream of characters into
-		an tree structure of Json instances
+	//Purpose:
+	//	Parses a json formated stream of characters into
+	//	an tree structure of Json instances
 
-	Notes:
-		Every node in the tree, including primives, are
-		stored as Json instances differentiated by
-		the Type property
-	--------------------------------------------------*/
+	//Notes:
+	//	Every node in the tree, including primives, are
+	//	stored as Json instances differentiated by
+	//	the Type property
+	/// </summary>
 	public class Json
 	{
-		/*---------------------------------------------------
-		Purpose:
-			Parses a stream into a Json tree
+		/// <summary>
+		//Purpose:
+		//	Parses a stream into a Json tree
 
-		Returns:
-			A Json object representing the entire stream
-		---------------------------------------------------*/
+		//Returns:
+		//	A Json object representing the entire stream
+		/// </summary>
 		static public Json Import(StreamReader stream) {
 			int i = 0;
 			string json = stream.ReadToEnd();
 			return ParseTree(ref json, ref i);
 		}
-		/*---------------------------------------------------
-		Purpose:
-			Serializes the Json tree to a stream
-		---------------------------------------------------*/
+		/// <summary>
+		//Purpose:
+		//	Serializes the Json tree to a stream
+		/// </summary>
 		public void Export(StreamWriter stream)
 		{
 			switch (Type)
@@ -177,14 +177,14 @@ namespace EagleEye.Models
 			Object,
 			Array,
 		}
-		/*---------------------------------------------------
-		Purpose:
-			Recursively parses the input string as a Json node starting at
-			index i
+		/// <summary>
+		//Purpose:
+		//	Recursively parses the input string as a Json node starting at
+		//	index i
 
-		Returns:
-			A Json node
-		---------------------------------------------------*/
+		//Returns:
+		//	A Json node
+		/// </summary>
 		static private Json ParseTree(ref string json, ref int i)
 		{
 			ParsingState state = ParsingState.None;
@@ -299,13 +299,13 @@ namespace EagleEye.Models
 			}
 			return root;
 		}
-		/*---------------------------------------------------
-		Purpose:
-			Tests whether this Object instance contains a key
+		/// <summary>
+		//Purpose:
+		//	Tests whether this Object instance contains a key
 
-		Returns:
-			true if the key is present, else false
-		---------------------------------------------------*/
+		//Returns:
+		//	true if the key is present, else false
+		/// </summary>
 		public bool ContainsKey(string key)
 		{
 			if (Type != JsonType.Object)
@@ -313,15 +313,15 @@ namespace EagleEye.Models
 
 			return Children.Any(c => c.Data == key);
 		}
-		/*---------------------------------------------------
-		Purpose:
-			Returns the value assocated with the given key
-			if this is an Object
+		/// <summary>
+		//Purpose:
+		//	Returns the value assocated with the given key
+		//	if this is an Object
 
-		Returns:
-			A Json node if the value is found, 
-			else a null (not a Null instance)
-		---------------------------------------------------*/
+		//Returns:
+		//	A Json node if the value is found, 
+		//	else a null (not a Null instance)
+		/// </summary>
 		public Json this[string key]
 		{
 			get
@@ -348,14 +348,14 @@ namespace EagleEye.Models
 				}
 			}
 		}
-		/*---------------------------------------------------
-		Purpose:
-			Returns the value at the given index if this is an
-			Array
+		/// <summary>
+		//Purpose:
+		//	Returns the value at the given index if this is an
+		//	Array
 
-		Returns:
-			A Json node if found, else null (not a Null instance)
-		---------------------------------------------------*/
+		//Returns:
+		//	A Json node if found, else null (not a Null instance)
+		/// </summary>
 		public Json this[int index]
 		{
 			get
@@ -379,10 +379,10 @@ namespace EagleEye.Models
 				return 0;
 			}
 		}
-		/*---------------------------------------------------
-		Purpose:
-			Adds the Json node to an Array
-		---------------------------------------------------*/
+		/// <summary>
+		//Purpose:
+		//	Adds the Json node to an Array
+		/// </summary>
 		public void Add(Json json)
 		{
 			if (Type == JsonType.Array)

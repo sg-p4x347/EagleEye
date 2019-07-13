@@ -1,0 +1,334 @@
+\hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{}\section{Eagle\+Eye.\+Models.\+Geometry.\+Matrix Class Reference}
+\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+
+
+Collaboration diagram for Eagle\+Eye.\+Models.\+Geometry.\+Matrix\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a81deff683b5e1aad589bd0823054ae15}{Matrix}} ()
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_acc8487d36eee8c9fab685dd843ad9458}{Matrix}} (\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} other)
+\item 
+void \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a43304b460f0e9071e9a1fd2f2cda73b8}{Scale\+Column}} (int j, double scalar)
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a630f94d343773a673557e75c3604ef67}{Matrix}} (double\mbox{[},\mbox{]} d)
+\item 
+double \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a1b13104b3b70f8886591bffea10d87e5}{Get}} (int i, int j)
+\item 
+void \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_aeebb46e5118b02be93b0c75df62ff1ef}{Set}} (int i, int j, double value)
+\item 
+double \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a29981530fa3c9397a2b7daf39548647b}{Determinant}} ()
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_ac0d40e692ec3157a7fc034a3b01447e5}{Transpose}} ()
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a50a22a69e3975db229558520997b91a2}{Adjugate}} ()
+\item 
+bool \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a6d951dec401cc5239e3fa57dbae720a2}{Inverse}} (out \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} inverse)
+\item 
+\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a121833737b07b1791264d0f4f10a621b}{Minors}} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector3}{Vector3}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a44614ac72efc9134ff0cf4e35f8ae343}{operator $\ast$}} (\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} matrix, \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector3}{Vector3}} vector)
+\item 
+static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a0bf6ba2c5b65b9f438a11908282c2a0c}{operator $\ast$}} (\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} a, \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} b)
+\item 
+static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_acb6f6c5a5aa600c91c1fac3952be8057}{operator+}} (\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} a, \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} b)
+\item 
+static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_ae4247c2e9fd018350037b01fb64c53cc}{operator -\/}} (\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} a, \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} b)
+\item 
+static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a825588a358515f9e6871df1a30354fcc}{operator $\ast$}} (\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} a, double scalar)
+\item 
+static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a737d113f236731736d5169255bb05ef7}{operator $\ast$}} (double scalar, \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} a)
+\item 
+static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_af76e4c9c86e25fab681c2f7a652541c4}{Axis\+Angle}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector3}{Vector3}} axis, double angle)
+\item 
+static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a7d060933c0b5d60c2cc161a21555515e}{Yaw\+Pitch\+Roll}} (\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector3}{Vector3}} rotation)
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a13de6eaef457ac2295454d66c87b2a3b}{Identity}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a81deff683b5e1aad589bd0823054ae15}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a81deff683b5e1aad589bd0823054ae15}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a81deff683b5e1aad589bd0823054ae15_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_acc8487d36eee8c9fab685dd843ad9458}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_acc8487d36eee8c9fab685dd843ad9458}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Matrix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}}}]{other }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a630f94d343773a673557e75c3604ef67}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a630f94d343773a673557e75c3604ef67}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Matrix (\begin{DoxyParamCaption}\item[{double}]{d\mbox{[},\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a50a22a69e3975db229558520997b91a2}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a50a22a69e3975db229558520997b91a2}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!Adjugate@{Adjugate}}
+\index{Adjugate@{Adjugate}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{Adjugate()}{Adjugate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Adjugate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a50a22a69e3975db229558520997b91a2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a50a22a69e3975db229558520997b91a2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_af76e4c9c86e25fab681c2f7a652541c4}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_af76e4c9c86e25fab681c2f7a652541c4}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!AxisAngle@{AxisAngle}}
+\index{AxisAngle@{AxisAngle}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{AxisAngle()}{AxisAngle()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Axis\+Angle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector3}{Vector3}}}]{axis,  }\item[{double}]{angle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_af76e4c9c86e25fab681c2f7a652541c4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a29981530fa3c9397a2b7daf39548647b}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a29981530fa3c9397a2b7daf39548647b}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!Determinant@{Determinant}}
+\index{Determinant@{Determinant}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{Determinant()}{Determinant()}}
+{\footnotesize\ttfamily double Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Determinant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a29981530fa3c9397a2b7daf39548647b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a29981530fa3c9397a2b7daf39548647b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a1b13104b3b70f8886591bffea10d87e5}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a1b13104b3b70f8886591bffea10d87e5}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!Get@{Get}}
+\index{Get@{Get}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily double Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Get (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a1b13104b3b70f8886591bffea10d87e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a6d951dec401cc5239e3fa57dbae720a2}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a6d951dec401cc5239e3fa57dbae720a2}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!Inverse@{Inverse}}
+\index{Inverse@{Inverse}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{Inverse()}{Inverse()}}
+{\footnotesize\ttfamily bool Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Inverse (\begin{DoxyParamCaption}\item[{out \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}}}]{inverse }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a6d951dec401cc5239e3fa57dbae720a2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a121833737b07b1791264d0f4f10a621b}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a121833737b07b1791264d0f4f10a621b}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!Minors@{Minors}}
+\index{Minors@{Minors}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{Minors()}{Minors()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Minors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a121833737b07b1791264d0f4f10a621b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a121833737b07b1791264d0f4f10a621b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a44614ac72efc9134ff0cf4e35f8ae343}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a44614ac72efc9134ff0cf4e35f8ae343}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!operator $\ast$@{operator $\ast$}}
+\index{operator $\ast$@{operator $\ast$}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{operator $\ast$()}{operator *()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector3}{Vector3}} Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+operator $\ast$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}}}]{matrix,  }\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector3}{Vector3}}}]{vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a44614ac72efc9134ff0cf4e35f8ae343_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a0bf6ba2c5b65b9f438a11908282c2a0c}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a0bf6ba2c5b65b9f438a11908282c2a0c}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!operator $\ast$@{operator $\ast$}}
+\index{operator $\ast$@{operator $\ast$}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{operator $\ast$()}{operator *()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+operator $\ast$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}}}]{a,  }\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}}}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a0bf6ba2c5b65b9f438a11908282c2a0c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a825588a358515f9e6871df1a30354fcc}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a825588a358515f9e6871df1a30354fcc}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!operator $\ast$@{operator $\ast$}}
+\index{operator $\ast$@{operator $\ast$}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{operator $\ast$()}{operator *()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+operator $\ast$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}}}]{a,  }\item[{double}]{scalar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a825588a358515f9e6871df1a30354fcc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a737d113f236731736d5169255bb05ef7}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a737d113f236731736d5169255bb05ef7}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!operator $\ast$@{operator $\ast$}}
+\index{operator $\ast$@{operator $\ast$}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{operator $\ast$()}{operator *()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+operator $\ast$ (\begin{DoxyParamCaption}\item[{double}]{scalar,  }\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}}}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_ae4247c2e9fd018350037b01fb64c53cc}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_ae4247c2e9fd018350037b01fb64c53cc}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!operator -\/@{operator -\/}}
+\index{operator -\/@{operator -\/}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{operator -\/()}{operator -()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+operator -\/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}}}]{a,  }\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}}}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_ae4247c2e9fd018350037b01fb64c53cc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_acb6f6c5a5aa600c91c1fac3952be8057}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_acb6f6c5a5aa600c91c1fac3952be8057}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!operator+@{operator+}}
+\index{operator+@{operator+}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}}}]{a,  }\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}}}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_acb6f6c5a5aa600c91c1fac3952be8057_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a43304b460f0e9071e9a1fd2f2cda73b8}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a43304b460f0e9071e9a1fd2f2cda73b8}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!ScaleColumn@{ScaleColumn}}
+\index{ScaleColumn@{ScaleColumn}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{ScaleColumn()}{ScaleColumn()}}
+{\footnotesize\ttfamily void Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Scale\+Column (\begin{DoxyParamCaption}\item[{int}]{j,  }\item[{double}]{scalar }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a43304b460f0e9071e9a1fd2f2cda73b8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_aeebb46e5118b02be93b0c75df62ff1ef}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_aeebb46e5118b02be93b0c75df62ff1ef}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!Set@{Set}}
+\index{Set@{Set}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{Set()}{Set()}}
+{\footnotesize\ttfamily void Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Set (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{double}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_aeebb46e5118b02be93b0c75df62ff1ef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_ac0d40e692ec3157a7fc034a3b01447e5}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_ac0d40e692ec3157a7fc034a3b01447e5}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!Transpose@{Transpose}}
+\index{Transpose@{Transpose}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{Transpose()}{Transpose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Transpose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_ac0d40e692ec3157a7fc034a3b01447e5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_ac0d40e692ec3157a7fc034a3b01447e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a7d060933c0b5d60c2cc161a21555515e}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a7d060933c0b5d60c2cc161a21555515e}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!YawPitchRoll@{YawPitchRoll}}
+\index{YawPitchRoll@{YawPitchRoll}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{YawPitchRoll()}{YawPitchRoll()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Yaw\+Pitch\+Roll (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector3}{Vector3}}}]{rotation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a7d060933c0b5d60c2cc161a21555515e_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a13de6eaef457ac2295454d66c87b2a3b}\label{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix_a13de6eaef457ac2295454d66c87b2a3b}} 
+\index{EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}!Identity@{Identity}}
+\index{Identity@{Identity}!EagleEye.Models.Geometry.Matrix@{EagleEye.Models.Geometry.Matrix}}
+\subsubsection{\texorpdfstring{Identity}{Identity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix}{Matrix}} Eagle\+Eye.\+Models.\+Geometry.\+Matrix.\+Identity\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Gage Omega/\+Programming/\+Eagle\+Eye/\+Eagle\+Eye/\+Models/\+Geometry/\mbox{\hyperlink{_matrix_8cs}{Matrix.\+cs}}\end{DoxyCompactItemize}
