@@ -6,28 +6,67 @@ using System.Web.Mvc;
 using EagleEye.Models;
 namespace EagleEye.Controllers
 {
+
     public class CameraController : Controller
     {
+		/*--------------------------------------------------
+		Developer:
+			Gage Coates
+
+		Purpose:
+			Provides a common interface for requests that
+			directly involve Camera models
+
+		Dependencies:
+			Controller:
+				Base MVC controller methods
+			Camera:
+				The subject of operations
+			Repository:
+				Used to retrieve and update Camera instances
+		--------------------------------------------------*/
 		public CameraController()
 		{
 		}
-		protected override void Dispose(bool disposing)
-		{
-			base.Dispose(disposing);
-		}
+		//--------------------------------------------------
+		// Views
+
+		/*--------------------------------------------------
+		Purpose:
+			Creates a view that lists all cameras
+
+		Returns:
+			An html view
+		--------------------------------------------------*/
 		[HttpGet]
 		[Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             return View(Repository<Camera>.Models.Values.Select(m => new Views.Camera.Camera(m)).ToList());
         }
+		/*--------------------------------------------------
+		Purpose:
+			Creates a partial view that defines a select list
+			of all cameras
+
+		Returns:
+			An html partial view
+		--------------------------------------------------*/
 		[HttpGet]
 		[Authorize(Roles = "Administrator")]
 		public ActionResult ListView()
 		{
 			return PartialView("List", Repository<Camera>.Models.Values.Select(c => new Views.Camera.Camera(c)).ToList());
 		}
-        [HttpGet]
+		/*--------------------------------------------------
+		Purpose:
+			Creates a view that allows for the setup of a
+			camera instace by name
+
+		Returns:
+			An html view
+		--------------------------------------------------*/
+		[HttpGet]
 		[Authorize(Roles = "Administrator")]
 		public ActionResult Client()
         {
@@ -35,7 +74,16 @@ namespace EagleEye.Controllers
         }
 		//--------------------------------------------------
 		// REST
-        [HttpGet]
+
+		/*--------------------------------------------------
+		Purpose:
+			Creates a Json representation of a camera
+			model
+
+		Returns:
+			A json response body
+		--------------------------------------------------*/
+		[HttpGet]
 		public ActionResult Get(int id)
 		{
 			Camera camera;
@@ -45,6 +93,13 @@ namespace EagleEye.Controllers
 			}
 			return new HttpNotFoundResult();
 		}
+		/*--------------------------------------------------
+		Purpose:
+			Creates a new Camera instance by name
+
+		Returns:
+			An empty response
+		--------------------------------------------------*/
 		[HttpGet]
 		[Authorize(Roles = "Administrator")]
 		public ActionResult Create(string name)
@@ -53,6 +108,13 @@ namespace EagleEye.Controllers
 			EagleEyeConfig.ExportDatabase();
 			return new EmptyResult();
 		}
+		/*--------------------------------------------------
+		Purpose:
+			Updates a Camera model
+
+		Returns:
+			An empty response
+		--------------------------------------------------*/
 		[HttpPost]
 		[Authorize(Roles = "Administrator")]
 		public ActionResult Update(Views.Camera.Camera camera)
@@ -74,6 +136,13 @@ namespace EagleEye.Controllers
 			}
 			return new EmptyResult();
 		}
+		/*--------------------------------------------------
+		Purpose:
+			Deletes a Camera model by id
+
+		Returns:
+			An empty response
+		--------------------------------------------------*/
 		[HttpGet]
 		[Authorize(Roles = "Administrator")]
 		public ActionResult Delete(int id)
@@ -83,6 +152,16 @@ namespace EagleEye.Controllers
 			EagleEyeConfig.ExportDatabase();
 			return new EmptyResult();
 		}
+		/*--------------------------------------------------
+		Purpose:
+			Tries to get a camera by id, returning a boolean
+			value for success
+
+		Returns:
+			If successful, the model is passed out through
+			the camera parameter and true is returned, else
+			false is returned
+		--------------------------------------------------*/
 		private bool TryGetCamera(int id, out Camera camera)
 		{
 			if (Repository<Camera>.Contains(id))

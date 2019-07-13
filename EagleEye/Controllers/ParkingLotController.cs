@@ -9,17 +9,36 @@ namespace EagleEye.Controllers
 {
     public class ParkingLotController : Controller
     {
-		
+		/*--------------------------------------------------
+		Developer:
+			Gage Coates
+
+		Purpose:
+			Provides a common interface for requests that
+			directly involve ParkingLot and Annotation models
+
+		Dependencies:
+			Controller:
+				Base MVC controller methods
+			ParkingLot:
+				The subject of operations
+			Annotation:
+				Used to hydrate ParkingLot models
+				with their child Annotation models
+		--------------------------------------------------*/
 		public ParkingLotController()
 		{
 		}
-		protected override void Dispose(bool disposing)
-		{
-			base.Dispose(disposing);
-		}
 		//--------------------------------------------------
-		// View Actions
+		// Views
 
+		/*--------------------------------------------------
+		Purpose:
+			Creates a view that lists all parking lot instances
+
+		Returns:
+			An html view
+		--------------------------------------------------*/
 		[HttpGet]
 		public ActionResult Index()
         {
@@ -27,10 +46,10 @@ namespace EagleEye.Controllers
         }
 		/*--------------------------------------------------
 		Purpose:
-			Return a view of the parking lot that allows
+			Creates a view of the parking lot that allows
 			editing of annotations and the name
 		Returns:
-			The Edit view
+			An html view
 		--------------------------------------------------*/
 		[HttpGet]
 		public ActionResult Edit(int id)
@@ -42,6 +61,12 @@ namespace EagleEye.Controllers
 			}
 			return new HttpNotFoundResult();
 		}
+		/*--------------------------------------------------
+		Purpose:
+			Creates a view for users to monitor a parking lot
+		Returns:
+			An html view
+		--------------------------------------------------*/
 		[HttpGet]
 		public ActionResult Monitor(int id)
 		{
@@ -52,6 +77,13 @@ namespace EagleEye.Controllers
 			}
 			return new HttpNotFoundResult();
 		}
+		/*--------------------------------------------------
+		Purpose:
+			Creates a form view for instantiation of a new
+			parking lot
+		Returns:
+			An html view
+		--------------------------------------------------*/
 		[HttpGet]
 		public ActionResult New()
 		{
@@ -59,14 +91,13 @@ namespace EagleEye.Controllers
 		}
 
 
-		
+
 		/*--------------------------------------------------
 		Purpose:
-			Returns a base64 encoded image in the response body
-			
-
+			Creates a base64 encoded image in the response body
+			for the parking lot baseline
 		Returns:
-			Returns
+			A base64 encoded image in the response body
 		--------------------------------------------------*/
 		[HttpGet]
 		public ActionResult Baseline(int id)
@@ -74,6 +105,7 @@ namespace EagleEye.Controllers
 			ParkingLot lot;
 			if (TryGetLot(id, out lot) && lot.Baseline != null)
 			{
+				// Create a memory stream for the bitmap to write to
 				using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
 				{
 					
@@ -85,6 +117,14 @@ namespace EagleEye.Controllers
 			}
 			return new HttpNotFoundResult();
 		}
+
+		/*--------------------------------------------------
+		Purpose:
+			Updates a parking lot baseline to the current
+			image held in the associated Camera instance
+		Returns:
+			An empty result
+		--------------------------------------------------*/
 		[HttpGet]
 		public ActionResult UpdateBaseline(int id)
 		{
@@ -99,6 +139,14 @@ namespace EagleEye.Controllers
 		}
 		//--------------------------------------------------
 		// REST
+
+		/*--------------------------------------------------
+		Purpose:
+			Creates a new parking lot from a name and
+			camera ID
+		Returns:
+			An empty result
+		--------------------------------------------------*/
 		[HttpGet]
 		public ActionResult Create(string name, int cameraID)
 		{
@@ -112,6 +160,12 @@ namespace EagleEye.Controllers
 			}
 			return new EmptyResult();
 		}
+		/*--------------------------------------------------
+		Purpose:
+			Retrieves a parking lot instance by ID
+		Returns:
+			A json encoded response of the parking lot model
+		--------------------------------------------------*/
 		[HttpGet]
 		public ActionResult Get(int id)
 		{
@@ -125,6 +179,13 @@ namespace EagleEye.Controllers
 			}
 			return new HttpNotFoundResult();
 		}
+		/*--------------------------------------------------
+		Purpose:
+			Updates a parking lot model to mirror the provided
+			ParkingLot viewmodel
+		Returns:
+			An empty result
+		--------------------------------------------------*/
 		[HttpPost]
 		public ActionResult Update(Views.ParkingLot.ParkingLot lot)
 		{
@@ -149,6 +210,12 @@ namespace EagleEye.Controllers
 			}
 			return new HttpNotFoundResult();
 		}
+		/*--------------------------------------------------
+		Purpose:
+			Deletes a parking lot by ID
+		Returns:
+			An empty result
+		--------------------------------------------------*/
 		[HttpGet]
 		public ActionResult Delete(int id)
 		{
@@ -157,6 +224,16 @@ namespace EagleEye.Controllers
 			EagleEyeConfig.ExportDatabase();
 			return new EmptyResult();
 		}
+		/*--------------------------------------------------
+		Purpose:
+			Tries to get a parking lot by id, returning a boolean
+			value for success
+
+		Returns:
+			If successful, the model is passed out through
+			the lot parameter and true is returned, else
+			false is returned
+		--------------------------------------------------*/
 		private bool TryGetLot(int id, out ParkingLot lot)
 		{
 			if (Repository<ParkingLot>.Contains(id))
