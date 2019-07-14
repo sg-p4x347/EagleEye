@@ -1,5 +1,5 @@
 <map id="EagleEye.Controllers.ParkingLotController.Create" name="EagleEye.Controllers.ParkingLotController.Create">
-<area shape="rect" id="node1" title=" " alt="" coords="5,49,197,90"/>
+<area shape="rect" id="node1" title="Creates a new parking lot from a name and camera ID" alt="" coords="5,49,197,90"/>
 <area shape="rect" id="node2" href="$class_eagle_eye_1_1_models_1_1_repository.html#ac44cb18d8cbb605d3f7e14eb09c8c0bf" title="Gets an object by id" alt="" coords="247,5,461,32"/>
 <area shape="rect" id="node3" href="$class_eagle_eye_1_1_models_1_1_repository.html#aca9fded0480d870f0ec7837700243a2b" title="Adds an object to the internal collection" alt="" coords="245,56,463,83"/>
 <area shape="rect" id="node4" href="$class_eagle_eye_1_1_eagle_eye_config.html#ae238a449c2d6a52f9825fb75096e2299" title=" " alt="" coords="265,107,443,149"/>

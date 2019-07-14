@@ -25,12 +25,11 @@ var hierarchy =
     [ "EagleEye.Models.Json", "class_eagle_eye_1_1_models_1_1_json.html", null ],
     [ "EagleEye.Models.Geometry.Matrix", "class_eagle_eye_1_1_models_1_1_geometry_1_1_matrix.html", null ],
     [ "EagleEye.Views.ParkingLot.ParkingLot", "class_eagle_eye_1_1_views_1_1_parking_lot_1_1_parking_lot.html", null ],
-    [ "EagleEye.Views.ParkingLot.Path", "class_eagle_eye_1_1_views_1_1_parking_lot_1_1_path.html", null ],
     [ "EagleEye.Models.Repository< T >", "class_eagle_eye_1_1_models_1_1_repository.html", null ],
     [ "EagleEye.RouteConfig", "class_eagle_eye_1_1_route_config.html", null ],
     [ "EagleEye.App_Start.Startup", "class_eagle_eye_1_1_app___start_1_1_startup.html", null ],
     [ "EagleEye.Views.User.User", "class_eagle_eye_1_1_views_1_1_user_1_1_user.html", null ],
-    [ "EagleEye.Models.Geometry.Vector2", "struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2.html", null ],
     [ "EagleEye.Views.ParkingLot.Vector2", "class_eagle_eye_1_1_views_1_1_parking_lot_1_1_vector2.html", null ],
+    [ "EagleEye.Models.Geometry.Vector2", "struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector2.html", null ],
     [ "EagleEye.Models.Geometry.Vector3", "struct_eagle_eye_1_1_models_1_1_geometry_1_1_vector3.html", null ]
 ];

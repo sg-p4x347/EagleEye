@@ -3,6 +3,6 @@
 <area shape="rect" id="node2" href="$class_eagle_eye_1_1_eagle_eye_config.html#a321d469bb1a71e255f2318ad1ec30058" title=" " alt="" coords="234,5,413,47"/>
 <area shape="rect" id="node4" href="$class_eagle_eye_1_1_controllers_1_1_camera_controller.html#a07c68e0e159c17b1725489ddf54f9f1d" title="Creates a new Camera instance by name" alt="" coords="227,71,420,112"/>
 <area shape="rect" id="node5" href="$class_eagle_eye_1_1_controllers_1_1_camera_controller.html#a9e43f7e6f051aa5dbc695d68b4b013ab" title="Updates a Camera model" alt="" coords="227,136,420,177"/>
-<area shape="rect" id="node6" href="$class_eagle_eye_1_1_controllers_1_1_parking_lot_controller.html#a5af6a4b208418bca8a26f30255c62926" title=" " alt="" coords="227,201,419,243"/>
+<area shape="rect" id="node6" href="$class_eagle_eye_1_1_controllers_1_1_parking_lot_controller.html#a5af6a4b208418bca8a26f30255c62926" title="Creates a new parking lot from a name and camera ID" alt="" coords="227,201,419,243"/>
 <area shape="rect" id="node3" href="$class_eagle_eye_1_1_mvc_application.html#a106011264463f339f3b61880a28238c6" title=" " alt="" coords="5,5,179,47"/>
 </map>

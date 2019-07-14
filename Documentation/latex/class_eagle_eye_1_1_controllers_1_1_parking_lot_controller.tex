@@ -22,27 +22,27 @@ Collaboration diagram for Eagle\+Eye.\+Controllers.\+Parking\+Lot\+Controller\+:
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a6cb8c923ba943aca4683d60d1585806d}{Parking\+Lot\+Controller}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Provides a common interface for requests that directly involve Parking\+Lot and Annotation models \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a5015c903ed00613edaec0fed1c2d4847}{Index}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a view that lists all parking lot instances \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a4c61e3d4b7e032a616e0624bf79fbba8}{Edit}} (int id)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a view of the parking lot that allows editing of annotations and the name \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a3e05e24a69a4c1c646c67003a00b632b}{Monitor}} (int id)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a view for users to monitor a parking lot \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a15e34fac7a5623494db6ac9ef11e7021}{New}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a form view for instantiation of a new parking lot \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a2a8a2327d686b2b8aeb95bfd8f527326}{Baseline}} (int id)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a base64 encoded image in the response body for the parking lot baseline \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a073d77794ca654b813b37deae908501a}{Update\+Baseline}} (int id)
-\item 
+\begin{DoxyCompactList}\small\item\em Updates a parking lot baseline to the current image held in the associated Camera instance \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a5af6a4b208418bca8a26f30255c62926}{Create}} (string name, int camera\+ID)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a new parking lot from a name and camera ID \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_ab3bd9c4d1c40c73a214475198aa74039}{Get}} (int id)
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves a parking lot instance by ID \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_aa0484b67b0469d5c81421d793405ac50}{Update}} (\mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_parking_lot_1_1_parking_lot}{Views.\+Parking\+Lot.\+Parking\+Lot}} lot)
-\item 
+\begin{DoxyCompactList}\small\item\em Updates a parking lot model to mirror the provided Parking\+Lot viewmodel \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_aa26300d7c8f2fa2e41c15ceb0eb5c79e}{Delete}} (int id)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Deletes a parking lot by ID \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -54,9 +54,9 @@ Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_
 
 
 
+Provides a common interface for requests that directly involve Parking\+Lot and Annotation models 
 
-
-
+Author\+: Gage Coates
 
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a2a8a2327d686b2b8aeb95bfd8f527326}\label{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a2a8a2327d686b2b8aeb95bfd8f527326}} 
@@ -67,8 +67,16 @@ Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_
 
 
 
+Creates a base64 encoded image in the response body for the parking lot baseline 
 
 
+\begin{DoxyParams}{Parameters}
+{\em id} & The assocated lot from which to get the baseline\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A base64 encoded image in the response body
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a5af6a4b208418bca8a26f30255c62926}\label{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a5af6a4b208418bca8a26f30255c62926}} 
 \index{EagleEye.Controllers.ParkingLotController@{EagleEye.Controllers.ParkingLotController}!Create@{Create}}
 \index{Create@{Create}!EagleEye.Controllers.ParkingLotController@{EagleEye.Controllers.ParkingLotController}}
@@ -77,9 +85,20 @@ Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_parking_lot_
 
 
 
+Creates a new parking lot from a name and camera ID 
 
 
-Here is the call graph for this function\+:\nopagebreak
+\begin{DoxyParams}{Parameters}
+{\em name} & The new parking lot\textquotesingle{}s name\\
+\hline
+{\em camera\+ID} & The new parking lot\textquotesingle{}s assocated camera\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An empty result
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -94,9 +113,18 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Deletes a parking lot by ID 
 
 
-Here is the call graph for this function\+:\nopagebreak
+\begin{DoxyParams}{Parameters}
+{\em id} & The assocated parking lot to delete\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An empty result
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -111,8 +139,16 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Creates a view of the parking lot that allows editing of annotations and the name 
 
 
+\begin{DoxyParams}{Parameters}
+{\em id} & The assocated lot to edit\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An html view
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_ab3bd9c4d1c40c73a214475198aa74039}\label{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_ab3bd9c4d1c40c73a214475198aa74039}} 
 \index{EagleEye.Controllers.ParkingLotController@{EagleEye.Controllers.ParkingLotController}!Get@{Get}}
 \index{Get@{Get}!EagleEye.Controllers.ParkingLotController@{EagleEye.Controllers.ParkingLotController}}
@@ -121,8 +157,16 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Retrieves a parking lot instance by ID 
 
 
+\begin{DoxyParams}{Parameters}
+{\em id} & The assocated parking lot\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A json response body of the Parking\+Lot View\+Model
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a5015c903ed00613edaec0fed1c2d4847}\label{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a5015c903ed00613edaec0fed1c2d4847}} 
 \index{EagleEye.Controllers.ParkingLotController@{EagleEye.Controllers.ParkingLotController}!Index@{Index}}
 \index{Index@{Index}!EagleEye.Controllers.ParkingLotController@{EagleEye.Controllers.ParkingLotController}}
@@ -131,8 +175,11 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Creates a view that lists all parking lot instances 
 
-
+\begin{DoxyReturn}{Returns}
+An html view
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a3e05e24a69a4c1c646c67003a00b632b}\label{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a3e05e24a69a4c1c646c67003a00b632b}} 
 \index{EagleEye.Controllers.ParkingLotController@{EagleEye.Controllers.ParkingLotController}!Monitor@{Monitor}}
 \index{Monitor@{Monitor}!EagleEye.Controllers.ParkingLotController@{EagleEye.Controllers.ParkingLotController}}
@@ -141,8 +188,16 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Creates a view for users to monitor a parking lot 
 
 
+\begin{DoxyParams}{Parameters}
+{\em id} & The assocated lot to monitor\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An html view
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a15e34fac7a5623494db6ac9ef11e7021}\label{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_a15e34fac7a5623494db6ac9ef11e7021}} 
 \index{EagleEye.Controllers.ParkingLotController@{EagleEye.Controllers.ParkingLotController}!New@{New}}
 \index{New@{New}!EagleEye.Controllers.ParkingLotController@{EagleEye.Controllers.ParkingLotController}}
@@ -151,8 +206,11 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Creates a form view for instantiation of a new parking lot 
 
-
+\begin{DoxyReturn}{Returns}
+An html view
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_aa0484b67b0469d5c81421d793405ac50}\label{class_eagle_eye_1_1_controllers_1_1_parking_lot_controller_aa0484b67b0469d5c81421d793405ac50}} 
 \index{EagleEye.Controllers.ParkingLotController@{EagleEye.Controllers.ParkingLotController}!Update@{Update}}
 \index{Update@{Update}!EagleEye.Controllers.ParkingLotController@{EagleEye.Controllers.ParkingLotController}}
@@ -161,9 +219,18 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Updates a parking lot model to mirror the provided Parking\+Lot viewmodel 
 
 
-Here is the call graph for this function\+:\nopagebreak
+\begin{DoxyParams}{Parameters}
+{\em lot} & The Parking\+Lot View\+Model used to update the assocated Parking\+Lot Model\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An empty result
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -178,9 +245,18 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Updates a parking lot baseline to the current image held in the associated Camera instance 
 
 
-Here is the call graph for this function\+:\nopagebreak
+\begin{DoxyParams}{Parameters}
+{\em id} & The assocated lot to which the baseline will be updated\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An empty result
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

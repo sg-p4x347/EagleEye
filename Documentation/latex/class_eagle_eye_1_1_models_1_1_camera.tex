@@ -2,12 +2,13 @@
 \label{class_eagle_eye_1_1_models_1_1_camera}\index{EagleEye.Models.Camera@{EagleEye.Models.Camera}}
 
 
- 
+Defines a unique camera instance that maintains a current image  
 
 
 
 
-Inheritance diagram for Eagle\+Eye.\+Models.\+Camera\+:\nopagebreak
+Inheritance diagram for Eagle\+Eye.\+Models.\+Camera\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,8 @@ Inheritance diagram for Eagle\+Eye.\+Models.\+Camera\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Eagle\+Eye.\+Models.\+Camera\+:\nopagebreak
+Collaboration diagram for Eagle\+Eye.\+Models.\+Camera\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,29 +29,29 @@ Collaboration diagram for Eagle\+Eye.\+Models.\+Camera\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera_adcf152a7ad61686c8dd0a5ac919405b1}{Camera}} (int id, string name)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructs a camera from an id and name \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera_af3877a74fe147e2a79cd97d6a1d983da}{ID}} = -\/1\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A unique identifier \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera_a45941e18deb09a8e294e7c858da9caa0}{Name}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A human readable identifier (not unique) \end{DoxyCompactList}\item 
 Bitmap \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera_a1a5cec582d29956df5f3f3b3cf03c542}{Current\+Image}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A property for accessing m\+\_\+current\+Image \end{DoxyCompactList}\item 
 Date\+Time \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera_ac9623f8d222175f53b06fa84420fa6cb}{Last\+Update}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The time Current\+Image was last updated \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Events}
 \begin{DoxyCompactItemize}
 \item 
 Event\+Handler \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera_a4a8b47c765bd44f8ca6a89e59d3d3b94}{Changed}} = delegate \{ \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em An event that fires when changes have occured to the Current\+Image property \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
+Defines a unique camera instance that maintains a current image 
 
-
-
+Author\+: Gage Coates
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_camera_adcf152a7ad61686c8dd0a5ac919405b1}\label{class_eagle_eye_1_1_models_1_1_camera_adcf152a7ad61686c8dd0a5ac919405b1}} 
@@ -60,6 +62,17 @@ Event\+Handler \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera_a4a8b47c76
 
 
 
+Constructs a camera from an id and name 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The unique id\\
+\hline
+{\em name} & A name\\
+\hline
+\end{DoxyParams}
+
+
 \subsection{Property Documentation}
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_camera_a1a5cec582d29956df5f3f3b3cf03c542}\label{class_eagle_eye_1_1_models_1_1_camera_a1a5cec582d29956df5f3f3b3cf03c542}} 
 \index{EagleEye.Models.Camera@{EagleEye.Models.Camera}!CurrentImage@{CurrentImage}}
@@ -67,17 +80,29 @@ Event\+Handler \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera_a4a8b47c76
 \subsubsection{\texorpdfstring{CurrentImage}{CurrentImage}}
 {\footnotesize\ttfamily Bitmap Eagle\+Eye.\+Models.\+Camera.\+Current\+Image\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
-\mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_camera_af3877a74fe147e2a79cd97d6a1d983da}\label{class_eagle_eye_1_1_models_1_1_camera_af3877a74fe147e2a79cd97d6a1d983da}} 
+
+
+A property for accessing m\+\_\+current\+Image 
+
+m\+\_\+current\+Image \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_camera_af3877a74fe147e2a79cd97d6a1d983da}\label{class_eagle_eye_1_1_models_1_1_camera_af3877a74fe147e2a79cd97d6a1d983da}} 
 \index{EagleEye.Models.Camera@{EagleEye.Models.Camera}!ID@{ID}}
 \index{ID@{ID}!EagleEye.Models.Camera@{EagleEye.Models.Camera}}
 \subsubsection{\texorpdfstring{ID}{ID}}
 {\footnotesize\ttfamily int Eagle\+Eye.\+Models.\+Camera.\+ID = -\/1\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+A unique identifier 
 
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_camera_ac9623f8d222175f53b06fa84420fa6cb}\label{class_eagle_eye_1_1_models_1_1_camera_ac9623f8d222175f53b06fa84420fa6cb}} 
 \index{EagleEye.Models.Camera@{EagleEye.Models.Camera}!LastUpdate@{LastUpdate}}
 \index{LastUpdate@{LastUpdate}!EagleEye.Models.Camera@{EagleEye.Models.Camera}}
 \subsubsection{\texorpdfstring{LastUpdate}{LastUpdate}}
 {\footnotesize\ttfamily Date\+Time Eagle\+Eye.\+Models.\+Camera.\+Last\+Update\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The time Current\+Image was last updated 
 
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_camera_a45941e18deb09a8e294e7c858da9caa0}\label{class_eagle_eye_1_1_models_1_1_camera_a45941e18deb09a8e294e7c858da9caa0}} 
 \index{EagleEye.Models.Camera@{EagleEye.Models.Camera}!Name@{Name}}
@@ -87,12 +112,20 @@ Event\+Handler \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera_a4a8b47c76
 
 
 
+A human readable identifier (not unique) 
+
+
+
 \subsection{Event Documentation}
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_camera_a4a8b47c765bd44f8ca6a89e59d3d3b94}\label{class_eagle_eye_1_1_models_1_1_camera_a4a8b47c765bd44f8ca6a89e59d3d3b94}} 
 \index{EagleEye.Models.Camera@{EagleEye.Models.Camera}!Changed@{Changed}}
 \index{Changed@{Changed}!EagleEye.Models.Camera@{EagleEye.Models.Camera}}
 \subsubsection{\texorpdfstring{Changed}{Changed}}
 {\footnotesize\ttfamily Event\+Handler Eagle\+Eye.\+Models.\+Camera.\+Changed = delegate \{ \}}
+
+
+
+An event that fires when changes have occured to the Current\+Image property 
 
 
 

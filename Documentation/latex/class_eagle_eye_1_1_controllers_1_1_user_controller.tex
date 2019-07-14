@@ -2,12 +2,13 @@
 \label{class_eagle_eye_1_1_controllers_1_1_user_controller}\index{EagleEye.Controllers.UserController@{EagleEye.Controllers.UserController}}
 
 
-Developer\+: Gage Coates  
+Provides authentication actions for unauthenticated users to login to the system as either an administrator or standard user  
 
 
 
 
-Inheritance diagram for Eagle\+Eye.\+Controllers.\+User\+Controller\+:\nopagebreak
+Inheritance diagram for Eagle\+Eye.\+Controllers.\+User\+Controller\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,8 @@ Inheritance diagram for Eagle\+Eye.\+Controllers.\+User\+Controller\+:\nopagebre
 \end{figure}
 
 
-Collaboration diagram for Eagle\+Eye.\+Controllers.\+User\+Controller\+:\nopagebreak
+Collaboration diagram for Eagle\+Eye.\+Controllers.\+User\+Controller\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -31,15 +33,13 @@ Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_user_control
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_user_controller_ad2199840c954a1a465e25087fee02564}{Login}} (\mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_user_1_1_user}{Views.\+User.\+User}} user)
 \begin{DoxyCompactList}\small\item\em Logs a user in and provisions them with the appropriate role. Subsiquent requests are authenticated with this role \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_user_controller_a23b7abc37b240a70620675d09edecf8c}{Logout}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Logs a user out and unauthenticates requests \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Developer\+: Gage Coates 
+Provides authentication actions for unauthenticated users to login to the system as either an administrator or standard user 
 
-Purpose\+: Provides authentication actions for unauthenticated users to login to the system as either an administrator or standard user
-
-Dependencies\+: \mbox{\hyperlink{class_controller}{Controller}}\+: Base M\+VC controller methods 
+Author\+: Gage Coates
 
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_user_controller_a9562eb9abf6432e9360af19bb046a775}\label{class_eagle_eye_1_1_controllers_1_1_user_controller_a9562eb9abf6432e9360af19bb046a775}} 
@@ -76,8 +76,11 @@ A redirect to /\+Home/\+Index
 
 
 
+Logs a user out and unauthenticates requests 
 
-
+\begin{DoxyReturn}{Returns}
+A redirect to /\+User/\+Index
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
