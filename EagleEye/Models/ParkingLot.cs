@@ -9,23 +9,23 @@ namespace EagleEye.Models
 	public class ParkingLot : IID
 	{
 		/// <summary>
-		//Developer:
-		//	Gage Coates
-
-		//Purpose:
-		//	Stores accociated annotation data, baseline,
-		//	and camera reference. Updates annotation state
-		//	based on camera state
-
-		//Dependencies:
-		//	Bitmap:
-		//		Defines the baseline image
-		//	Camera:
-		//		A parking lot must have an associated camera
-		//		to compare against the baseline
-		//	Annotation:
-		//		Defines regions in the baseline that should be
-		//		included in calculations
+		/// Developer:
+		/// 	Gage Coates
+		///
+		/// Purpose:
+		/// 	Stores accociated annotation data, baseline,
+		/// 	and camera reference. Updates annotation state
+		/// 	based on camera state
+		///
+		/// Dependencies:
+		/// 	Bitmap:
+		/// 		Defines the baseline image
+		/// 	Camera:
+		/// 		A parking lot must have an associated camera
+		/// 		to compare against the baseline
+		/// 	Annotation:
+		/// 		Defines regions in the baseline that should be
+		/// 		included in calculations
 		/// </summary>
 		public ParkingLot(int id,string name, Camera camera)
 		{
@@ -35,23 +35,33 @@ namespace EagleEye.Models
 			Camera.Changed += CameraChangeHandler;
 		}
 		/// <summary>
-		//Purpose:
-		//	Subsribes to the Camera.Changed event and
-		//	kicks off an update
+		/// Subsribes to the Camera.Changed event and
+		/// kicks off an update
 		/// </summary>
 		private void CameraChangeHandler(object sender, EventArgs e)
 		{
 			Update();
 		}
 
-		// A unique identifier
+		/// <summary>
+		/// A unique identifier
+		/// </summary>
 		public int ID { get; private set; } = -1;
-		// A human readable identifier (not unique)
+		/// <summary>
+		/// 
+		/// </summary>
 		public string Name { get; set; }
-		// The assocative camera that monitors this parking lot
+		/// <summary>
+		/// The assocative camera that monitors this parking lot
+		/// </summary>
 		public Camera Camera { get; private set; }
-		// An image that defines the empty state of the parking lot
+		/// <summary>
+		/// An image that defines the empty state of the parking lot
+		/// </summary>
 		private Bitmap m_baseline;
+		/// <summary>
+		/// Updates the m_baseline member in a thread safe manner
+		/// </summary>
 		public Bitmap Baseline { get
 			{
 				if (m_baseline == null)
@@ -76,16 +86,22 @@ namespace EagleEye.Models
 				}
 			}
 		}
-		// A list of annotations that define regions of Parking or Isle space
+		/// <summary>
+		/// A list of annotations that define regions of Parking or Isle space
+		/// </summary>
 		public List<Annotation> Annotations { get; private set; } = new List<Annotation>();
-		// Only annotations of Parking type
+		/// <summary>
+		/// Only annotations of Parking type
+		/// </summary>
 		public IEnumerable<Annotation> ParkingSpaces {
 			get
 			{
 				return Annotations.Where(a => a.Type == Annotation.AnnotationType.Parking);
 			}
 		}
-		// Only annotations of Isle type
+		/// <summary>
+		/// Only annotations of Isle type
+		/// </summary>
 		public IEnumerable<Annotation> Isles {
 			get
 			{
@@ -93,9 +109,8 @@ namespace EagleEye.Models
 			}
 		}
 		/// <summary>
-		//Purpose:
-		//	Encapsulates the entire parking lot state
-		//	change, triggerd by Camera changes
+		/// Encapsulates the entire parking lot state
+		/// change, triggerd by Camera changes
 		/// </summary>
 		public void Update()
 		{
@@ -145,18 +160,16 @@ namespace EagleEye.Models
 			}
 		}
 		/// <summary>
-		//Purpose:
-		//	Returns the average difference for each color channel
-		//	between two images bounded by the specified
-		//	annotations
-
-		//Returns:
-		//	A Tuple of signed integers that represent an average
-		//	difference in R G B channels
-		//Notes:
-		//	The returned values can be negative if averageB
-		//	is "brighter" than averageA
+		/// Returns the average difference for each color channel
+		/// between two images bounded by the specified
+		/// annotations
 		/// </summary>
+		/// <returns>
+		/// A Tuple of signed integers that represent an average
+		///	difference in R G B channels.
+		///	The returned values can be negative if averageB
+		///	is "brighter" than averageA
+		///	</returns>
 		private Tuple<int, int, int> AverageDifference(Bitmap a, Bitmap b, IEnumerable<Annotation> clip)
 		{
 			var averageA = a.Average((x, y) => clip.Any(c => c.Contains(new Vector2((double)x / a.Width, (double)y / a.Height))));

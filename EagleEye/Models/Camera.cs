@@ -9,20 +9,17 @@ using System.Collections.Concurrent;
 namespace EagleEye.Models
 {
 	/// <summary>
-	//Developer:
-	//	Gage Coates
-
-	//Purpose:
-	//	Defines a unique camera instance that maintains
-	//	a current image
-
-	//Dependencies:
-	//	Bitmap:
-	//		Used to define the current image
+	/// Defines a unique camera instance that maintains
+	/// a current image
 	/// </summary>
+	/// <remarks>Author: Gage Coates</remarks>
 	public class Camera : IID
 	{
-
+		/// <summary>
+		/// Constructs a camera from an id and name
+		/// </summary>
+		/// <param name="id">The unique id</param>
+		/// <param name="name">A name</param>
 		public Camera(int id,string name)
 		{
 			ID = id;
@@ -30,12 +27,22 @@ namespace EagleEye.Models
 			CurrentImage = new Bitmap(400, 300);
 			CurrentImage.Fill(Color.Black);
 		}
-		// A unique identifier
+		/// <summary>
+		/// A unique identifier
+		/// </summary>
 		public int ID { get; private set; } = -1;
-		// A human readable identifier (not unique)
+		/// <summary>
+		/// A human readable identifier (not unique)
+		/// </summary>
 		public string Name { get; set; }
-		// The most recent image from this camera
+		/// <summary>
+		/// The most recent image from this camera
+		/// </summary>
 		private Bitmap m_currentImage;
+		/// <summary>
+		/// A property for accessing m_currentImage
+		/// </summary>
+		/// <see cref="m_currentImage"/>
 		public Bitmap CurrentImage {
 			get
 			{
@@ -65,8 +72,13 @@ namespace EagleEye.Models
 				}
 			}
 		}
+		/// <summary>
+		/// An event that fires when changes have occured to the CurrentImage property
+		/// </summary>
 		public event EventHandler Changed = delegate { };
-		// The time CurrentImage was last updated
+		/// <summary>
+		/// The time CurrentImage was last updated
+		/// </summary>
 		public DateTime LastUpdate { get; set; }
 	}
 }

@@ -7,36 +7,31 @@ using System.Text;
 namespace EagleEye.Models
 {
 	/// <summary>
-	//Developer:
-	//	Gage Coates
-
-	//Purpose:
-	//	Parses a json formated stream of characters into
-	//	an tree structure of Json instances
-
-	//Notes:
-	//	Every node in the tree, including primives, are
-	//	stored as Json instances differentiated by
-	//	the Type property
+	/// Parses a json formated stream of characters into
+	/// an tree structure of Json instances
 	/// </summary>
+	/// <remarks>
+	/// Author: Gage Coates.
+	/// Every node in the tree, including primives, are
+	/// stored as Json instances differentiated by
+	/// the Type property
+	/// </remarks>
 	public class Json
 	{
 		/// <summary>
-		//Purpose:
-		//	Parses a stream into a Json tree
-
-		//Returns:
-		//	A Json object representing the entire stream
+		/// Parses a stream into a json tree
 		/// </summary>
+		/// <param name="stream">The stream reader from which to pull characters</param>
+		/// <returns>A json node representing the entire stream as a JSON tree structure</returns>
 		static public Json Import(StreamReader stream) {
 			int i = 0;
 			string json = stream.ReadToEnd();
 			return ParseTree(ref json, ref i);
 		}
 		/// <summary>
-		//Purpose:
-		//	Serializes the Json tree to a stream
+		/// Serializes the Json tree to a stream
 		/// </summary>
+		/// <param name="stream">The stream writer to which the tree is serialized</param>
 		public void Export(StreamWriter stream)
 		{
 			switch (Type)
@@ -83,30 +78,55 @@ namespace EagleEye.Models
 					break;
 			}
 		}
+		/// <summary>
+		/// Constructs a Json String instance
+		/// </summary>
+		/// <param name="str">The value to be stored</param>
 		public Json(string str)
 		{
 			Type = JsonType.String;
 			Data = str;
 		}
+		/// <summary>
+		/// Constructs a Json Number instance
+		/// </summary>
+		/// <param name="number">The value to be stored</param>
 		public Json(int number)
 		{
 			Type = JsonType.Number;
 			Data = number.ToString();
 		}
+		/// <summary>
+		/// Constructs a Json Number instance
+		/// </summary>
+		/// <param name="number">The value to be stored</param>
 		public Json(double number)
 		{
 			Type = JsonType.Number;
 			Data = number.ToString();
 		}
+		/// <summary>
+		/// Constructs a Json Boolean instance
+		/// </summary>
+		/// <param name="boolean">The value to be stored</param>
+		/// <remarks>boolean values in JSON are encoded as "true" or "false" strings</remarks>
 		public Json(bool boolean)
 		{
 			Type = JsonType.Boolean;
 			Data = boolean ? "true" : "false";
 		}
+		/// <summary>
+		/// Constructs a default Json instance
+		/// </summary>
+		/// <remarks>This is for internal use only</remarks>
 		private Json()
 		{
 			
 		}
+		/// <summary>
+		/// Constructs a Json Null instance
+		/// </summary>
+		/// <remarks>JSON null is encoded as "null"</remarks>
 		public static Json Null
 		{
 			get
@@ -117,7 +137,9 @@ namespace EagleEye.Models
 				return json;
 			}
 		}
-		// Creates a new Array instace
+		/// <summary>
+		/// Creates a Json Array instance
+		/// </summary>
 		public static Json Array
 		{
 			get
@@ -128,7 +150,9 @@ namespace EagleEye.Models
 				return json;
 			}
 		}
-		// Creates a new Object instance
+		/// <summary>
+		/// Creates a Json Object instance
+		/// </summary>
 		public static Json Object
 		{
 			get
@@ -139,52 +163,92 @@ namespace EagleEye.Models
 				return json;
 			}
 		}
-		// The raw data associated with this Json node
-		// This is only used for primitive types
+		/// <summary>
+		/// The raw data associated with this Json node
+		/// This is only used for primitive types
+		/// </summary>
 		private string Data { get; set; }
-		// Differentiates Json instance types
+		/// <summary>
+		/// Differentiates Json instance types
+		/// </summary>
 		public JsonType Type { get; private set; }
-		// The child instances, primitives do not use this
+		/// <summary>
+		/// The child instances, primitives do not use this
+		/// </summary>
 		private List<Json> Children { get; set; }
-		// Defines different parsing states
+		/// <summary>
+		/// Defines different parsing states
+		/// </summary>
 		private enum ParsingState
 		{
-
+			/// <summary>
+			/// The default parsing state until an actionable delimeter is found
+			/// </summary>
 			None,
-			//--------------------------------------------------
-			// Primitive types (has a value for Data)
+			/// <summary>
+			/// The state for parsing a JSON string, delimited by an opening and closing double quote
+			/// </summary>
 			String,
+			/// <summary>
+			/// The state for parsing a JSON number, which can include decimal points
+			/// </summary>
 			Number,
+			/// <summary>
+			/// The state for parsing a "true" value
+			/// </summary>
 			True,
+			/// <summary>
+			/// The state for parsing a "false" value
+			/// </summary>
 			False,
+			/// <summary>
+			/// The state for parsing a "null" value
+			/// </summary>
 			Null,
-			Undefined,
-			//--------------------------------------------------
-			// Complex types (contains children)
+			/// <summary>
+			/// The state for parsing a JSON object, which contains key value pairs in the form: "key1":value,"key2":value,etc..
+			/// </summary>
 			Object,
-			Array,
-		}
-		public enum JsonType
-		{
-			//--------------------------------------------------
-			// Primitive types (has a value for Data)
-			Null,
-			String,
-			Number,
-			Boolean,
-			//--------------------------------------------------
-			// Complex types (contains children)
-			Object,
+			/// <summary>
+			/// The state for parsing a JSON array, which contains comma separated values in the form: value1,value2,etc..
+			/// </summary>
 			Array,
 		}
 		/// <summary>
-		//Purpose:
-		//	Recursively parses the input string as a Json node starting at
-		//	index i
-
-		//Returns:
-		//	A Json node
+		/// Determines the type of a Json node in the tree
 		/// </summary>
+		public enum JsonType
+		{
+			/// <summary>
+			/// Represents a non existant value
+			/// </summary>
+			Null,
+			/// <summary>
+			/// Represents a string literal
+			/// </summary>
+			String,
+			/// <summary>
+			/// Represents a number literal; can be an integer or floating point
+			/// </summary>
+			Number,
+			/// <summary>
+			/// Represents a boolean value
+			/// </summary>
+			Boolean,
+			/// <summary>
+			/// Represents a map of key value pairs
+			/// </summary>
+			Object,
+			/// <summary>
+			/// Represents a list of values
+			/// </summary>
+			Array,
+		}
+		/// <summary>
+		/// Recursively parses the input string as a Json node starting at
+		/// index i
+		/// </summary>
+		/// <returns>A Json node</returns>
 		static private Json ParseTree(ref string json, ref int i)
 		{
 			ParsingState state = ParsingState.None;
@@ -300,12 +364,10 @@ namespace EagleEye.Models
 			return root;
 		}
 		/// <summary>
-		//Purpose:
-		//	Tests whether this Object instance contains a key
-
-		//Returns:
-		//	true if the key is present, else false
+		/// Tests whether this Object instance contains a key
 		/// </summary>
+		/// <param name="key">The key to test for</param>
+		/// <returns>true if the key is present, else false</returns>
 		public bool ContainsKey(string key)
 		{
 			if (Type != JsonType.Object)
@@ -313,15 +375,15 @@ namespace EagleEye.Models
 
 			return Children.Any(c => c.Data == key);
 		}
-		/// <summary>
-		//Purpose:
-		//	Returns the value assocated with the given key
-		//	if this is an Object
 
-		//Returns:
-		//	A Json node if the value is found, 
-		//	else a null (not a Null instance)
+		/// <summary>
+		/// An accessor for Object nodes by key
 		/// </summary>
+		/// <param name="key">The key used for access</param>
+		/// <returns>
+		/// A Json node if the value is found, 
+		///	else a null (not a Null instance)
+		///	</returns>
 		public Json this[string key]
 		{
 			get
@@ -349,13 +411,10 @@ namespace EagleEye.Models
 			}
 		}
 		/// <summary>
-		//Purpose:
-		//	Returns the value at the given index if this is an
-		//	Array
-
-		//Returns:
-		//	A Json node if found, else null (not a Null instance)
+		/// An accessor for Array nodes by index
 		/// </summary>
+		/// <param name="index">The index used for access</param>
+		/// <returns>A Json node if found, else null (not a Null instance)</returns>
 		public Json this[int index]
 		{
 			get

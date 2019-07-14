@@ -2,8 +2,7 @@
 \label{class_eagle_eye_1_1_controllers_1_1_camera_controller}\index{EagleEye.Controllers.CameraController@{EagleEye.Controllers.CameraController}}
 
 
-Inheritance diagram for Eagle\+Eye.\+Controllers.\+Camera\+Controller\+:
-\nopagebreak
+Inheritance diagram for Eagle\+Eye.\+Controllers.\+Camera\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Eagle\+Eye.\+Controllers.\+Camera\+Controller\+:
 \end{figure}
 
 
-Collaboration diagram for Eagle\+Eye.\+Controllers.\+Camera\+Controller\+:
-\nopagebreak
+Collaboration diagram for Eagle\+Eye.\+Controllers.\+Camera\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -24,21 +22,21 @@ Collaboration diagram for Eagle\+Eye.\+Controllers.\+Camera\+Controller\+:
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_camera_controller_a6b73ce65988171c22a039de9de4ac2c0}{Camera\+Controller}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Provides a common interface for requests that directly involve Camera models \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_camera_controller_aef90502fd5923368a7ef1773280e4b32}{Index}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a view that lists all cameras \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_camera_controller_ae60e0235e0f741b4e102a7d1df22eed1}{List\+View}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a partial view that defines a select list of all cameras \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_camera_controller_a22c71acb769ab89d66c816e8af2dd55e}{Client}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a view that allows for the setup of a camera instace by name \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_camera_controller_a6dfc692f61939468dffcf13b5899ed5f}{Get}} (int id)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a Json representation of a camera model \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_camera_controller_a07c68e0e159c17b1725489ddf54f9f1d}{Create}} (string name)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a new Camera instance by name \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_camera_controller_a9e43f7e6f051aa5dbc695d68b4b013ab}{Update}} (\mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Views.\+Camera.\+Camera}} camera)
-\item 
+\begin{DoxyCompactList}\small\item\em Updates a Camera model \end{DoxyCompactList}\item 
 Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_camera_controller_ade4d5c697769c79b1866f95bbf7fc889}{Delete}} (int id)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Deletes a Camera model by id \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -50,9 +48,9 @@ Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_camera_contr
 
 
 
+Provides a common interface for requests that directly involve Camera models 
 
-
-
+Author\+: Gage Coates
 
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_camera_controller_a22c71acb769ab89d66c816e8af2dd55e}\label{class_eagle_eye_1_1_controllers_1_1_camera_controller_a22c71acb769ab89d66c816e8af2dd55e}} 
@@ -63,8 +61,11 @@ Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_camera_contr
 
 
 
+Creates a view that allows for the setup of a camera instace by name 
 
-
+\begin{DoxyReturn}{Returns}
+An html view
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_camera_controller_a07c68e0e159c17b1725489ddf54f9f1d}\label{class_eagle_eye_1_1_controllers_1_1_camera_controller_a07c68e0e159c17b1725489ddf54f9f1d}} 
 \index{EagleEye.Controllers.CameraController@{EagleEye.Controllers.CameraController}!Create@{Create}}
 \index{Create@{Create}!EagleEye.Controllers.CameraController@{EagleEye.Controllers.CameraController}}
@@ -73,8 +74,16 @@ Action\+Result \mbox{\hyperlink{class_eagle_eye_1_1_controllers_1_1_camera_contr
 
 
 
+Creates a new Camera instance by name 
 
 
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the new camera\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An empty response
+\end{DoxyReturn}
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -90,8 +99,16 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Deletes a Camera model by id 
 
 
+\begin{DoxyParams}{Parameters}
+{\em id} & The assocated camera to delete\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An empty response
+\end{DoxyReturn}
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -107,8 +124,16 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Creates a Json representation of a camera model 
 
 
+\begin{DoxyParams}{Parameters}
+{\em id} & The associated camera to get\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A json response body
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_camera_controller_aef90502fd5923368a7ef1773280e4b32}\label{class_eagle_eye_1_1_controllers_1_1_camera_controller_aef90502fd5923368a7ef1773280e4b32}} 
 \index{EagleEye.Controllers.CameraController@{EagleEye.Controllers.CameraController}!Index@{Index}}
 \index{Index@{Index}!EagleEye.Controllers.CameraController@{EagleEye.Controllers.CameraController}}
@@ -117,8 +142,11 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Creates a view that lists all cameras 
 
-
+\begin{DoxyReturn}{Returns}
+An html view
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_camera_controller_ae60e0235e0f741b4e102a7d1df22eed1}\label{class_eagle_eye_1_1_controllers_1_1_camera_controller_ae60e0235e0f741b4e102a7d1df22eed1}} 
 \index{EagleEye.Controllers.CameraController@{EagleEye.Controllers.CameraController}!ListView@{ListView}}
 \index{ListView@{ListView}!EagleEye.Controllers.CameraController@{EagleEye.Controllers.CameraController}}
@@ -127,8 +155,11 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Creates a partial view that defines a select list of all cameras 
 
-
+\begin{DoxyReturn}{Returns}
+An html partial view
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_eagle_eye_1_1_controllers_1_1_camera_controller_a9e43f7e6f051aa5dbc695d68b4b013ab}\label{class_eagle_eye_1_1_controllers_1_1_camera_controller_a9e43f7e6f051aa5dbc695d68b4b013ab}} 
 \index{EagleEye.Controllers.CameraController@{EagleEye.Controllers.CameraController}!Update@{Update}}
 \index{Update@{Update}!EagleEye.Controllers.CameraController@{EagleEye.Controllers.CameraController}}
@@ -137,8 +168,16 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+Updates a Camera model 
 
 
+\begin{DoxyParams}{Parameters}
+{\em camera} & The camera View\+Model used to update the corresponding model\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An empty response
+\end{DoxyReturn}
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}

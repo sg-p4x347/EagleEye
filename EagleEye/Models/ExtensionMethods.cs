@@ -7,14 +7,31 @@ using System.Drawing;
 using System.IO;
 namespace EagleEye.Models
 {
+	/// <summary>
+	/// Provides extension methods for the Bitmap, Color, and IEnumerable<Geometry.Vector2> classes
+	/// </summary>
 	static class ExtensionMethods
 	{
 		//--------------------------------------------------
 		// Bitmap extensions
+
+		/// <summary>
+		/// Tests whether two Bitmaps share a common size
+		/// </summary>
+		/// <param name="a">The first Bitmap</param>
+		/// <param name="b">The second Bitmap</param>
+		/// <returns>true if equal in width and height, else false</returns>
 		public static bool SameSize(this Bitmap a, Bitmap b)
 		{
 			return a.Width == b.Width && a.Height == b.Height;
 		}
+		/// <summary>
+		/// Finds the smallest set of adjacent points (determined by count) that have a color value above the given threshold
+		/// </summary>
+		/// <param name="source">The Bitmap to be used as the source</param>
+		/// <param name="count">The size of the island - this will be equal to the size of the returned set of points</param>
+		/// <param name="thresholdArea">The value threshold to search for</param>
+		/// <returns>A set of points</returns>
 		static public List<Point> FindIslands(this Bitmap source, int count, int thresholdArea)
 		{
 			int gridSize = (int)Math.Floor(Math.Sqrt((double)thresholdArea));
@@ -85,7 +102,11 @@ namespace EagleEye.Models
 			}
 			return points;
 		}
-		// Normalizes the green channel as a percent of the total
+		/// <summary>
+		///  Normalizes the green channel as a percent of the total
+		/// </summary>
+		/// <param name="source">The source Bitmap</param>
+		/// <returns>A green shifted version of the source Bitmap</returns>
 		static public Bitmap GreenShift(this Bitmap source)
 		{
 			Bitmap result = new Bitmap(source.Width, source.Height);
@@ -101,6 +122,12 @@ namespace EagleEye.Models
 			}
 			return result;
 		}
+		/// <summary>
+		/// Creates a 2 color black and white image based on source color values
+		/// </summary>
+		/// <param name="source">The source Bitmap</param>
+		/// <param name="threshold">The value threshold that determines Black/White for each pixel</param>
+		/// <returns>A posturized image</returns>
 		static public Bitmap Posterize(this Bitmap source, int threshold = 382)
 		{
 			Bitmap result = new Bitmap(source.Width, source.Height);
@@ -121,6 +148,13 @@ namespace EagleEye.Models
 			}
 			return result;
 		}
+		/// <summary>
+		/// Returns a grayscale bitmap that represents the value difference in two Bitmaps
+		/// </summary>
+		/// <param name="a">The first bitmap</param>
+		/// <param name="b">The second bitmap</param>
+		/// <returns>A difference bitmap</returns>
+		/// <remarks>White represents more difference, Black represents no difference</remarks>
 		static public Bitmap Difference(this Bitmap a, Bitmap b)
 		{
 			Bitmap result = new Bitmap(a.Width, a.Height);
@@ -136,6 +170,12 @@ namespace EagleEye.Models
 			}
 			return result;
 		}
+		/// <summary>
+		/// Calculates the average difference for all three color channels
+		/// </summary>
+		/// <param name="a">The first bitmap</param>
+		/// <param name="b">The second bitmap</param>
+		/// <returns>A Tuple of three signed integers that represent average difference for each channel</returns>
 		static public Tuple<int,int,int> AverageDifference(this Bitmap a, Bitmap b)
 		{
 			int red = 0, green = 0, blue = 0;
@@ -154,6 +194,12 @@ namespace EagleEye.Models
 			int pixelCount = a.Width * a.Height;
 			return new Tuple<int,int,int>(red / pixelCount, green / pixelCount, blue / pixelCount);
 		}
+		/// <summary>
+		/// Creates a new bitmap with the given offsets applied to each pixel of the source image
+		/// </summary>
+		/// <param name="source">The source image</param>
+		/// <param name="offset">The offset for each color channel to apply</param>
+		/// <returns>A new bitmap with the offsets applied</returns>
 		static public Bitmap Add(this Bitmap source, Tuple<int,int,int> offset)
 		{
 			Bitmap result = new Bitmap(source);
@@ -171,6 +217,12 @@ namespace EagleEye.Models
 			}
 			return result;
 		}
+		/// <summary>
+		/// Calculates the average color for pixels that satisfy the pixelSelector predicate
+		/// </summary>
+		/// <param name="source">The source image</param>
+		/// <param name="pixelSelector">A predicate that takes in x,y pixel coordinates and returns true or false</param>
+		/// <returns>An average Color</returns>
 		static public Color Average(this Bitmap source, Func<int,int,bool> pixelSelector)
 		{
 			int r = 0;
@@ -199,6 +251,11 @@ namespace EagleEye.Models
 				return Color.Black;
 			}
 		}
+		/// <summary>
+		/// Fills the source bitmap with the given color
+		/// </summary>
+		/// <param name="source">The source Bitmap to be modified</param>
+		/// <param name="color">The color to fill with</param>
 		static public void Fill(this Bitmap source, Color color)
 		{
 			for (int x = 0; x < source.Width; x++)
@@ -209,6 +266,12 @@ namespace EagleEye.Models
 				}
 			}
 		}
+		/// <summary>
+		/// Calculates the amount of overlap by summing overlap for each color channel
+		/// </summary>
+		/// <param name="a">The first image</param>
+		/// <param name="b">The second image</param>
+		/// <returns>The sum total of overlap across all channels</returns>
 		static public int Overlap(this Bitmap a, Bitmap b)
 		{
 			int overlap = 0;
@@ -223,12 +286,24 @@ namespace EagleEye.Models
 			}
 			return overlap;
 		}
+		/// <summary>
+		/// Returns a new image cropped by the given percentage of the origional
+		/// </summary>
+		/// <param name="source">The source image</param>
+		/// <param name="percent">The percentage (in width/height) to crop by</param>
+		/// <returns>A cropped version of the source</returns>
 		static public Bitmap Crop(this Bitmap source, double percent)
 		{
 			int width = (int)(source.Width * percent);
 			int height = (int)(source.Height * percent);
 			return source.Clone(new Rectangle((source.Width - width) / 2, (source.Height - height) / 2, width, height), source.PixelFormat);
 		}
+		/// <summary>
+		/// Creates a scaled version of the source
+		/// </summary>
+		/// <param name="source">The source image</param>
+		/// <param name="scale">The scale factor</param>
+		/// <returns>A scaled version of the source</returns>
 		static public Bitmap Scale(this Bitmap source, double scale)
 		{
 			Bitmap result = new Bitmap((int)(source.Width * scale), (int)(source.Height * scale));
@@ -241,11 +316,22 @@ namespace EagleEye.Models
 			}
 			return result;
 		}
+		/// <summary>
+		/// Creates a scaled version of the source
+		/// </summary>
+		/// <param name="source">The source image</param>
+		/// <param name="scale">The width of the returned image</param>
+		/// <returns>A scaled version of the source</returns>
 		static public Bitmap Scale(this Bitmap source, int width)
 		{
 			double scale = (double)width / (double)source.Width;
 			return Scale(source, scale);
 		}
+		/// <summary>
+		/// Calculates the sum of all channel values in the source
+		/// </summary>
+		/// <param name="source">The source image</param>
+		/// <returns>A sum of all color channels</returns>
 		static public int Sum(this Bitmap source)
 		{
 			int sum = 0;
@@ -259,6 +345,13 @@ namespace EagleEye.Models
 			}
 			return sum;
 		}
+		/// <summary>
+		/// Transforms an image by the given transormation matrix (an inverse transform is applied)
+		/// e.g. take the destination pixel and find the corresponding source pixel
+		/// </summary>
+		/// <param name="source">The source image</param>
+		/// <param name="matrix">The transformation matrix</param>
+		/// <returns>A transformed version of the source</returns>
 		static public Bitmap Transform(this Bitmap source, Geometry.Matrix matrix)
 		{
 			Bitmap result = new Bitmap(source.Width, source.Height);
@@ -279,6 +372,14 @@ namespace EagleEye.Models
 
 		//--------------------------------------------------
 		// Color extensions
+
+		/// <summary>
+		/// Calculates the normalized value of a given color by
+		/// summing all channels and dividing by the highest possible
+		/// value of (255 + 255 + 255)
+		/// </summary>
+		/// <param name="color">The color to find the value of</param>
+		/// <returns>A normalized value in the range [0,1]</returns>
 		static public double Value(this Color color)
 		{
 			// 765.0 is 255 * 3, e.g. the maximum value
@@ -287,15 +388,13 @@ namespace EagleEye.Models
 
 		//--------------------------------------------------
 		// IEnumerable<Vector2> extensions
-
-		/*---------------------------------------------------
-		Purpose:
-			Calculates the average center point from a collection
-			of Vector2 instances
-
-		Returns:
-			A Vector2 instance representing the center point
-		---------------------------------------------------*/
+		
+		/// <summary>
+		/// Calculates the average center point from a collection
+		/// of Vector2 instances
+		/// </summary>
+		/// <param name="vertices">A collection of vertices to be factored into the centroid</param>
+		/// <returns>A Vector2 instance representing the center point</returns>
 		static public Geometry.Vector2 Centroid(this IEnumerable<Geometry.Vector2> vertices)
 		{
 			return new Geometry.Vector2(vertices.Average(v => v.X), vertices.Average(v => v.Y));

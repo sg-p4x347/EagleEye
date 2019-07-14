@@ -22,26 +22,26 @@ Collaboration diagram for Eagle\+Eye.\+Models.\+Parking\+Lot\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_parking_lot_a02ac70305c0a604f9123ccdb0aa5d323}{Parking\+Lot}} (int id, string name, \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera}{Camera}} camera)
-\item 
+\begin{DoxyCompactList}\small\item\em Developer\+: Gage Coates \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_parking_lot_a7e3c86f8ba1c0de2e4d0a2ec7d14a653}{Update}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Encapsulates the entire parking lot state change, triggerd by \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera}{Camera}} changes \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_parking_lot_a947f098cf468fb7856e4b72432318a72}{ID}} = -\/1\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A unique identifier \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_parking_lot_ac2860bd9c6046f6f6b9b10461c0b4619}{Name}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
 \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera}{Camera}} \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_parking_lot_acc11c12c8ab93ee8fa96894f20df38b3}{Camera}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em The assocative camera that monitors this parking lot \end{DoxyCompactList}\item 
 Bitmap \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_parking_lot_a1084b858315b2b9c303ec35dca58fe74}{Baseline}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em Updates the m\+\_\+baseline member in a thread safe manner \end{DoxyCompactList}\item 
 List$<$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Annotation}} $>$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_parking_lot_a8a80d92c49b0671de35a6649411a8593}{Annotations}} = new List$<$\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Annotation}}$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A list of annotations that define regions of Parking or Isle space \end{DoxyCompactList}\item 
 I\+Enumerable$<$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Annotation}} $>$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_parking_lot_af3127595a546a4f0b4c4dcda6e72fc3f}{Parking\+Spaces}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em Only annotations of Parking type \end{DoxyCompactList}\item 
 I\+Enumerable$<$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Annotation}} $>$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_parking_lot_ac1070fa7799989793d2b8cf0c54318b3}{Isles}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Only annotations of Isle type \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -53,9 +53,11 @@ I\+Enumerable$<$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Ann
 
 
 
+Developer\+: Gage Coates 
 
+Purpose\+: Stores accociated annotation data, baseline, and camera reference. Updates annotation state based on camera state
 
-
+Dependencies\+: Bitmap\+: Defines the baseline image \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera}{Camera}}\+: A parking lot must have an associated camera to compare against the baseline \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Annotation}}\+: Defines regions in the baseline that should be included in calculations 
 
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_parking_lot_a7e3c86f8ba1c0de2e4d0a2ec7d14a653}\label{class_eagle_eye_1_1_models_1_1_parking_lot_a7e3c86f8ba1c0de2e4d0a2ec7d14a653}} 
@@ -66,7 +68,7 @@ I\+Enumerable$<$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Ann
 
 
 
-
+Encapsulates the entire parking lot state change, triggerd by \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera}{Camera}} changes 
 
 
 
@@ -77,11 +79,19 @@ I\+Enumerable$<$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Ann
 \subsubsection{\texorpdfstring{Annotations}{Annotations}}
 {\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Annotation}}$>$ Eagle\+Eye.\+Models.\+Parking\+Lot.\+Annotations = new List$<$\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Annotation}}$>$()\hspace{0.3cm}{\ttfamily [get]}}
 
+
+
+A list of annotations that define regions of Parking or Isle space 
+
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_parking_lot_a1084b858315b2b9c303ec35dca58fe74}\label{class_eagle_eye_1_1_models_1_1_parking_lot_a1084b858315b2b9c303ec35dca58fe74}} 
 \index{EagleEye.Models.ParkingLot@{EagleEye.Models.ParkingLot}!Baseline@{Baseline}}
 \index{Baseline@{Baseline}!EagleEye.Models.ParkingLot@{EagleEye.Models.ParkingLot}}
 \subsubsection{\texorpdfstring{Baseline}{Baseline}}
 {\footnotesize\ttfamily Bitmap Eagle\+Eye.\+Models.\+Parking\+Lot.\+Baseline\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Updates the m\+\_\+baseline member in a thread safe manner 
 
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_parking_lot_acc11c12c8ab93ee8fa96894f20df38b3}\label{class_eagle_eye_1_1_models_1_1_parking_lot_acc11c12c8ab93ee8fa96894f20df38b3}} 
 \index{EagleEye.Models.ParkingLot@{EagleEye.Models.ParkingLot}!Camera@{Camera}}
@@ -89,11 +99,19 @@ I\+Enumerable$<$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Ann
 \subsubsection{\texorpdfstring{Camera}{Camera}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera}{Camera}} Eagle\+Eye.\+Models.\+Parking\+Lot.\+Camera\hspace{0.3cm}{\ttfamily [get]}}
 
+
+
+The assocative camera that monitors this parking lot 
+
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_parking_lot_a947f098cf468fb7856e4b72432318a72}\label{class_eagle_eye_1_1_models_1_1_parking_lot_a947f098cf468fb7856e4b72432318a72}} 
 \index{EagleEye.Models.ParkingLot@{EagleEye.Models.ParkingLot}!ID@{ID}}
 \index{ID@{ID}!EagleEye.Models.ParkingLot@{EagleEye.Models.ParkingLot}}
 \subsubsection{\texorpdfstring{ID}{ID}}
 {\footnotesize\ttfamily int Eagle\+Eye.\+Models.\+Parking\+Lot.\+ID = -\/1\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+A unique identifier 
 
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_parking_lot_ac1070fa7799989793d2b8cf0c54318b3}\label{class_eagle_eye_1_1_models_1_1_parking_lot_ac1070fa7799989793d2b8cf0c54318b3}} 
 \index{EagleEye.Models.ParkingLot@{EagleEye.Models.ParkingLot}!Isles@{Isles}}
@@ -101,17 +119,29 @@ I\+Enumerable$<$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Ann
 \subsubsection{\texorpdfstring{Isles}{Isles}}
 {\footnotesize\ttfamily I\+Enumerable$<$\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Annotation}}$>$ Eagle\+Eye.\+Models.\+Parking\+Lot.\+Isles\hspace{0.3cm}{\ttfamily [get]}}
 
+
+
+Only annotations of Isle type 
+
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_parking_lot_ac2860bd9c6046f6f6b9b10461c0b4619}\label{class_eagle_eye_1_1_models_1_1_parking_lot_ac2860bd9c6046f6f6b9b10461c0b4619}} 
 \index{EagleEye.Models.ParkingLot@{EagleEye.Models.ParkingLot}!Name@{Name}}
 \index{Name@{Name}!EagleEye.Models.ParkingLot@{EagleEye.Models.ParkingLot}}
 \subsubsection{\texorpdfstring{Name}{Name}}
 {\footnotesize\ttfamily string Eagle\+Eye.\+Models.\+Parking\+Lot.\+Name\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
+
+
+
+
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_parking_lot_af3127595a546a4f0b4c4dcda6e72fc3f}\label{class_eagle_eye_1_1_models_1_1_parking_lot_af3127595a546a4f0b4c4dcda6e72fc3f}} 
 \index{EagleEye.Models.ParkingLot@{EagleEye.Models.ParkingLot}!ParkingSpaces@{ParkingSpaces}}
 \index{ParkingSpaces@{ParkingSpaces}!EagleEye.Models.ParkingLot@{EagleEye.Models.ParkingLot}}
 \subsubsection{\texorpdfstring{ParkingSpaces}{ParkingSpaces}}
 {\footnotesize\ttfamily I\+Enumerable$<$\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_annotation}{Annotation}}$>$ Eagle\+Eye.\+Models.\+Parking\+Lot.\+Parking\+Spaces\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Only annotations of Parking type 
 
 
 

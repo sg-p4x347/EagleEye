@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 namespace EagleEye.Models.Geometry
 {
 	/// <summary>
-	/// Developer:
-	/// 	Gage Coates
-	///
-	/// Purpose:
-	/// 	Store an associative pair of doubles that represent
-	/// 	2d cartesian coordinates
+	/// Store an associative pair of doubles that represent
+	/// 2d cartesian coordinates
 	/// </summary>
+	/// <remarks>Author: Gage Coates</remarks>
 	public struct Vector2
 	{
 		/// <summary>

@@ -1,5 +1,5 @@
 <map id="EagleEye.Models.Repository.Delete" name="EagleEye.Models.Repository.Delete">
-<area shape="rect" id="node1" title=" " alt="" coords="247,39,441,80"/>
-<area shape="rect" id="node2" href="$class_eagle_eye_1_1_controllers_1_1_camera_controller.html#ade4d5c697769c79b1866f95bbf7fc889" title=" " alt="" coords="5,5,199,47"/>
+<area shape="rect" id="node1" title="removes an object with the given id, if it exists" alt="" coords="247,39,441,80"/>
+<area shape="rect" id="node2" href="$class_eagle_eye_1_1_controllers_1_1_camera_controller.html#ade4d5c697769c79b1866f95bbf7fc889" title="Deletes a Camera model by id" alt="" coords="5,5,199,47"/>
 <area shape="rect" id="node3" href="$class_eagle_eye_1_1_controllers_1_1_parking_lot_controller.html#aa26300d7c8f2fa2e41c15ceb0eb5c79e" title=" " alt="" coords="6,71,198,112"/>
 </map>

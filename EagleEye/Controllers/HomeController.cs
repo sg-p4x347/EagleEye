@@ -7,26 +7,15 @@ using System.Web.Mvc;
 namespace EagleEye.Controllers
 {
 	/// <summary>
-	//Developer:
-	//	Gage Coates
-
-	//Purpose:
-	//	Provides a place for non-model related actions
-
-	//Dependencies:
-	//	Controller:
-	//		Base MVC controller methods
+	/// Provides a place for non-model related actions
 	/// </summary>
-	[Authorize]
+	/// <
 	public class HomeController : Controller
 	{
 		/// <summary>
-		//Purpose:
-		//	Creates a homepage view
-
-		//Returns:
-		//	An html view
+		/// Creates a homepage view
 		/// </summary>
+		/// <returns>An html view</returns>
 		public ActionResult Index()
 		{
 			return View();
