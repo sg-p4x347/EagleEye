@@ -6,27 +6,33 @@ using System.Drawing;
 using EagleEye.Models.Geometry;
 namespace EagleEye.Models
 {
+	/// <summary>
+	/// Developer:
+	/// 	Gage Coates
+	///
+	/// Purpose:
+	/// 	Stores accociated annotation data, baseline,
+	/// 	and camera reference. Updates annotation state
+	/// 	based on camera state
+	///
+	/// Dependencies:
+	/// 	Bitmap:
+	/// 		Defines the baseline image
+	/// 	Camera:
+	/// 		A parking lot must have an associated camera
+	/// 		to compare against the baseline
+	/// 	Annotation:
+	/// 		Defines regions in the baseline that should be
+	/// 		included in calculations
+	/// </summary>
 	public class ParkingLot : IID
 	{
 		/// <summary>
-		/// Developer:
-		/// 	Gage Coates
-		///
-		/// Purpose:
-		/// 	Stores accociated annotation data, baseline,
-		/// 	and camera reference. Updates annotation state
-		/// 	based on camera state
-		///
-		/// Dependencies:
-		/// 	Bitmap:
-		/// 		Defines the baseline image
-		/// 	Camera:
-		/// 		A parking lot must have an associated camera
-		/// 		to compare against the baseline
-		/// 	Annotation:
-		/// 		Defines regions in the baseline that should be
-		/// 		included in calculations
+		/// Constructs a parking lot from a unique id, name, and associated camera model
 		/// </summary>
+		/// <param name="id">A unique id</param>
+		/// <param name="name">A name</param>
+		/// <param name="camera">A camera model</param>
 		public ParkingLot(int id,string name, Camera camera)
 		{
 			ID = id;
