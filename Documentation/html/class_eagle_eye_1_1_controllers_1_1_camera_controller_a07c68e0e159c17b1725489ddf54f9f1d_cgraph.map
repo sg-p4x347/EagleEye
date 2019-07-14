@@ -1,6 +1,6 @@
 <map id="EagleEye.Controllers.CameraController.Create" name="EagleEye.Controllers.CameraController.Create">
-<area shape="rect" id="node1" title=" " alt="" coords="5,27,199,69"/>
-<area shape="rect" id="node2" href="$class_eagle_eye_1_1_models_1_1_repository.html#aca9fded0480d870f0ec7837700243a2b" title=" " alt="" coords="247,5,464,32"/>
+<area shape="rect" id="node1" title="Creates a new Camera instance by name" alt="" coords="5,27,199,69"/>
+<area shape="rect" id="node2" href="$class_eagle_eye_1_1_models_1_1_repository.html#aca9fded0480d870f0ec7837700243a2b" title="Adds an object to the internal collection" alt="" coords="247,5,464,32"/>
 <area shape="rect" id="node3" href="$class_eagle_eye_1_1_eagle_eye_config.html#ae238a449c2d6a52f9825fb75096e2299" title=" " alt="" coords="266,57,445,98"/>
 <area shape="rect" id="node4" href="$class_eagle_eye_1_1_models_1_1_json.html#a4b23b3ec238276219d3d953b385fac93" title=" " alt="" coords="512,64,695,91"/>
 </map>

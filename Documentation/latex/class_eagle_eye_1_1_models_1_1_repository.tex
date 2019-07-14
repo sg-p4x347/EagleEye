@@ -2,7 +2,7 @@
 \label{class_eagle_eye_1_1_models_1_1_repository}\index{EagleEye.Models.Repository$<$ T $>$@{EagleEye.Models.Repository$<$ T $>$}}
 
 
- 
+Developer\+: Gage Coates  
 
 
 
@@ -18,26 +18,28 @@ Collaboration diagram for Eagle\+Eye.\+Models.\+Repository$<$ T $>$\+:\nopagebre
 \begin{DoxyCompactItemize}
 \item 
 static void \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_repository_aca9fded0480d870f0ec7837700243a2b}{Add}} (T model)
-\item 
+\begin{DoxyCompactList}\small\item\em Adds an object to the internal collection \end{DoxyCompactList}\item 
 static T \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_repository_ac44cb18d8cbb605d3f7e14eb09c8c0bf}{Get}} (int id)
-\item 
+\begin{DoxyCompactList}\small\item\em Gets an object by id \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_repository_ad94aecd681043ac78cd50dcde4aaeb0d}{Contains}} (int id)
-\item 
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_eagle_eye_1_1_tests}{Tests}} if an object is contained with the given id \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_repository_ad50f201c8f5f1c7794ddf068ed459854}{Delete}} (int id)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em removes an object with the given id, if it exists \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
 static int? \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_repository_a799dfc419bb17912528a53eff82f50ff}{Next\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em Provides a unique ID relative to the current set of known ids \end{DoxyCompactList}\item 
 static Concurrent\+Dictionary$<$ int, T $>$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_repository_a26d864f26d5b20030d5c7c3e9400954a}{Models}} = new Concurrent\+Dictionary$<$int\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The static thread-\/safe mapping of objects to their id Operations are made in constant time due to hashing \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
+Developer\+: Gage Coates 
 
+Purpose\+: Creates a standard interface for C\+R\+UD operations on classes that implement the \mbox{\hyperlink{interface_eagle_eye_1_1_models_1_1_i_i_d}{I\+ID}} interface
 
-\begin{Desc}
+Dependencies\+: \mbox{\hyperlink{interface_eagle_eye_1_1_models_1_1_i_i_d}{I\+ID}}\+: Allows for uniquely identifying objects T\+: The subject class that implements \mbox{\hyperlink{interface_eagle_eye_1_1_models_1_1_i_i_d}{I\+ID}} Notes\+: All methods are static and state is static \begin{Desc}
 \item[Type Constraints]\begin{description}
 \item[{\em T} : {\em class}]\item[{\em T} : {\em \mbox{\hyperlink{interface_eagle_eye_1_1_models_1_1_i_i_d}{I\+ID}}}]\end{description}
 \end{Desc}
@@ -52,9 +54,10 @@ static Concurrent\+Dictionary$<$ int, T $>$ \mbox{\hyperlink{class_eagle_eye_1_1
 
 
 
+Adds an object to the internal collection 
 
-
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -69,8 +72,16 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
+\mbox{\hyperlink{namespace_eagle_eye_1_1_tests}{Tests}} if an object is contained with the given id 
 
 
+\begin{DoxyParams}{Parameters}
+{\em id} & The id to test\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if contained, else false
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_repository_ad50f201c8f5f1c7794ddf068ed459854}\label{class_eagle_eye_1_1_models_1_1_repository_ad50f201c8f5f1c7794ddf068ed459854}} 
 \index{EagleEye.Models.Repository$<$ T $>$@{EagleEye.Models.Repository$<$ T $>$}!Delete@{Delete}}
 \index{Delete@{Delete}!EagleEye.Models.Repository$<$ T $>$@{EagleEye.Models.Repository$<$ T $>$}}
@@ -79,9 +90,15 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
+removes an object with the given id, if it exists 
 
 
-Here is the caller graph for this function\+:\nopagebreak
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the object to delete\\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -96,9 +113,13 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
+Gets an object by id 
 
-
-Here is the caller graph for this function\+:\nopagebreak
+\begin{DoxyReturn}{Returns}
+An object T associated with the given id 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -114,6 +135,10 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection{\texorpdfstring{Models}{Models}}
 {\footnotesize\ttfamily Concurrent\+Dictionary$<$int, T$>$ \mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_repository}{Eagle\+Eye.\+Models.\+Repository}}$<$ T $>$.Models = new Concurrent\+Dictionary$<$int\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
 
+
+
+The static thread-\/safe mapping of objects to their id Operations are made in constant time due to hashing 
+
 \mbox{\Hypertarget{class_eagle_eye_1_1_models_1_1_repository_a799dfc419bb17912528a53eff82f50ff}\label{class_eagle_eye_1_1_models_1_1_repository_a799dfc419bb17912528a53eff82f50ff}} 
 \index{EagleEye.Models.Repository$<$ T $>$@{EagleEye.Models.Repository$<$ T $>$}!NextID@{NextID}}
 \index{NextID@{NextID}!EagleEye.Models.Repository$<$ T $>$@{EagleEye.Models.Repository$<$ T $>$}}
@@ -122,8 +147,11 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
+Provides a unique ID relative to the current set of known ids 
 
-
+\begin{DoxyReturn}{Returns}
+A unique integer id 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

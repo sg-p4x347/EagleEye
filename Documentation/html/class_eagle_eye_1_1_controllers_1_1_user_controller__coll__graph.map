@@ -1,4 +1,4 @@
 <map id="EagleEye.Controllers.UserController" name="EagleEye.Controllers.UserController">
-<area shape="rect" id="node1" title="Developer: Gage Coates" alt="" coords="5,131,180,252"/>
+<area shape="rect" id="node1" title="Provides authentication actions for unauthenticated users to login to the system as either an adminis..." alt="" coords="5,131,180,252"/>
 <area shape="rect" id="node2" href="$class_controller.html" title=" " alt="" coords="54,5,131,83"/>
 </map>

@@ -156,7 +156,6 @@
     <Compile Include="Views\Camera\Camera.cs" />
     <Compile Include="Views\ParkingLot\Annotation.cs" />
     <Compile Include="Views\ParkingLot\ParkingLot.cs" />
-    <Compile Include="Views\ParkingLot\Path.cs" />
     <Compile Include="Views\ParkingLot\Vector2.cs" />
     <Compile Include="Views\User\User.cs" />
   </ItemGroup>
@@ -239,7 +238,6 @@
     <Content Include="Views\ParkingLot\Index.cshtml" />
     <Content Include="Views\ParkingLot\_ParkingLot.cshtml" />
     <Content Include="Views\ParkingLot\Edit.cshtml" />
-    <Content Include="Views\User\Lot.cshtml" />
     <Content Include="Views\Camera\List.cshtml" />
     <Content Include="Views\ParkingLot\New.cshtml" />
     <Content Include="Views\Camera\Client.cshtml" />

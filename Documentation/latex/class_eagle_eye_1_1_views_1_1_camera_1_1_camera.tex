@@ -2,7 +2,13 @@
 \label{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}\index{EagleEye.Views.Camera.Camera@{EagleEye.Views.Camera.Camera}}
 
 
-Collaboration diagram for Eagle\+Eye.\+Views.\+Camera.\+Camera\+:\nopagebreak
+A View\+Model representation of a \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Camera}} Model. This is used to provide information about a camera to views  
+
+
+
+
+Collaboration diagram for Eagle\+Eye.\+Views.\+Camera.\+Camera\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -13,18 +19,23 @@ Collaboration diagram for Eagle\+Eye.\+Views.\+Camera.\+Camera\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_ab3ccc315a6ac49b823bcb2985f20ec0b}{Camera}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Necessary for the framework to do View\+Model binding from P\+O\+ST requests \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_a346c5d9185abc85856b4fba46edaf101}{Camera}} (\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera}{Models.\+Camera}} camera)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Camera}} View\+Model from the \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Camera}} Model \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_adde1c217f5dec95f622165afd7f1af16}{ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Camera}} id \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_aac0993dea066c34a044f51f23194551c}{Name}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Camera}} name \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_aae407995d15f660d45e7ed301146e698}{Current\+Image}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The base64 encoded image for the \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Camera}} Model\textquotesingle{}s Current\+Image property \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A View\+Model representation of a \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Camera}} Model. This is used to provide information about a camera to views 
+
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -34,12 +45,25 @@ string \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_aae40799
 \subsubsection{\texorpdfstring{Camera()}{Camera()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Eagle\+Eye.\+Views.\+Camera.\+Camera.\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Necessary for the framework to do View\+Model binding from P\+O\+ST requests 
+
 \mbox{\Hypertarget{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_a346c5d9185abc85856b4fba46edaf101}\label{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_a346c5d9185abc85856b4fba46edaf101}} 
 \index{EagleEye.Views.Camera.Camera@{EagleEye.Views.Camera.Camera}!Camera@{Camera}}
 \index{Camera@{Camera}!EagleEye.Views.Camera.Camera@{EagleEye.Views.Camera.Camera}}
 \subsubsection{\texorpdfstring{Camera()}{Camera()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Eagle\+Eye.\+Views.\+Camera.\+Camera.\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_eagle_eye_1_1_models_1_1_camera}{Models.\+Camera}}}]{camera }\end{DoxyParamCaption})}
 
+
+
+Constructs a \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Camera}} View\+Model from the \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Camera}} Model 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & The model to be used\\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Property Documentation}
@@ -49,17 +73,29 @@ string \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_aae40799
 \subsubsection{\texorpdfstring{CurrentImage}{CurrentImage}}
 {\footnotesize\ttfamily string Eagle\+Eye.\+Views.\+Camera.\+Camera.\+Current\+Image\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
+
+
+The base64 encoded image for the \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Camera}} Model\textquotesingle{}s Current\+Image property 
+
 \mbox{\Hypertarget{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_adde1c217f5dec95f622165afd7f1af16}\label{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_adde1c217f5dec95f622165afd7f1af16}} 
 \index{EagleEye.Views.Camera.Camera@{EagleEye.Views.Camera.Camera}!ID@{ID}}
 \index{ID@{ID}!EagleEye.Views.Camera.Camera@{EagleEye.Views.Camera.Camera}}
 \subsubsection{\texorpdfstring{ID}{ID}}
 {\footnotesize\ttfamily int Eagle\+Eye.\+Views.\+Camera.\+Camera.\+ID\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
+
+
+The \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Camera}} id 
+
 \mbox{\Hypertarget{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_aac0993dea066c34a044f51f23194551c}\label{class_eagle_eye_1_1_views_1_1_camera_1_1_camera_aac0993dea066c34a044f51f23194551c}} 
 \index{EagleEye.Views.Camera.Camera@{EagleEye.Views.Camera.Camera}!Name@{Name}}
 \index{Name@{Name}!EagleEye.Views.Camera.Camera@{EagleEye.Views.Camera.Camera}}
 \subsubsection{\texorpdfstring{Name}{Name}}
 {\footnotesize\ttfamily string Eagle\+Eye.\+Views.\+Camera.\+Camera.\+Name\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The \mbox{\hyperlink{class_eagle_eye_1_1_views_1_1_camera_1_1_camera}{Camera}} name 
 
 
 

@@ -7,18 +7,11 @@ using System.Security.Claims;
 namespace EagleEye.Controllers
 {
 	/// <summary>
-	/// Developer:
-	/// 	Gage Coates
-	/// 
-	/// Purpose:
-	///		Provides authentication actions for unauthenticated
-	///		users to login to the system as either an administrator
-	///		or standard user
-	/// 
-	/// Dependencies:
-	/// 	Controller:
-	///			Base MVC controller methods
+	///	Provides authentication actions for unauthenticated
+	///	users to login to the system as either an administrator
+	///	or standard user
 	/// </summary>
+	/// <remarks>Author: Gage Coates</remarks>
 	[AllowAnonymous]
 	public class UserController : Controller
     { 
@@ -34,8 +27,8 @@ namespace EagleEye.Controllers
             return View("Login",new Views.User.User());
         }
 		/// <summary>
-		/// 	Logs a user in and provisions them with the
-		/// 	appropriate role. Subsiquent requests are
+		/// Logs a user in and provisions them with the
+		/// appropriate role. Subsiquent requests are
 		///	authenticated with this role
 		/// </summary>
 		/// <returns>A redirect to /Home/Index</returns>
@@ -54,12 +47,9 @@ namespace EagleEye.Controllers
 			return RedirectToAction("Index", "Home");
 		}
 		/// <summary>
-		//Purpose:
-		//	Logs a user out and unauthenticates requests
-
-		//Returns:
-		//	A redirect to /User/Index
+		/// Logs a user out and unauthenticates requests
 		/// </summary>
+		/// <returns>A redirect to /User/Index</returns>
 		[HttpGet]
 		public ActionResult Logout()
 		{

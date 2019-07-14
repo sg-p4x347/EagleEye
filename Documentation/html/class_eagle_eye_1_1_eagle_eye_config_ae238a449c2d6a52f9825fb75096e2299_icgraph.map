@@ -1,10 +1,10 @@
 <map id="EagleEye.EagleEyeConfig.ExportDatabase" name="EagleEye.EagleEyeConfig.ExportDatabase">
 <area shape="rect" id="node1" title=" " alt="" coords="247,201,425,243"/>
-<area shape="rect" id="node2" href="$class_eagle_eye_1_1_controllers_1_1_camera_controller.html#a07c68e0e159c17b1725489ddf54f9f1d" title=" " alt="" coords="5,5,199,47"/>
-<area shape="rect" id="node3" href="$class_eagle_eye_1_1_controllers_1_1_camera_controller.html#a9e43f7e6f051aa5dbc695d68b4b013ab" title=" " alt="" coords="5,71,199,112"/>
-<area shape="rect" id="node4" href="$class_eagle_eye_1_1_controllers_1_1_camera_controller.html#ade4d5c697769c79b1866f95bbf7fc889" title=" " alt="" coords="5,136,199,177"/>
-<area shape="rect" id="node5" href="$class_eagle_eye_1_1_controllers_1_1_parking_lot_controller.html#a073d77794ca654b813b37deae908501a" title=" " alt="" coords="6,201,198,243"/>
-<area shape="rect" id="node6" href="$class_eagle_eye_1_1_controllers_1_1_parking_lot_controller.html#a5af6a4b208418bca8a26f30255c62926" title=" " alt="" coords="6,267,198,308"/>
-<area shape="rect" id="node7" href="$class_eagle_eye_1_1_controllers_1_1_parking_lot_controller.html#aa0484b67b0469d5c81421d793405ac50" title=" " alt="" coords="6,332,198,373"/>
-<area shape="rect" id="node8" href="$class_eagle_eye_1_1_controllers_1_1_parking_lot_controller.html#aa26300d7c8f2fa2e41c15ceb0eb5c79e" title=" " alt="" coords="6,397,198,439"/>
+<area shape="rect" id="node2" href="$class_eagle_eye_1_1_controllers_1_1_camera_controller.html#a07c68e0e159c17b1725489ddf54f9f1d" title="Creates a new Camera instance by name" alt="" coords="5,5,199,47"/>
+<area shape="rect" id="node3" href="$class_eagle_eye_1_1_controllers_1_1_camera_controller.html#a9e43f7e6f051aa5dbc695d68b4b013ab" title="Updates a Camera model" alt="" coords="5,71,199,112"/>
+<area shape="rect" id="node4" href="$class_eagle_eye_1_1_controllers_1_1_camera_controller.html#ade4d5c697769c79b1866f95bbf7fc889" title="Deletes a Camera model by id" alt="" coords="5,136,199,177"/>
+<area shape="rect" id="node5" href="$class_eagle_eye_1_1_controllers_1_1_parking_lot_controller.html#a073d77794ca654b813b37deae908501a" title="Updates a parking lot baseline to the current image held in the associated Camera instance" alt="" coords="6,201,198,243"/>
+<area shape="rect" id="node6" href="$class_eagle_eye_1_1_controllers_1_1_parking_lot_controller.html#a5af6a4b208418bca8a26f30255c62926" title="Creates a new parking lot from a name and camera ID" alt="" coords="6,267,198,308"/>
+<area shape="rect" id="node7" href="$class_eagle_eye_1_1_controllers_1_1_parking_lot_controller.html#aa0484b67b0469d5c81421d793405ac50" title="Updates a parking lot model to mirror the provided ParkingLot viewmodel" alt="" coords="6,332,198,373"/>
+<area shape="rect" id="node8" href="$class_eagle_eye_1_1_controllers_1_1_parking_lot_controller.html#aa26300d7c8f2fa2e41c15ceb0eb5c79e" title="Deletes a parking lot by ID" alt="" coords="6,397,198,439"/>
 </map>

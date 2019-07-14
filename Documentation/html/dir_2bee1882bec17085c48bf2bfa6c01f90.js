@@ -6,9 +6,6 @@ var dir_2bee1882bec17085c48bf2bfa6c01f90 =
     [ "ParkingLot.cs", "_views_2_parking_lot_2_parking_lot_8cs.html", [
       [ "ParkingLot", "class_eagle_eye_1_1_views_1_1_parking_lot_1_1_parking_lot.html", "class_eagle_eye_1_1_views_1_1_parking_lot_1_1_parking_lot" ]
     ] ],
-    [ "Path.cs", "_path_8cs.html", [
-      [ "Path", "class_eagle_eye_1_1_views_1_1_parking_lot_1_1_path.html", "class_eagle_eye_1_1_views_1_1_parking_lot_1_1_path" ]
-    ] ],
     [ "Vector2.cs", "_views_2_parking_lot_2_vector2_8cs.html", [
       [ "Vector2", "class_eagle_eye_1_1_views_1_1_parking_lot_1_1_vector2.html", "class_eagle_eye_1_1_views_1_1_parking_lot_1_1_vector2" ]
     ] ]

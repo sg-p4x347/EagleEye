@@ -93,14 +93,14 @@ $(document).ready(function(){initNavTree('class_eagle_eye_1_1_controllers_1_1_us
 </div><!--header-->
 <div class="contents">
 
-<p>Developer: Gage Coates  
+<p>Provides authentication actions for unauthenticated users to login to the system as either an administrator or standard user  
  <a href="class_eagle_eye_1_1_controllers_1_1_user_controller.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for EagleEye.Controllers.UserController:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_eagle_eye_1_1_controllers_1_1_user_controller__inherit__graph.png" border="0" usemap="#_eagle_eye_8_controllers_8_user_controller_inherit__map" alt="Inheritance graph"/></div>
 <map name="_eagle_eye_8_controllers_8_user_controller_inherit__map" id="_eagle_eye_8_controllers_8_user_controller_inherit__map">
-<area shape="rect"  title="Developer: Gage Coates" alt="" coords="5,131,180,252"/>
+<area shape="rect"  title="Provides authentication actions for unauthenticated users to login to the system as either an adminis..." alt="" coords="5,131,180,252"/>
 <area shape="rect"  href="class_controller.html" title=" " alt="" coords="54,5,131,83"/>
 </map>
 </div>
@@ -109,7 +109,7 @@ Collaboration diagram for EagleEye.Controllers.UserController:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_eagle_eye_1_1_controllers_1_1_user_controller__coll__graph.png" border="0" usemap="#_eagle_eye_8_controllers_8_user_controller_coll__map" alt="Collaboration graph"/></div>
 <map name="_eagle_eye_8_controllers_8_user_controller_coll__map" id="_eagle_eye_8_controllers_8_user_controller_coll__map">
-<area shape="rect"  title="Developer: Gage Coates" alt="" coords="5,131,180,252"/>
+<area shape="rect"  title="Provides authentication actions for unauthenticated users to login to the system as either an adminis..." alt="" coords="5,131,180,252"/>
 <area shape="rect"  href="class_controller.html" title=" " alt="" coords="54,5,131,83"/>
 </map>
 </div>
@@ -120,14 +120,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a9562eb9abf6432e9360af19bb046a775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a login view  <a href="#a9562eb9abf6432e9360af19bb046a775">More...</a><br /></td></tr>
 <tr class="separator:a9562eb9abf6432e9360af19bb046a775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2199840c954a1a465e25087fee02564"><td class="memItemLeft" align="right" valign="top">ActionResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_eagle_eye_1_1_controllers_1_1_user_controller.html#ad2199840c954a1a465e25087fee02564">Login</a> (<a class="el" href="class_eagle_eye_1_1_views_1_1_user_1_1_user.html">Views.User.User</a> user)</td></tr>
+<tr class="memdesc:ad2199840c954a1a465e25087fee02564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a user in and provisions them with the appropriate role. Subsiquent requests are authenticated with this role  <a href="#ad2199840c954a1a465e25087fee02564">More...</a><br /></td></tr>
 <tr class="separator:ad2199840c954a1a465e25087fee02564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23b7abc37b240a70620675d09edecf8c"><td class="memItemLeft" align="right" valign="top">ActionResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_eagle_eye_1_1_controllers_1_1_user_controller.html#a23b7abc37b240a70620675d09edecf8c">Logout</a> ()</td></tr>
+<tr class="memdesc:a23b7abc37b240a70620675d09edecf8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a user out and unauthenticates requests  <a href="#a23b7abc37b240a70620675d09edecf8c">More...</a><br /></td></tr>
 <tr class="separator:a23b7abc37b240a70620675d09edecf8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Developer: Gage Coates </p>
-<p>Purpose: Provides authentication actions for unauthenticated users to login to the system as either an administrator or standard user</p>
-<p>Dependencies: <a class="el" href="class_controller.html">Controller</a>: Base MVC controller methods </p>
+<div class="textblock"><p>Provides authentication actions for unauthenticated users to login to the system as either an administrator or standard user </p>
+<p>Author: Gage Coates</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9562eb9abf6432e9360af19bb046a775"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9562eb9abf6432e9360af19bb046a775">&#9670;&nbsp;</a></span>Index()</h2>
@@ -165,7 +166,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Logs a user in and provisions them with the appropriate role. Subsiquent requests are authenticated with this role </p>
+<dl class="section return"><dt>Returns</dt><dd>A redirect to /Home/Index</dd></dl>
 
 </div>
 </div>
@@ -184,7 +186,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Logs a user out and unauthenticates requests </p>
+<dl class="section return"><dt>Returns</dt><dd>A redirect to /User/Index</dd></dl>
 
 </div>
 </div>
