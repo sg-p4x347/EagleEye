@@ -103,7 +103,7 @@ namespace EagleEye.Models
 			return points;
 		}
 		/// <summary>
-		///  Normalizes the green channel as a percent of the total
+		/// Normalizes the green channel as a percent of the total
 		/// </summary>
 		/// <param name="source">The source Bitmap</param>
 		/// <returns>A green shifted version of the source Bitmap</returns>
