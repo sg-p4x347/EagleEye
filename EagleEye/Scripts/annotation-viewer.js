@@ -117,15 +117,14 @@
 		let nodes = [];
 		this.lot.Annotations.where(an => an.Type === "Isle").forEach(an => {
 			let midpoints = an.midpoints;
-			for (let i = 0; i < 2; i++) {
-				let start = midpoints[i];
-				let end = midpoints[i + 2];
-				let segment = end.subtract(start);
-				let step = segment.length / Math.ceil(segment.length / AnnotationViewer.nodeDistance);
-				for (let t = 0; t <= segment.length; t += step) {
-					nodes.push(start.add(segment.normalized().scale(t)));
+			let xAxis = midpoints[2].subtract(midpoints[0]);
+			let yAxis = midpoints[3].subtract(midpoints[1]);
+			for (let xt = -0.5; xt <= 0.5; xt += 1 / 4) {
+				for (let yt = -0.5; yt <= 0.5; yt += 1 / 4) {
+					nodes.push(new Vector2(xAxis.scale(xt).add(midpoints[0]), yAxis.scale(yt).add(midpoints[1])));
 				}
 			}
+			
 		});
 		return nodes;
 	}
