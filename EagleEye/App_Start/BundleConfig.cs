@@ -35,6 +35,9 @@ namespace EagleEye
 					  "~/Content/bootstrap.css",
 					  "~/Content/site.css",
 					  "~/Content/parking-lot.css"));
+					  "~/Content/Client.css"));
+
+			
 		}
 	}
 }
