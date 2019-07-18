@@ -35,8 +35,9 @@ namespace EagleEye
 					  "~/Content/bootstrap.css",
 					  "~/Content/site.css",
 					  "~/Content/parking-lot.css"));
-
-			
+			bundles.Add(new StyleBundle("~/Content/camerastyling").Include(
+					  "~/Content/Client.css"))
+	
 		}
 	}
 }
