@@ -77,6 +77,7 @@
 					ctx.lineWidth = 1;
 					if (viewer.goal && annotation.ID === viewer.goal.ID) {
 						ctx.strokeStyle = 'blue';
+						ctx.lineWidth = 8;
 					} else {
 						ctx.strokeStyle = 'black';
 
@@ -98,9 +99,17 @@
 						return false;
 					}
 					
-				}, (self, ctx, annotation) => {
-					return false;
-				});
+				}, (self, ctx, annotation, point) => {
+					if (point === self.start) {
+						ctx.fillStyle = 'blue';
+						ctx.strokeStyle = 'blue';
+						ctx.lineWidth = 16;
+						return true;
+					} else {
+						return false;
+					}
+					
+					});
 				annotations.addEventListener('click', (evt) => {
 					let pos = new Vector2(evt.offsetX / annotations.width, evt.offsetY / annotations.height);
 					let target = viewer.lot.Annotations.find(an => an.Type === "Parking" && an.contains(pos));
