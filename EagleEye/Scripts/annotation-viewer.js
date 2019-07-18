@@ -186,13 +186,40 @@
 		let nodes = [];
 		this.lot.Annotations.where(an => an.Type === "Isle").forEach(an => {
 			let midpoints = an.midpoints;
-			let xAxis = midpoints[2].subtract(midpoints[0]);
-			let yAxis = midpoints[3].subtract(midpoints[1]);
-			for (let xt = -0.5; xt <= 0.5; xt += 1 / 4) {
-				for (let yt = -0.5; yt <= 0.5; yt += 1 / 4) {
-					nodes.push(new Vector2(xAxis.scale(xt).add(midpoints[0]), yAxis.scale(yt).add(midpoints[1])));
+			for (let i = 0; i < 2; i++) {
+				let start = midpoints[i];
+				let end = midpoints[i + 2];
+				let segment = end.subtract(start);
+				let step = segment.length / Math.ceil(segment.length / AnnotationViewer.nodeDistance);
+				for (let t = 0; t <= segment.length; t += step) {
+					nodes.push(start.add(segment.normalized().scale(t)));
 				}
 			}
+			//let xAxes = [
+			//	an.Points[1].subtract(an.Points[0]).normalized(),
+			//	an.Points[2].subtract(an.Points[3]).normalized()
+			//];
+			//let yAxes = [
+			//	an.Points[3].subtract(an.Points[0]).normalized(),
+			//	an.Points[2].subtract(an.Points[1]).normalized()
+			//];
+			//for (let xt = 0; xt <= 1; xt += 1 / 8) {
+			//	for (let yt = 0; yt <= 1; yt += 1 / 8) {
+			//		let yStart = xAxes[0].scale(xt).add(an.Points[0]);
+			//		let yEnd = xAxes[1].scale(xt).add(an.Points[3]);
+					
+						
+			//		let xStart = yAxes[0].scale(yt).add(an.Points[0]);
+			//		let xEnd = yAxes[1].scale(yt).add(an.Points[1]);
+			//		if (yStart.dot(xStart) < 0) {
+			//			let temp = yStart;
+			//			yStart = yEnd;
+			//			yEnd = temp;
+			//		}
+			//		let t = xStart.subtract(yStart).cross(yEnd.scale(1 / xEnd.cross(yEnd)));
+			//		nodes.push(xEnd.subtract(xStart).normalized().scale(t).add(xStart));
+			//	}
+			//}
 			
 		});
 		return nodes;
