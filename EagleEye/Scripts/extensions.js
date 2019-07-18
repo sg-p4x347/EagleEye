@@ -33,6 +33,13 @@ Array.prototype.minValue = function (predicate) {
 	}
 	return min;
 };
+Array.prototype.select = function (predicate) {
+	let results = [];
+	for (let i = 0; i < this.length; i++) {
+		results.push(predicate(this[i]));
+	}
+	return results;
+}
 Array.prototype.where = function (predicate) {
 	let results = [];
 	for (let i = 0; i < this.length; i++) {
