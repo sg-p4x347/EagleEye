@@ -24,7 +24,7 @@ function takeASnap() {
     canvas.height = (canvas.width / vid.videoWidth) * vid.videoHeight;
 	ctx.drawImage(vid, 0, 0, vid.videoWidth, vid.videoHeight, 0, 0, canvas.width, canvas.height); // the video
     return new Promise((res, rej) => {
-        canvas.toBlob(res, 'image/jpeg',0.6); // request a Blob from the canvas
+        canvas.toBlob(res, 'image/jpeg'); // request a Blob from the canvas
     });
 }
 
