@@ -97,50 +97,60 @@
 		ctx.strokeStyle = 'black';
 		ctx.setLineDash([]);
 		ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-		function renderAnnotation(ctx, annotation) {
-			
-			if (self.prepareAnnotationRender(self, ctx, annotation)) {
-				ctx.beginPath();
-				annotation.Points.forEach((point, i) => {
-					let screen = self.toScreen(point);
-					if (i === 0) {
-						ctx.moveTo(screen.X, screen.Y);
-					} else {
-						ctx.lineTo(screen.X, screen.Y);
-					}
-				});
-				ctx.closePath();
-				ctx.fill();
-				ctx.stroke();
-				
-			}
+		function renderAnnotation(ctx, annotation,fill,stroke,points) {
 			
 			
+			ctx.beginPath();
 			annotation.Points.forEach((point, i) => {
-				if (self.preparePointRender(self, ctx, annotation,point)) {
-					let screen = self.toScreen(point);
-					ctx.beginPath();
-					ctx.arc(screen.X, screen.Y, point === self.hover ? self.pointRadius : self.pointDisplayRadius, 0, Math.PI * 2);
-
-					ctx.fill();
-					ctx.stroke();
+				let screen = self.toScreen(point);
+				if (i === 0) {
+					ctx.moveTo(screen.X, screen.Y);
+				} else {
+					ctx.lineTo(screen.X, screen.Y);
 				}
 			});
-		
+			ctx.closePath();
+			if (fill)
+				ctx.fill();
+			if (stroke)
+				ctx.stroke();
+			
+			if (points) {
+				annotation.Points.forEach((point, i) => {
+					if (self.preparePointRender(self, ctx, annotation, point)) {
+						let screen = self.toScreen(point);
+						ctx.beginPath();
+						ctx.arc(screen.X, screen.Y, point === self.hover ? self.pointRadius : self.pointDisplayRadius, 0, Math.PI * 2);
+
+						ctx.fill();
+						ctx.stroke();
+					}
+				});
+			}
 		}
 		this.lot.Annotations.forEach(annotation => {
-			renderAnnotation(ctx, annotation);
+			if (self.prepareAnnotationRender(self, ctx, annotation)) {
+				renderAnnotation(ctx, annotation, true, false,true);
+			}
+		});
+		this.lot.Annotations.forEach(annotation => {
+			if (self.prepareAnnotationRender(self, ctx, annotation)) {
+				renderAnnotation(ctx, annotation, false, true, true);
+			}
 		});
 		if (this.drawMode !== undefined && this.drawMode !== 'Select') {
 			ctx.fillStyle = 'rgba(255,255,255,0.5)';
 			ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 			if (this.drawing) {
-				renderAnnotation(ctx, this.drawing);
+				if (self.prepareAnnotationRender(self, ctx, this.drawing)) {
+					renderAnnotation(ctx, this.drawing, true, true, true);
+				}
 			}
 		} else if (this.drawing) {
 			ctx.setLineDash([5, 5]);
 			ctx.strokeStyle = 'blue';
-			renderAnnotation(ctx, this.drawing);
+			ctx.fillStyle = 'rgba(0,0,255,0.25)';
+			renderAnnotation(ctx, this.drawing,true,true,false);
 		}
 
 		if (this.path) {

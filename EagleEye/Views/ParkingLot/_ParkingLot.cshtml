@@ -2,9 +2,6 @@
 @{
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-
-</style>
 @section scripts {
 	@Scripts.Render("~/bundles/parking")
 	<script>
@@ -13,14 +10,12 @@
 		let viewport = document.getElementById('viewport');
 		let form = document.getElementById('viewForm');
 		function updateViewportSize() {
-			let width = viewport.clientWidth;
+			let width = viewport.parentElement.clientWidth - 32;
+			
 			let ratio = background.naturalHeight / background.naturalWidth;
 			let height = width * ratio;
-			if (height > viewport.clientHeight) {
-				height = viewport.clientHeight;
-				ratio = background.naturalWidth / background.naturalHeight;
-				width = height * ratio;
-			}
+			viewport.style.width = width + 'px';
+			viewport.style.height = height + 'px';
 			annotations.width = width;
 			annotations.height = height;
 			background.width = width;
@@ -112,62 +107,34 @@
 	@RenderSection("scripts",false)
 }
 
-<div class="container max-height">
-	@*<div class="row">
-		<div class="col col-sm-3">
-			<h1 class="page-header">
-				@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
-				@Model.Name
-			</h1>
-		</div>
-		<div class="col col-sm-2">
-			Total Spaces
-		</div>
-		<div class="col col-sm-2">
-			0
-		</div>
-		<div class="col col-sm-2">
-			Available
-		</div>
-		<div class="col col-sm-2">
-			0
-		</div>
-		<div class="col col-sm-2">
-			% Full
-		</div>
-		<div class="col col-sm-2">
-			0
-		</div>
-	</div>*@
-	<div class="row max-height">
-		<div class="col col-sm-3 scrollable max-height">
-			<h1 class="page-header">
-				@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
-				@Model.Name
-			</h1>
-			@RenderSection("Buttons", false)
-			<div class="panel panel-info">
-				<div class="panel-heading">View</div>
-				<div class="panel-body">
-					<form id="viewForm">
-						<label>Background:</label>
-						<div class="form-group-sm">
-							@Html.RadioButton("background", "baseline", false) <label>Baseline</label><br />
-							@Html.RadioButton("background", "feed", true) <label>Camera feed</label><br />
-							@Html.RadioButton("background", "none", false) <label>None</label><br />
-							@Html.CheckBox("annotations", true) <label>Show Annotations</label>
-						</div>
-					</form>
-				</div>
+<div class="row">
+	<div class="col col-md-3 ">
+		@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default back" })
+		<h1>
+			@Model.Name
+		</h1>
+		@RenderSection("Buttons", false)
+		<div class="panel panel-default">
+			<div class="panel-heading">View</div>
+			<div class="panel-body">
+				<form id="viewForm">
+					<label>Background:</label>
+					<div class="form-group-sm">
+						@Html.RadioButton("background", "baseline", false) <label>Baseline</label><br />
+						@Html.RadioButton("background", "feed", true) <label>Camera feed</label><br />
+						@Html.RadioButton("background", "none", false) <label>None</label><br />
+						@Html.CheckBox("annotations", true) <label>Show Annotations</label>
+					</div>
+				</form>
 			</div>
 		</div>
-		<div class="col col-md-9 max-height">
-			<div id="viewport" class="max-width max-height">
-				<img id="baseline" />
-				<canvas id="editor" />
-			</div>
-		</div>
-
 	</div>
+	<div class="col col-md-9">
+		<div id="viewport">
+			<img id="baseline" />
+			<canvas id="editor" />
+		</div>
+	</div>
+
 </div>
 

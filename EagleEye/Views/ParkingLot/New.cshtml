@@ -1,15 +1,19 @@
 ﻿@{ 
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1 class="panel-heading">New Parking Lot</h1>
-<form class="form-group" id="newLotForm">
+<style>
+	.body-content {
+		width:fit-content;
+	}
+</style>
+<form id="newLotForm">
+	<h1 class="panel-heading">New Parking Lot</h1>
 	<label>Name:</label>
-	@Html.TextBox("name","",new { @class="form-control"})
+	@Html.TextBox("name", "", new { @class = "form-control" })
 	<label>Camera:</label>
 	@{Html.RenderAction("ListView", "Camera");}
 	<br />
-	<button type="submit" class="btn btn-primary">Create</button>
+	<button type="submit" class="btn btn-primary btn-block">Create</button>
 </form>
 <script>
 	let form = document.getElementById('newLotForm');
