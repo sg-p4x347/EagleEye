@@ -77,7 +77,7 @@ namespace EagleEye
 					Json lotJson = Json.Object;
 					lotJson["ID"] = lot.ID;
 					lotJson["Name"] = lot.Name;
-					lotJson["Camera"] = lot.Camera.ID;
+					lotJson["Camera"] = lot.Camera != null ? lot.Camera.ID : -1;
 					Json annotations = Json.Array;
 					foreach (var annotation in lot.Annotations)
 					{
