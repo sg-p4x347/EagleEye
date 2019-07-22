@@ -29,25 +29,31 @@ function takeASnap() {
 }
 
 function send(blob) {
-    var reader = new FileReader();
-    reader.onloadend = () => {
-        var text = btoa(String.fromCharCode.apply(null, new Uint8Array(reader.result)));
-		$.ajax({
-			url: "/Camera/Update",
-			data: {
-				ID: -1,
-				Name: document.getElementById('textBox').value,
-				CurrentImage: text
-			},
-			method: "POST"
-		}).done(() => {
-			window.setTimeout(() => {
-				repeatingFunct();
-			}, 1000);
-			
-		});
-    };
-    reader.readAsArrayBuffer(blob);
+	if (blob instanceof Blob) {
+		var reader = new FileReader();
+		reader.onloadend = () => {
+			var text = btoa(String.fromCharCode.apply(null, new Uint8Array(reader.result)));
+			$.ajax({
+				url: "/Camera/Update",
+				data: {
+					ID: -1,
+					Name: document.getElementById('textBox').value,
+					CurrentImage: text
+				},
+				method: "POST"
+			}).done(() => {
+				window.setTimeout(() => {
+					repeatingFunct();
+				}, 1000);
+
+			});
+		};
+		reader.readAsArrayBuffer(blob);
+	} else {
+		window.setTimeout(() => {
+			repeatingFunct();
+		}, 1000);
+	}
 }
 
 function repeatingFunct() {
