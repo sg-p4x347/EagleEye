@@ -25,7 +25,8 @@ namespace EagleEye.Views.ParkingLot
 			ID = lot.ID;
 			Name = lot.Name;
 			Annotations = lot.Annotations.Select(a => new Annotation(a)).ToList();
-			CameraID = lot.Camera.ID;
+			if (lot.Camera != null)
+				CameraID = lot.Camera.ID;
 		}
 		/// <summary>
 		/// The ParkingLot id

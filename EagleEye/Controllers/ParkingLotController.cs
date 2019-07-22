@@ -172,6 +172,7 @@ namespace EagleEye.Controllers
 				lock (model)
 				{
 					model.Annotations.Clear();
+					// Add annotations
 					foreach (var annotation in lot.Annotations)
 					{
 						var modelAnnotation = new Annotation(model.Annotations.Count > 0 ? model.Annotations.Max(a => a.ID) + 1 : 0, (Annotation.AnnotationType)Enum.Parse(typeof(Annotation.AnnotationType), annotation.Type));
@@ -181,6 +182,8 @@ namespace EagleEye.Controllers
 							modelAnnotation.Add(new Models.Geometry.Vector2(point.X, point.Y));
 						}
 					}
+					// Set the camera
+					model.Camera = Repository<Camera>.Get(lot.CameraID);
 				}
 				EagleEyeConfig.ExportDatabase();
 				return new EmptyResult();

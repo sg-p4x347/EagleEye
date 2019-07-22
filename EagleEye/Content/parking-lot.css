@@ -1,25 +1,21 @@
 ﻿body {
 	user-select:none;
-	height:100vh;
 }
-.body-content {
-	height: 100%;
+#viewport {
+	position:relative;
 }
-
-#viewport, #baseline, #editor {
-    position: absolute;
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    margin-right: auto;
-    margin-left: auto;
+#baseline, #editor {
+	position:absolute;
 }
 
 
-#baseline {
-    border-radius: 0 0 12px 12px;
-}
+	#baseline {
+		border-radius: 0 0 12px 12px;
+	}
 
 #editor {
     border-radius: 12px;
+}
+.back {
+	margin-top: 16px;
 }

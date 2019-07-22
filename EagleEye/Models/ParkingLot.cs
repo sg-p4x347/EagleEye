@@ -38,7 +38,7 @@ namespace EagleEye.Models
 			ID = id;
 			Name = name;
 			Camera = camera;
-			Camera.Changed += CameraChangeHandler;
+				
 		}
 		/// <summary>
 		/// Subsribes to the Camera.Changed event and
@@ -57,10 +57,22 @@ namespace EagleEye.Models
 		/// 
 		/// </summary>
 		public string Name { get; set; }
+		private Camera m_camera;
 		/// <summary>
 		/// The assocative camera that monitors this parking lot
 		/// </summary>
-		public Camera Camera { get; private set; }
+		public Camera Camera {
+			get {
+				return m_camera;
+			}
+			set {
+				m_camera = value;
+				if (m_camera != null)
+				{
+					m_camera.Changed += CameraChangeHandler;
+				}
+			}
+		}
 		/// <summary>
 		/// An image that defines the empty state of the parking lot
 		/// </summary>

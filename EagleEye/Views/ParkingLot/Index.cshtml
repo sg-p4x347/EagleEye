@@ -21,12 +21,19 @@
 		@:	url: '/ParkingLot/Baseline',
 		@:	data: { id: @lot.ID}
 		@:}).done(data => {
-		@:	document.getElementById('@lot.ID').src = `data:image/png;base64, ${ data}`;
+		@:	document.getElementById('@lot.ID').style.backgroundImage = `url('data:image/png;base64, ${ data}'`;
 		@:});
 	}
 	</script>
 }
-<h1>Parking Lots</h1>
+<style>
+	.panel-body {
+		background-repeat:no-repeat;
+		background-size:cover;
+	}
+
+</style>
+<h1 class="text-center">Parking Lots</h1>
 @if (Request.IsAdmin())
 {
 	<a class="btn btn-default btn-lg" href="/ParkingLot/New">
@@ -40,23 +47,28 @@
 	{
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h2>
-				@Html.ActionLink("View", "Monitor", new { id = lot.ID }, new { @class = "btn btn-info btn-lg" })
-				@lot.Name
-			</h2>
-			<img id="@lot.ID" height="100px" />
+			<h4>@lot.Name</h4>
 		</div>
-		@if (Request.IsAdmin())
-		{
-			<div class="panel-body">
+		<div class="panel-body" id="@lot.ID">
 
-				<div class="flex-row justify-between max-width">
-					@Html.ActionLink("Edit", "Edit", new { id = lot.ID }, new { @class = "btn btn-default" })
+			<div class="flex-row justify-between max-width">
+				<div class="btn-group">
 
-					<button class="btn btn-danger" onclick="deleteLot(@lot.ID)">Delete</button>
+					@if (Request.IsAdmin())
+					{
+						@Html.ActionLink("Edit", "Edit", new { id = lot.ID }, new { @class = "btn btn-default btn-lg" })
+					}
+					@Html.ActionLink("View", "Monitor", new { id = lot.ID }, new { @class = "btn btn-default btn-lg" })
 				</div>
+				@if (Request.IsAdmin())
+				{
+					<button class="btn btn-danger btn-lg" onclick="deleteLot(@lot.ID)">Delete</button>
+				}
 			</div>
-		}
+			
+			<img  height="100px" />
+		</div>
+		
 		</div>
 	}
 </div>

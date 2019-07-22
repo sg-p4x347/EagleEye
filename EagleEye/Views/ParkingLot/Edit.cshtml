@@ -6,14 +6,16 @@
 <div class="panel panel-default">
 	<div class="panel-heading flex-row justify-between">
 		<span>Edit</span>
-		<button class="btn btn-primary" onclick="editor.save()">Save</button>
+		<div class="btn btn-primary" onclick="editor.save()">Save</div>
 	</div>
-	<div class=" btn-group-vertical max-width">
-
-		<button class="btn btn-default" onclick="editor.newSpace()">New Parking Space</button>
-		<button class="btn btn-default" onclick="editor.newIsle()">New Aisle</button>
-		<button class="btn btn-default" onclick="editor.newConstant()">New Constant</button>
-		<button class="btn btn-default" onclick="updateBaseline()">Update Baseline</button>
+	<div class="panel-body btn-group-vertical max-width">
+		<div class="btn btn-default" onclick="updateBaseline()">Update Baseline</div>
+		<label>Camera</label>
+		@{Html.RenderAction("ListView", "Camera");}
+		<label>Annotations</label>
+		<div class="btn btn-default" onclick="editor.newSpace()">New Parking Space</div>
+		<div class="btn btn-default" onclick="editor.newIsle()">New Isle</div>
+		<div class="btn btn-default" onclick="editor.newConstant()">New Constant</div>
 	</div>
 </div>
 
@@ -36,7 +38,10 @@
 
 			editor = new AnnotationEditor(lot, annotations);
 			editor.tick();
-		});
+			});
+		function cameraSelected(cameraID) {
+			editor.lot.CameraID = cameraID;
+		}
 	</script>
 }
 
