@@ -10,11 +10,17 @@
 @section scripts{
     @Scripts.Render("~/bundles/camera");
 }
+
 <div class="container">
-    <label> <b>Camera Name: </b></label>
-    <input type="text" id="textBox"/>
-    <button id="btn"> <b>Start Camera</b> </button>
-    <video id="vid" width="400" height="300" autoplay></video>
+	<form>
+		<label> <b>Camera Name: </b></label>
+		<input type="text" id="textBox" class="form-control" />
+		<button id="btn"> <b>Start Camera</b> </button>
+		<video id="vid" width="400" height="300" autoplay></video>
+	</form>
 </div>
+<script>
+	document.querySelector('form').addEventListener('submit', (evt) => evt.preventDefault());
+</script>
 
 
