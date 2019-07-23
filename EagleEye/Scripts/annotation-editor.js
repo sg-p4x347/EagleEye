@@ -30,7 +30,58 @@
 		// Setup event listeners
 		this.dragging = null; // if the selection is being dragged
 		this.hover = null; // the point being hovered over
-		this.canvas.addEventListener('mousemove', (evt) => {
+		
+		let select = (evt) => {
+			if (this.drawMode === 'Select') {
+				this.lot.Annotations.forEach(annotation => {
+					annotation.Points.forEach(point => {
+						let screen = this.toScreen(point);
+						let x = screen.X - evt.offsetX;
+						let y = screen.Y - evt.offsetY;
+						if (x * x + y * y <= this.pointRadius * this.pointRadius) {
+							if (!this.selected(point)) {
+								if (this.shift) {
+									this.selection.push(point);
+								} else {
+									this.selection = [point];
+								}
+							}
+							this.dragging = point;
+							return true;
+						}
+					});
+				});
+				if (this.dragging)
+					return;
+
+			}
+			this.drawing = new Annotation({ Type: this.drawMode });
+			this.drawing.Points.push(new Vector2(evt.offsetX / this.canvas.width, evt.offsetY / this.canvas.height));
+			this.drawing.Points.push(new Vector2(evt.offsetX / this.canvas.width, evt.offsetY / this.canvas.height));
+			this.drawing.Points.push(new Vector2(evt.offsetX / this.canvas.width, evt.offsetY / this.canvas.height));
+			this.drawing.Points.push(new Vector2(evt.offsetX / this.canvas.width, evt.offsetY / this.canvas.height));
+
+			this.selection = [];
+		}
+		let stopSelect = () => {
+			this.dragging = null;
+			if (this.drawing !== null) {
+				if (this.drawMode === 'Select') {
+					this.lot.Annotations.forEach(a => {
+						a.Points.forEach(p => {
+							if (this.drawing.contains(p)) {
+								this.selection.push(p);
+							}
+						});
+					});
+				} else {
+					this.lot.Annotations.push(this.drawing);
+				}
+				this.drawing = null;
+				this.drawMode = 'Select';
+			}
+		};
+		let move = (evt) => {
 			let x = evt.offsetX / this.canvas.width;
 			let y = evt.offsetY / this.canvas.height;
 			if (this.dragging && this.selection.length > 0) {
@@ -61,41 +112,44 @@
 				}))
 					return true;
 			});
+
+		};
+		function convertTouchEvent(evt) {
+			let touch = evt.targetTouches[0];
+			let canvasBounds = canvas.getBoundingClientRect();
+			return {
+				offsetX: touch.clientX - canvasBounds.left,
+				offsetY: touch.clientY - canvasBounds.top
+			};
+		}
+		this.canvas.addEventListener('touchstart', (evt) => {
+			if (evt.targetTouches.length === 1) {
+				evt.preventDefault();
+				select(convertTouchEvent(evt));
+			}
 		});
 		this.canvas.addEventListener('mousedown', (evt) => {
 			if (evt.button === 0) {
-				if (this.drawMode === 'Select') {
-					this.lot.Annotations.forEach(annotation => {
-						annotation.Points.forEach(point => {
-							let screen = this.toScreen(point);
-							let x = screen.X - evt.offsetX;
-							let y = screen.Y - evt.offsetY;
-							if (x * x + y * y <= this.pointRadius * this.pointRadius) {
-								if (!this.selected(point)) {
-									if (this.shift) {
-										this.selection.push(point);
-									} else {
-										this.selection = [point];
-									}
-								}
-								this.dragging = point;
-								return true;
-							}
-						});
-					});
-					if (this.dragging)
-						return;
-
-				}
-				this.drawing = new Annotation({ Type: this.drawMode });
-				this.drawing.Points.push(new Vector2(evt.offsetX / this.canvas.width, evt.offsetY / this.canvas.height));
-				this.drawing.Points.push(new Vector2(evt.offsetX / this.canvas.width, evt.offsetY / this.canvas.height));
-				this.drawing.Points.push(new Vector2(evt.offsetX / this.canvas.width, evt.offsetY / this.canvas.height));
-				this.drawing.Points.push(new Vector2(evt.offsetX / this.canvas.width, evt.offsetY / this.canvas.height));
-				
-				this.selection = [];
-					
+				select(evt);
 			}
+		});
+		window.addEventListener('touchend', (evt) => {
+			stopSelect();
+			this.hover = null;
+		});
+		window.addEventListener('mouseup', (evt) => {
+			if (evt.button === 0) {
+				stopSelect();
+			}
+		});
+		this.canvas.addEventListener('touchmove', (evt) => {
+			evt.preventDefault();
+			if (evt.targetTouches.length === 1) {
+				move(convertTouchEvent(evt));
+			}
+		});
+		this.canvas.addEventListener('mousemove', (evt) => {
+			move(evt);
 		});
 		window.addEventListener('keydown', (evt) => {
 			// Shift
@@ -158,26 +212,7 @@
 				this.ctrl = false;
 			}
 		});
-		window.addEventListener('mouseup', (evt) => {
-			if (evt.button === 0) {
-				this.dragging = null;
-				if (this.drawing !== null) {
-					if (this.drawMode === 'Select') {
-						this.lot.Annotations.forEach(a => {
-							a.Points.forEach(p => {
-								if (this.drawing.contains(p)) {
-									this.selection.push(p);
-								}
-							});
-						});
-					} else {
-						this.lot.Annotations.push(this.drawing);
-					}
-					this.drawing = null;
-					this.drawMode = 'Select';
-				}
-			}
-		});
+		
 	}
 	selected(obj) {
 		if (obj instanceof Vector2) {
