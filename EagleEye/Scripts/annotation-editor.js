@@ -143,8 +143,8 @@
 			}
 		});
 		this.canvas.addEventListener('touchmove', (evt) => {
-			evt.preventDefault();
 			if (evt.targetTouches.length === 1) {
+				evt.preventDefault();
 				move(convertTouchEvent(evt));
 			}
 		});

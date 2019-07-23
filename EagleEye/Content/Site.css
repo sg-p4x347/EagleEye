@@ -12,6 +12,7 @@
 	border-radius: 0 0 16px 16px;
 	color:white;
 	box-sizing:border-box;
+	box-shadow: rgba(0,0,0,0.5) 0 0 32px;
 }
 .jumbotron {
 	color: black;
