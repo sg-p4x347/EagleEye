@@ -5,3 +5,6 @@
 		<option value="@camera.ID">@camera.Name</option>
 	}
 </select>
+<script>
+	document.querySelector("select[name='cameras']").value = @ViewBag.SelectedCamera;
+</script>

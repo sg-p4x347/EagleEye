@@ -14,13 +14,13 @@ namespace EagleEye.Tests
 		static ParkingLot TestLot()
 		{
 			ParkingLot lot = new ParkingLot(0, "Test Lot", new Camera(0,"Test Camera"));
-			Annotation isle = new Annotation(0, Annotation.AnnotationType.Isle);
-			isle.Points.Add(new Models.Geometry.Vector2(0, 0));
-			isle.Points.Add(new Models.Geometry.Vector2(0.5, 0));
-			isle.Points.Add(new Models.Geometry.Vector2(0.5, 0.5));
-			isle.Points.Add(new Models.Geometry.Vector2(0, 0.5));
-			lot.Annotations.Add(isle);
-			Annotation isle2 = new Annotation(0, Annotation.AnnotationType.Isle);
+			Annotation aisles = new Annotation(0, Annotation.AnnotationType.Aisle);
+			aisles.Points.Add(new Models.Geometry.Vector2(0, 0));
+			aisles.Points.Add(new Models.Geometry.Vector2(0.5, 0));
+			aisles.Points.Add(new Models.Geometry.Vector2(0.5, 0.5));
+			aisles.Points.Add(new Models.Geometry.Vector2(0, 0.5));
+			lot.Annotations.Add(aisles);
+			Annotation isle2 = new Annotation(0, Annotation.AnnotationType.Aisle);
 			isle2.Points.Add(new Models.Geometry.Vector2(0, 0.5));
 			isle2.Points.Add(new Models.Geometry.Vector2(1, 0.5));
 			isle2.Points.Add(new Models.Geometry.Vector2(1, 1));

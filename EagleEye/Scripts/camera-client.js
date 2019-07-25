@@ -1,10 +1,7 @@
-﻿// JavaScript source code
-var btn = document.getElementById('btn');
-btn.addEventListener('click', begin, false);
-
+﻿
+// JavaScript source code
 function begin() {
-    var tb = document.getElementById('textBox').value;
-    console.log(tb);
+
     const vid = document.querySelector('video');
     navigator.mediaDevices.getUserMedia({ video: true }) // request cam
         .then(stream => {
@@ -37,7 +34,7 @@ function send(blob) {
 				url: "/Camera/Update",
 				data: {
 					ID: -1,
-					Name: document.getElementById('textBox').value,
+					Name: document.getElementById('cameraName').value,
 					CurrentImage: text
 				},
 				method: "POST"

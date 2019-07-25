@@ -37,8 +37,9 @@ namespace EagleEye.Controllers
 		/// <returns>An html partial view</returns>
 		[HttpGet]
 		[Authorize(Roles = "Administrator")]
-		public ActionResult ListView()
+		public ActionResult ListView(int cameraID = -1)
 		{
+			ViewBag.SelectedCamera = cameraID;
 			return PartialView("List", Repository<Camera>.Models.Values.Select(c => new Views.Camera.Camera(c)).ToList());
 		}
 		/// <summary>

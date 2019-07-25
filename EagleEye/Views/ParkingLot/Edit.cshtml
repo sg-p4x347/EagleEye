@@ -6,23 +6,23 @@
 <div class="panel panel-default">
 	<div class="panel-heading flex-row justify-between">
 		<span>Edit</span>
-		<div class="btn btn-primary" onclick="editor.save()">Save</div>
+		<div class="btn btn-primary" onclick="viewer.save()">Save</div>
 	</div>
 	<div class="panel-body btn-group-vertical max-width">
 		<div class="btn btn-default" onclick="updateBaseline()">Update Baseline</div>
 		<label>Camera</label>
-		@{Html.RenderAction("ListView", "Camera");}
+		@{Html.RenderAction("ListView", "Camera", new { cameraID = Model.CameraID });}
 		<label>Annotations</label>
-		<div class="btn btn-default" onclick="editor.newSpace()">New Parking Space</div>
-		<div class="btn btn-default" onclick="editor.newIsle()">New Isle</div>
-		<div class="btn btn-default" onclick="editor.newConstant()">New Constant</div>
+		<div class="btn btn-default" onclick="viewer.newSpace()">New Parking Space</div>
+		<div class="btn btn-default" onclick="viewer.newIsle()">New Aisle</div>
+		<div class="btn btn-default" onclick="viewer.newConstant()">New Constant</div>
 	</div>
 </div>
 
 }
 @section scripts {
 	<script>
-		let editor = null;
+		let viewer = null;
 		$.ajax({
 			url: '/ParkingLot/Get',
 			data: { id:@Model.ID}
@@ -36,11 +36,14 @@
 				})
 			})
 
-			editor = new AnnotationEditor(lot, annotations);
-			editor.tick();
-			});
+			viewer = new AnnotationEditor(lot, annotations);
+			viewer.tick();
+			// load the feed
+			displayFeed();
+		});
 		function cameraSelected(cameraID) {
-			editor.lot.CameraID = cameraID;
+			viewer.lot.CameraID = cameraID;
+			viewer.save();
 		}
 	</script>
 }

@@ -105,7 +105,7 @@ namespace EagleEye.Models
 			}
 		}
 		/// <summary>
-		/// A list of annotations that define regions of Parking or Isle space
+		/// A list of annotations that define regions of Parking or Aisle space
 		/// </summary>
 		public List<Annotation> Annotations { get; private set; } = new List<Annotation>();
 		/// <summary>
@@ -118,12 +118,12 @@ namespace EagleEye.Models
 			}
 		}
 		/// <summary>
-		/// Only annotations of Isle type
+		/// Only annotations of Aisle type
 		/// </summary>
-		public IEnumerable<Annotation> Isles {
+		public IEnumerable<Annotation> Aisles {
 			get
 			{
-				return Annotations.Where(a => a.Type == Annotation.AnnotationType.Isle);
+				return Annotations.Where(a => a.Type == Annotation.AnnotationType.Aisle);
 			}
 		}
 		/// <summary>
