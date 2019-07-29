@@ -184,7 +184,7 @@
 	}
 	generateNodes() {
 		let nodes = [];
-		this.lot.Annotations.where(an => an.Type === "Isle").forEach(an => {
+		this.lot.Annotations.where(an => an.Type === "Aisle").forEach(an => {
 			let midpoints = an.midpoints;
 			for (let i = 0; i < 2; i++) {
 				let start = midpoints[i];

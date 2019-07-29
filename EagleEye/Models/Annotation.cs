@@ -31,9 +31,9 @@ namespace EagleEye.Models
 			/// </summary>
 			Parking,
 			/// <summary>
-			/// Represents a driving isle
+			/// Represents a driving Aisle
 			/// </summary>
-			Isle,
+			Aisle,
 			/// <summary>
 			/// Represents a region that does not change, e.g. no vehicles can obstruct this region
 			/// </summary>
