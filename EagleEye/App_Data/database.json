@@ -1,1 +1,1 @@
-{"Cameras":[{"ID":2,"Name":"Production"}],"ParkingLots":[{"ID":0,"Name":"Eagle's Nest","Camera":2,"Annotations":[]}]}
+{"Cameras":[{"ID":2,"Name":"Production"},{"ID":3,"Name":"Test"}],"ParkingLots":[{"ID":0,"Name":"Eagle's Nest","Camera":3,"Annotations":[]}]}
