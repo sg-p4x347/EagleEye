@@ -9,7 +9,6 @@ namespace EagleEye.Controllers
 	/// <summary>
 	/// Provides a place for non-model related actions
 	/// </summary>
-	/// <
 	public class HomeController : Controller
 	{
 		/// <summary>
