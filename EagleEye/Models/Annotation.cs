@@ -31,7 +31,7 @@ namespace EagleEye.Models
 			/// </summary>
 			Parking,
 			/// <summary>
-			/// Represents a driving aisles
+			/// Represents a driving Aisle
 			/// </summary>
 			Aisle,
 			/// <summary>

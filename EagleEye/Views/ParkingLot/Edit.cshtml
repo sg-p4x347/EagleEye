@@ -13,9 +13,9 @@
 		<label>Camera</label>
 		@{Html.RenderAction("ListView", "Camera", new { cameraID = Model.CameraID });}
 		<label>Annotations</label>
-		<div class="btn btn-default" onclick="viewer.newSpace()">New Parking Space</div>
-		<div class="btn btn-default" onclick="viewer.newIsle()">New Aisle</div>
-		<div class="btn btn-default" onclick="viewer.newConstant()">New Constant</div>
+		<div class="btn btn-default" onclick="editor.newSpace()">New Parking Space</div>
+		<div class="btn btn-default" onclick="editor.newAisle()">New Aisle</div>
+		<div class="btn btn-default" onclick="editor.newConstant()">New Constant</div>
 	</div>
 </div>
 

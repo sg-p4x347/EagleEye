@@ -246,7 +246,7 @@
 	newSpace() {
 		this.drawMode = 'Parking';
 	}
-	newIsle() {
+	newAisle() {
 		this.drawMode = 'Aisle';
 	}
 	newConstant() {

@@ -14,18 +14,18 @@ namespace EagleEye.Tests
 		static ParkingLot TestLot()
 		{
 			ParkingLot lot = new ParkingLot(0, "Test Lot", new Camera(0,"Test Camera"));
-			Annotation aisles = new Annotation(0, Annotation.AnnotationType.Aisle);
-			aisles.Points.Add(new Models.Geometry.Vector2(0, 0));
-			aisles.Points.Add(new Models.Geometry.Vector2(0.5, 0));
-			aisles.Points.Add(new Models.Geometry.Vector2(0.5, 0.5));
-			aisles.Points.Add(new Models.Geometry.Vector2(0, 0.5));
-			lot.Annotations.Add(aisles);
-			Annotation isle2 = new Annotation(0, Annotation.AnnotationType.Aisle);
-			isle2.Points.Add(new Models.Geometry.Vector2(0, 0.5));
-			isle2.Points.Add(new Models.Geometry.Vector2(1, 0.5));
-			isle2.Points.Add(new Models.Geometry.Vector2(1, 1));
-			isle2.Points.Add(new Models.Geometry.Vector2(0, 1));
-			lot.Annotations.Add(isle2);
+			Annotation Aisle = new Annotation(0, Annotation.AnnotationType.Aisle);
+			Aisle.Points.Add(new Models.Geometry.Vector2(0, 0));
+			Aisle.Points.Add(new Models.Geometry.Vector2(0.5, 0));
+			Aisle.Points.Add(new Models.Geometry.Vector2(0.5, 0.5));
+			Aisle.Points.Add(new Models.Geometry.Vector2(0, 0.5));
+			lot.Annotations.Add(Aisle);
+			Annotation Aisle2 = new Annotation(0, Annotation.AnnotationType.Aisle);
+			Aisle2.Points.Add(new Models.Geometry.Vector2(0, 0.5));
+			Aisle2.Points.Add(new Models.Geometry.Vector2(1, 0.5));
+			Aisle2.Points.Add(new Models.Geometry.Vector2(1, 1));
+			Aisle2.Points.Add(new Models.Geometry.Vector2(0, 1));
+			lot.Annotations.Add(Aisle2);
 			Annotation space = new Annotation(1, Annotation.AnnotationType.Parking);
 			space.Points.Add(new Models.Geometry.Vector2(0.5, 0));
 			space.Points.Add(new Models.Geometry.Vector2(1, 0));
