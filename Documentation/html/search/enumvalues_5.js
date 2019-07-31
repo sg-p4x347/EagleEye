@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['object',['Object',['../class_eagle_eye_1_1_models_1_1_json.html#afdf0e16163f8b9bab5b45d6d01e8133ca497031794414a552435f90151ac3b54b',1,'EagleEye::Models::Json']]]
+  ['parking',['Parking',['../class_eagle_eye_1_1_models_1_1_annotation.html#a38b72003ea887909fe12d6382092f7d9abaaacd7280e91aface947a1cc19d0f79',1,'EagleEye::Models::Annotation']]]
 ];

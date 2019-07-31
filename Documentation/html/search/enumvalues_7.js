@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['string',['String',['../class_eagle_eye_1_1_models_1_1_json.html#afdf0e16163f8b9bab5b45d6d01e8133ca27118326006d3829667a400ad23d5d98',1,'EagleEye::Models::Json']]]
+  ['user',['User',['../namespace_eagle_eye_1_1_views_1_1_user.html#a5ec08150416703595770d50460878d89a8f9bfe9d1345237cb3b2b205864da075',1,'EagleEye::Views::User']]]
 ];
