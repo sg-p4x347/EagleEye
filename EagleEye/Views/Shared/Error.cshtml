@@ -1,13 +1,11 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
-</head>
-<body>
-    <hgroup>
-        <h1>Error.</h1>
-        <h2>An error occurred while processing your request.</h2>
-    </hgroup>
-</body>
-</html>
+﻿@{ 
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-danger" style="margin-top:16px;">
+	<div class="panel-heading">
+		<h1>Error</h1>
+	</div>
+	<div class="panel-body">
+		<p>oops! Your request could not be handled</p>
+	</div>
+</div>

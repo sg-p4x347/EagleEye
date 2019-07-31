@@ -172,9 +172,9 @@ namespace EagleEye.Controllers
 				lock (model)
 				{
 					model.Annotations.Clear();
+					// Add annotations
 					if (lot.Annotations != null)
 					{
-						// Add annotations
 						foreach (var annotation in lot.Annotations)
 						{
 							var modelAnnotation = new Annotation(model.Annotations.Count > 0 ? model.Annotations.Max(a => a.ID) + 1 : 0, (Annotation.AnnotationType)Enum.Parse(typeof(Annotation.AnnotationType), annotation.Type));
