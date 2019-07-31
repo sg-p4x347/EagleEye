@@ -54,14 +54,22 @@ hr {
 }
 .panel-default {
 	background-color: #262626;
+	border-color: #dfa31b;
 	color: white;
 }
 .panel-default > .panel-heading {
 	background-color:black;
 	color:white;
 }
-.panel-default {
-	border-color: #dfa31b;
+.panel-danger {
+	background-color: #262626;
+	color: white;
+	border-color:red;
+}
+.panel-danger > .panel-heading {
+	background-color:#570000;
+	color:white;
+	border-color:white;
 }
 .col {
 	box-sizing:border-box;

@@ -173,13 +173,16 @@ namespace EagleEye.Controllers
 				{
 					model.Annotations.Clear();
 					// Add annotations
-					foreach (var annotation in lot.Annotations)
+					if (lot.Annotations != null)
 					{
-						var modelAnnotation = new Annotation(model.Annotations.Count > 0 ? model.Annotations.Max(a => a.ID) + 1 : 0, (Annotation.AnnotationType)Enum.Parse(typeof(Annotation.AnnotationType), annotation.Type));
-						model.Annotations.Add(modelAnnotation);
-						foreach (var point in annotation.Points)
+						foreach (var annotation in lot.Annotations)
 						{
-							modelAnnotation.Add(new Models.Geometry.Vector2(point.X, point.Y));
+							var modelAnnotation = new Annotation(model.Annotations.Count > 0 ? model.Annotations.Max(a => a.ID) + 1 : 0, (Annotation.AnnotationType)Enum.Parse(typeof(Annotation.AnnotationType), annotation.Type));
+							model.Annotations.Add(modelAnnotation);
+							foreach (var point in annotation.Points)
+							{
+								modelAnnotation.Add(new Models.Geometry.Vector2(point.X, point.Y));
+							}
 						}
 					}
 					// Set the camera

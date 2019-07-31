@@ -34,22 +34,26 @@
 		let select = (evt) => {
 			if (this.drawMode === 'Select') {
 				this.lot.Annotations.forEach(annotation => {
+					let selectedPoint = null;
 					annotation.Points.forEach(point => {
 						let screen = this.toScreen(point);
 						let x = screen.X - evt.offsetX;
 						let y = screen.Y - evt.offsetY;
 						if (x * x + y * y <= this.pointRadius * this.pointRadius) {
-							if (!this.selected(point)) {
-								if (this.shift) {
-									this.selection.push(point);
-								} else {
-									this.selection = [point];
-								}
-							}
-							this.dragging = point;
-							return true;
+							selectedPoint = point;
 						}
 					});
+					if (selectedPoint) {
+						if (!this.selected(selectedPoint)) {
+							if (this.shift) {
+								this.selection.push(selectedPoint);
+							} else {
+								this.selection = [selectedPoint];
+							}
+						}
+						this.dragging = selectedPoint;
+						return true;
+					}
 				});
 				if (this.dragging)
 					return;
@@ -62,7 +66,7 @@
 			this.drawing.Points.push(new Vector2(evt.offsetX / this.canvas.width, evt.offsetY / this.canvas.height));
 
 			this.selection = [];
-		}
+		};
 		let stopSelect = () => {
 			this.dragging = null;
 			if (this.drawing !== null) {
@@ -217,7 +221,7 @@
 	selected(obj) {
 		if (obj instanceof Vector2) {
 			for (let i = 0; i < this.selection.length; i++) {
-				if (this.selection[i] === obj) {
+				if (this.selection[i].X === obj.X && this.selection[i].Y === obj.Y) {
 					return true;
 				}
 			}

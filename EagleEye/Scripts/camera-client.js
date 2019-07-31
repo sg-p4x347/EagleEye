@@ -15,6 +15,7 @@ function begin() {
 }
 
 function takeASnap() {
+	const vid = document.querySelector('video');
     const canvas = document.createElement('canvas'); // create a canvas
     const ctx = canvas.getContext('2d'); // get its context
 	canvas.width = 200; // set its size to the one of the video
